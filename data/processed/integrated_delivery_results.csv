@@ -1,0 +1,5 @@
+leg,origin,destination,departure_time,distance_km,predicted_eta_min,arrival_time
+1,W,A,Monday 17:00,0.728,2.69,Monday 17:02
+2,A,B,Monday 17:02,2.39,8.45,Monday 17:11
+3,B,C,Monday 17:11,6.54,21.4,Monday 17:32
+4,C,W,Monday 17:32,6.076,20.29,Monday 17:52

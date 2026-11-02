@@ -1,0 +1,7 @@
+Rank,Route,Total_Distance_km,Total_Predicted_ETA_min
+1,W -> A -> B -> C -> W,15.734,52.83
+2,W -> C -> B -> A -> W,15.734,54.52
+3,W -> A -> C -> B -> W,16.653,58.21
+4,W -> B -> C -> A -> W,16.653,58.36
+5,W -> B -> A -> C -> W,17.851,63.06
+6,W -> C -> A -> B -> W,17.851,63.74

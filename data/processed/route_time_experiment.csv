@@ -1,0 +1,25 @@
+Overall_Rank,Route,Departure_Hour,Vehicle,Total_Distance_km,Total_ETA_min
+1,W -> A -> B -> C -> W,12,motorcycle,15.734,41.56
+2,W -> C -> B -> A -> W,12,motorcycle,15.734,41.72
+3,W -> C -> B -> A -> W,20,motorcycle,15.734,42.26
+4,W -> B -> C -> A -> W,12,motorcycle,16.653,43.62
+5,W -> A -> B -> C -> W,20,motorcycle,15.734,43.97
+6,W -> A -> C -> B -> W,20,motorcycle,16.653,45.81
+7,W -> A -> C -> B -> W,12,motorcycle,16.653,45.9
+8,W -> B -> C -> A -> W,20,motorcycle,16.653,47.18
+9,W -> C -> A -> B -> W,12,motorcycle,17.851,48.48
+10,W -> B -> A -> C -> W,12,motorcycle,17.851,49.44
+11,W -> B -> A -> C -> W,20,motorcycle,17.851,50.71
+12,W -> C -> B -> A -> W,7,motorcycle,15.734,50.9
+13,W -> C -> A -> B -> W,20,motorcycle,17.851,51.17
+14,W -> A -> B -> C -> W,7,motorcycle,15.734,51.27
+15,W -> A -> B -> C -> W,17,motorcycle,15.734,52.83
+16,W -> C -> B -> A -> W,17,motorcycle,15.734,54.52
+17,W -> B -> C -> A -> W,7,motorcycle,16.653,55.57
+18,W -> A -> C -> B -> W,7,motorcycle,16.653,56.17
+19,W -> A -> C -> B -> W,17,motorcycle,16.653,58.21
+20,W -> B -> C -> A -> W,17,motorcycle,16.653,58.36
+21,W -> C -> A -> B -> W,7,motorcycle,17.851,58.73
+22,W -> B -> A -> C -> W,7,motorcycle,17.851,60.72
+23,W -> B -> A -> C -> W,17,motorcycle,17.851,63.06
+24,W -> C -> A -> B -> W,17,motorcycle,17.851,63.74

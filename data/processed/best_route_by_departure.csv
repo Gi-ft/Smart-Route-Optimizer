@@ -1,0 +1,5 @@
+Departure_Hour,Overall_Rank,Route,Vehicle,Total_Distance_km,Total_ETA_min
+7,12,W -> C -> B -> A -> W,motorcycle,15.734,50.9
+12,1,W -> A -> B -> C -> W,motorcycle,15.734,41.56
+17,15,W -> A -> B -> C -> W,motorcycle,15.734,52.83
+20,3,W -> C -> B -> A -> W,motorcycle,15.734,42.26
