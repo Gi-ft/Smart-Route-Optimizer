@@ -19,7 +19,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Delivery locations
 DEPOT = "W"
-CUSTOMERS = ["A", "B", "C"]
+LOCATIONS_FILE = BASE_DIR / "data" / "raw" / "snapped_delivery_locations_6_customers.csv"
+CUSTOMERS = [
+    location_id for location_id in pd.read_csv(LOCATIONS_FILE)["location_id"]
+    if location_id != DEPOT
+]
 
 
 def calculate_route_eta(
@@ -33,6 +37,7 @@ def calculate_route_eta(
     current_day = start_day
 
     total_eta = 0
+    elapsed_minutes = start_hour * 60
     leg_details = []
 
     for i in range(len(route) - 1):
@@ -61,13 +66,10 @@ def calculate_route_eta(
             "predicted_eta_min": eta
         })
 
-        # Advance time after completing this leg
-        total_minutes = current_hour * 60 + eta
-
-        day_offset = int(total_minutes // 1440)
-
-        current_day = (current_day + day_offset) % 7
-        current_hour = int((total_minutes % 1440) // 60)
+        # Advance the absolute elapsed time after completing this leg.
+        elapsed_minutes += eta
+        current_day = (start_day + int(elapsed_minutes // 1440)) % 7
+        current_hour = int((elapsed_minutes % 1440) // 60)
 
     total_distance = sum(
         leg["distance_km"] for leg in leg_details
@@ -84,7 +86,7 @@ def optimize_by_time(
 
     results = []
 
-    # Generate all six customer sequences
+    # Generate every customer sequence (720 for six customers).
     for customer_order in permutations(CUSTOMERS):
 
         route = [DEPOT] + list(customer_order) + [DEPOT]
@@ -97,6 +99,7 @@ def optimize_by_time(
         )
 
         results.append({
+            "rank": len(results) + 1,
             "route": route,
             "route_string": " -> ".join(route),
             "total_distance_km": distance,
@@ -106,6 +109,11 @@ def optimize_by_time(
 
     # Rank routes by predicted total delivery time
     results.sort(key=lambda x: x["total_eta_min"])
+
+    if len(results) != 720:
+        raise RuntimeError(f"Expected 720 routes; found {len(results)}.")
+    for rank, result in enumerate(results, start=1):
+        result["rank"] = rank
 
     return results
 
@@ -121,7 +129,7 @@ if __name__ == "__main__":
     print("\nTIME-BASED ROUTE OPTIMIZATION")
     print("=" * 70)
 
-    for rank, result in enumerate(ranked_routes, start=1):
+    for rank, result in enumerate(ranked_routes[:5], start=1):
 
         print(f"\nRank: {rank}")
         print(f"Route: {result['route_string']}")
@@ -148,7 +156,7 @@ if __name__ == "__main__":
     ])
 
     output_path = (
-        BASE_DIR / "data" / "processed" / "time_route_results.csv"
+        BASE_DIR / "data" / "processed" / "time_route_results_6_customers.csv"
     )
 
     output.to_csv(output_path, index=False)

@@ -1,0 +1,2 @@
+selected_model,selection_metric,unseen_route_holdout_mae,route_cv_mean_fold_mae,cross_validation_mae,cross_validation_rmse,cross_validation_r2,training_records,dataset_type
+Linear Regression,Mean rank across unseen-route holdout MAE and route-grouped CV fold MAE,1.2803048037293672,1.2205951157560044,1.2161968997349197,1.626228600930949,0.960730807967841,105840,Simulated

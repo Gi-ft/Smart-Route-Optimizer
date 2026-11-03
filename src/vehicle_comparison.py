@@ -26,6 +26,7 @@ def compare_vehicles():
     # Get the optimal route
     routes = optimize_routes()
     best_route = routes.iloc[0]["route"]
+    total_distance = float(routes.iloc[0]["total_distance_km"])
 
     results = []
 
@@ -33,6 +34,7 @@ def compare_vehicles():
 
         current_hour = START_HOUR
         current_day = START_DAY
+        elapsed_minutes = START_HOUR * 60
         total_eta = 0
 
         for i in range(len(best_route) - 1):
@@ -53,16 +55,13 @@ def compare_vehicles():
             total_eta += eta
 
             # Advance departure time
-            total_minutes = current_hour * 60 + eta
-
-            if total_minutes >= 1440:
-                current_day = (current_day + int(total_minutes // 1440)) % 7
-
-            current_hour = int((total_minutes % 1440) // 60)
+            elapsed_minutes += eta
+            current_day = (START_DAY + int(elapsed_minutes // 1440)) % 7
+            current_hour = int((elapsed_minutes % 1440) // 60)
 
         results.append({
             "Vehicle": vehicle,
-            "Total_Distance_km": 15.734,
+            "Total_Distance_km": round(total_distance, 3),
             "Total_Predicted_ETA_min": round(total_eta, 2)
         })
 
@@ -81,7 +80,7 @@ def compare_vehicles():
 
     # Save results
     output_path = (
-        BASE_DIR / "data" / "processed" / "vehicle_comparison.csv"
+        BASE_DIR / "data" / "processed" / "vehicle_comparison_6_customers.csv"
     )
 
     results_df.to_csv(output_path, index=False)

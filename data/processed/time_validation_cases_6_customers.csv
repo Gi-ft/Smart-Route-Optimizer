@@ -1,0 +1,6 @@
+vehicle,departure_hour,day_of_week,fastest_route,distance_km,predicted_eta_min,routes_evaluated
+motorcycle,7,0,W -> F -> E -> D -> C -> B -> A -> W,21.909,77.25,720
+motorcycle,12,0,W -> F -> E -> D -> C -> B -> A -> W,21.909,54.56,720
+motorcycle,17,0,W -> F -> E -> D -> C -> B -> A -> W,21.909,85.44,720
+car,12,0,W -> F -> E -> D -> C -> B -> A -> W,21.909,64.32,720
+van,17,0,W -> F -> E -> D -> C -> B -> A -> W,21.909,102.47,720

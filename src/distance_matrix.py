@@ -25,12 +25,12 @@ PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
 GRAPH_FILE = (
     RAW_DATA_DIR /
-    "mwihoko_githurai_road_network.graphml"
+    "mwihoko_githurai_road_network_6_customers.graphml"
 )
 
 LOCATIONS_FILE = (
     RAW_DATA_DIR /
-    "snapped_delivery_locations.csv"
+    "snapped_delivery_locations_6_customers.csv"
 )
 
 
@@ -140,15 +140,15 @@ def calculate_distance_matrix(G, locations):
 def save_results(matrix, detailed_results):
 
     matrix_file = (
-        PROCESSED_DIR / "distance_matrix_m.csv"
+        PROCESSED_DIR / "distance_matrix_6_customers_m.csv"
     )
 
     matrix_km_file = (
-        PROCESSED_DIR / "distance_matrix_km.csv"
+        PROCESSED_DIR / "distance_matrix_6_customers_km.csv"
     )
 
     details_file = (
-        PROCESSED_DIR / "pairwise_distances.csv"
+        PROCESSED_DIR / "pairwise_distances_6_customers.csv"
     )
 
     matrix.to_csv(matrix_file)
@@ -159,6 +159,16 @@ def save_results(matrix, detailed_results):
         details_file,
         index=False
     )
+
+    expected_pairs = len(matrix) * (len(matrix) - 1)
+    if matrix.isna().any().any() or len(detailed_results) != expected_pairs:
+        raise RuntimeError(
+            f"Expected {expected_pairs} connected directional pairs; "
+            f"found {len(detailed_results)} and "
+            f"{int(matrix.isna().sum().sum())} missing matrix cells."
+        )
+    if matrix.shape != (7, 7):
+        raise RuntimeError(f"Expected a 7x7 matrix; got {matrix.shape}.")
 
     print("\nDISTANCE MATRIX (METRES)")
     print(matrix.round(2).to_string())

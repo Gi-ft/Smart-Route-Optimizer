@@ -44,12 +44,44 @@ locations = [
         "location_name": "Stanmatt Supermarket Githurai 45",
         "latitude": -1.2056025,
         "longitude": 36.9187064
+    },
+    {
+        "location_id": "D",
+        "role": "Customer",
+        "location_name": "Naivas Githurai 44",
+        "latitude": -1.19875267519385,
+        "longitude": 36.9005119783075
+    },
+    {
+        "location_id": "E",
+        "role": "Customer",
+        "location_name": "Cleanshelf Kahawa Wendani",
+        "latitude": -1.197502015958163,
+        "longitude": 36.92697890999875
+    },
+    {
+        "location_id": "F",
+        "role": "Customer",
+        "location_name": "Quickmart Kahawa Sukari",
+        "latitude": -1.18919379482623,
+        "longitude": 36.93237357931856
     }
 ]
 
-def save_locations():
+def save_locations(output_name="delivery_locations_6_customers.csv"):
 
     df = pd.DataFrame(locations)
+
+    expected_ids = set("WABCDEF")
+    if set(df["location_id"]) != expected_ids:
+        raise ValueError(
+            f"Expected location IDs {sorted(expected_ids)}; "
+            f"found {sorted(df['location_id'])}."
+        )
+    if (df["role"] == "Warehouse").sum() != 1:
+        raise ValueError("The expanded network must contain one warehouse.")
+    if (df["role"] == "Customer").sum() != 6:
+        raise ValueError("The expanded network must contain six customers.")
 
     # Basic coordinate validation
     assert df["location_id"].is_unique
@@ -58,7 +90,7 @@ def save_locations():
     assert df[["latitude", "longitude"]].notna().all().all()
 
     # Save dataset
-    output_path = RAW_DATA_DIR / "delivery_locations.csv"
+    output_path = RAW_DATA_DIR / output_name
 
     df.to_csv(output_path, index=False)
 

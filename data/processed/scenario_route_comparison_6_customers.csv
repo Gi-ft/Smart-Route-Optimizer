@@ -1,0 +1,2161 @@
+scenario,rank,route,total_distance_km,predicted_eta_min
+Light traffic,1,W -> F -> E -> D -> C -> B -> A -> W,21.909,64.93
+Light traffic,2,W -> F -> E -> C -> D -> B -> A -> W,22.301,65.87
+Light traffic,3,W -> A -> F -> E -> D -> C -> B -> W,22.773,67.3
+Light traffic,4,W -> A -> B -> E -> C -> D -> F -> W,22.842,67.43
+Light traffic,5,W -> A -> B -> C -> D -> E -> F -> W,22.81,67.5
+Light traffic,6,W -> A -> B -> D -> C -> E -> F -> W,22.81,67.5
+Light traffic,7,W -> A -> B -> E -> D -> C -> F -> W,23.089,68.14
+Light traffic,8,W -> A -> F -> E -> C -> D -> B -> W,23.165,68.24
+Light traffic,9,W -> F -> D -> C -> E -> B -> A -> W,23.4,68.73
+Light traffic,10,W -> E -> F -> D -> C -> B -> A -> W,23.603,69.01
+Light traffic,11,W -> A -> B -> C -> D -> F -> E -> W,23.554,69.06
+Light traffic,12,W -> B -> E -> C -> D -> F -> A -> W,23.706,69.22
+Light traffic,13,W -> B -> C -> D -> E -> F -> A -> W,23.674,69.29
+Light traffic,14,W -> B -> D -> C -> E -> F -> A -> W,23.674,69.29
+Light traffic,15,W -> E -> C -> D -> F -> A -> B -> W,23.952,69.6
+Light traffic,16,W -> F -> C -> D -> E -> B -> A -> W,23.792,69.68
+Light traffic,17,W -> E -> C -> D -> F -> B -> A -> W,24.009,69.75
+Light traffic,18,W -> B -> E -> D -> C -> F -> A -> W,23.953,69.93
+Light traffic,19,W -> E -> F -> C -> D -> B -> A -> W,23.995,69.95
+Light traffic,20,W -> B -> A -> E -> C -> D -> F -> W,24.025,70.01
+Light traffic,21,W -> E -> D -> C -> F -> A -> B -> W,24.199,70.31
+Light traffic,22,W -> B -> A -> F -> E -> D -> C -> W,23.971,70.39
+Light traffic,23,W -> E -> D -> C -> F -> B -> A -> W,24.256,70.46
+Light traffic,24,W -> F -> E -> D -> C -> A -> B -> W,24.026,70.51
+Light traffic,25,W -> A -> B -> F -> E -> D -> C -> W,24.028,70.52
+Light traffic,26,W -> A -> B -> D -> C -> F -> E -> W,24.193,70.72
+Light traffic,27,W -> B -> A -> E -> D -> C -> F -> W,24.272,70.72
+Light traffic,28,W -> A -> F -> D -> C -> E -> B -> W,24.264,70.81
+Light traffic,29,W -> B -> C -> D -> F -> E -> A -> W,24.491,70.95
+Light traffic,30,W -> A -> E -> F -> D -> C -> B -> W,24.54,71.19
+Light traffic,31,W -> F -> D -> C -> E -> A -> B -> W,24.583,71.29
+Light traffic,32,W -> B -> A -> F -> E -> C -> D -> W,24.362,71.33
+Light traffic,33,W -> A -> B -> F -> E -> C -> D -> W,24.419,71.46
+Light traffic,34,W -> C -> D -> F -> E -> B -> A -> W,24.506,71.46
+Light traffic,35,W -> F -> E -> C -> D -> A -> B -> W,24.417,71.47
+Light traffic,36,W -> B -> A -> F -> D -> C -> E -> W,24.51,71.5
+Light traffic,37,W -> A -> B -> F -> D -> C -> E -> W,24.567,71.63
+Light traffic,38,W -> A -> F -> C -> D -> E -> B -> W,24.656,71.76
+Light traffic,39,W -> D -> C -> E -> F -> B -> A -> W,24.883,71.76
+Light traffic,40,W -> D -> C -> E -> F -> A -> B -> W,24.826,71.91
+Light traffic,41,W -> A -> B -> C -> E -> D -> F -> W,25.041,71.91
+Light traffic,42,W -> A -> E -> C -> D -> F -> B -> W,24.946,71.93
+Light traffic,43,W -> A -> B -> E -> F -> D -> C -> W,24.555,71.99
+Light traffic,44,W -> B -> A -> D -> C -> E -> F -> W,24.899,72.05
+Light traffic,45,W -> A -> E -> F -> C -> D -> B -> W,24.932,72.13
+Light traffic,46,W -> C -> D -> E -> F -> B -> A -> W,24.929,72.21
+Light traffic,47,W -> F -> C -> D -> E -> A -> B -> W,24.975,72.24
+Light traffic,48,W -> C -> D -> E -> F -> A -> B -> W,24.872,72.36
+Light traffic,49,W -> D -> C -> F -> E -> B -> A -> W,25.099,72.37
+Light traffic,50,W -> B -> A -> F -> C -> D -> E -> W,24.902,72.45
+Light traffic,51,W -> A -> B -> F -> C -> D -> E -> W,24.959,72.58
+Light traffic,52,W -> B -> D -> C -> F -> E -> A -> W,25.13,72.61
+Light traffic,53,W -> A -> E -> D -> C -> F -> B -> W,25.193,72.64
+Light traffic,54,W -> B -> F -> E -> D -> C -> A -> W,24.947,72.74
+Light traffic,55,W -> F -> C -> E -> D -> B -> A -> W,25.482,72.8
+Light traffic,56,W -> F -> D -> E -> C -> B -> A -> W,25.482,72.81
+Light traffic,57,W -> B -> A -> C -> D -> E -> F -> W,24.927,72.82
+Light traffic,58,W -> A -> B -> E -> F -> C -> D -> W,24.946,72.93
+Light traffic,59,W -> B -> F -> D -> C -> E -> A -> W,25.504,73.52
+Light traffic,60,W -> B -> F -> E -> C -> D -> A -> W,25.338,73.7
+Light traffic,61,W -> A -> C -> D -> F -> E -> B -> W,25.425,73.98
+Light traffic,62,W -> B -> C -> E -> D -> F -> A -> W,25.905,73.99
+Light traffic,63,W -> C -> D -> F -> E -> A -> B -> W,25.689,74.02
+Light traffic,64,W -> B -> E -> F -> D -> C -> A -> W,25.474,74.21
+Light traffic,65,W -> A -> D -> C -> E -> F -> B -> W,25.82,74.26
+Light traffic,66,W -> E -> D -> F -> C -> B -> A -> W,26.226,74.36
+Light traffic,67,W -> B -> A -> C -> D -> F -> E -> W,25.671,74.37
+Light traffic,68,W -> B -> F -> C -> D -> E -> A -> W,25.896,74.47
+Light traffic,69,W -> A -> B -> D -> E -> C -> F -> W,26.072,74.52
+Light traffic,70,W -> B -> A -> E -> F -> D -> C -> W,25.738,74.57
+Light traffic,71,W -> E -> F -> D -> C -> A -> B -> W,25.72,74.59
+Light traffic,72,W -> A -> D -> C -> F -> E -> B -> W,26.036,74.87
+Light traffic,73,W -> A -> C -> D -> E -> F -> B -> W,25.848,75.03
+Light traffic,74,W -> D -> F -> E -> C -> B -> A -> W,26.542,75.09
+Light traffic,75,W -> B -> E -> F -> C -> D -> A -> W,25.865,75.17
+Light traffic,76,W -> A -> F -> C -> E -> D -> B -> W,26.346,75.18
+Light traffic,77,W -> A -> F -> D -> E -> C -> B -> W,26.346,75.19
+Light traffic,78,W -> D -> C -> F -> E -> A -> B -> W,26.282,75.23
+Light traffic,79,W -> B -> A -> D -> C -> F -> E -> W,26.282,75.26
+Light traffic,80,W -> B -> A -> E -> F -> C -> D -> W,26.129,75.51
+Light traffic,81,W -> E -> F -> C -> D -> A -> B -> W,26.111,75.55
+Light traffic,82,W -> E -> C -> F -> D -> B -> A -> W,26.865,76.01
+Light traffic,83,W -> A -> B -> D -> F -> E -> C -> W,26.588,76.13
+Light traffic,84,W -> C -> F -> E -> D -> B -> A -> W,26.835,76.24
+Light traffic,85,W -> B -> D -> E -> C -> F -> A -> W,26.936,76.31
+Light traffic,86,W -> C -> E -> D -> F -> A -> B -> W,27.103,76.76
+Light traffic,87,W -> A -> B -> C -> F -> E -> D -> W,26.834,76.83
+Light traffic,88,W -> A -> E -> D -> F -> C -> B -> W,27.163,76.84
+Light traffic,89,W -> C -> E -> D -> F -> B -> A -> W,27.16,76.91
+Light traffic,90,W -> A -> B -> D -> F -> C -> E -> W,27.127,76.94
+Light traffic,91,W -> C -> E -> F -> D -> B -> A -> W,27.146,77.11
+Light traffic,92,W -> A -> B -> E -> D -> F -> C -> W,27.178,77.34
+Light traffic,93,W -> B -> A -> C -> E -> D -> F -> W,27.158,77.52
+Light traffic,94,W -> A -> D -> F -> E -> C -> B -> W,27.479,77.59
+Light traffic,95,W -> D -> E -> F -> C -> B -> A -> W,27.492,77.62
+Light traffic,96,W -> A -> B -> C -> F -> D -> E -> W,27.374,77.65
+Light traffic,97,W -> A -> B -> C -> E -> F -> D -> W,27.145,77.7
+Light traffic,98,W -> B -> A -> F -> D -> E -> C -> W,27.544,78.27
+Light traffic,99,W -> B -> D -> F -> E -> C -> A -> W,27.507,78.35
+Light traffic,100,W -> A -> B -> D -> E -> F -> C -> W,27.538,78.36
+Light traffic,101,W -> F -> D -> E -> C -> A -> B -> W,27.599,78.39
+Light traffic,102,W -> F -> C -> E -> D -> A -> B -> W,27.598,78.4
+Light traffic,103,W -> A -> B -> F -> D -> E -> C -> W,27.601,78.4
+Light traffic,104,W -> A -> E -> C -> F -> D -> B -> W,27.802,78.49
+Light traffic,105,W -> B -> A -> F -> C -> E -> D -> W,27.543,78.56
+Light traffic,106,W -> A -> B -> F -> C -> E -> D -> W,27.6,78.69
+Light traffic,107,W -> B -> D -> F -> C -> E -> A -> W,28.064,78.84
+Light traffic,108,W -> D -> F -> C -> E -> B -> A -> W,28.033,78.89
+Light traffic,109,W -> D -> E -> C -> F -> A -> B -> W,28.088,78.92
+Light traffic,110,W -> A -> C -> F -> E -> D -> B -> W,27.754,79.06
+Light traffic,111,W -> B -> C -> F -> E -> D -> A -> W,27.753,79.07
+Light traffic,112,W -> D -> E -> C -> F -> B -> A -> W,28.145,79.07
+Light traffic,113,W -> B -> A -> D -> E -> C -> F -> W,28.161,79.08
+Light traffic,114,W -> A -> B -> E -> C -> F -> D -> W,27.816,79.29
+Light traffic,115,W -> B -> C -> F -> D -> E -> A -> W,28.311,79.55
+Light traffic,116,W -> A -> C -> E -> D -> F -> B -> W,28.079,79.73
+Light traffic,117,W -> B -> E -> D -> F -> C -> A -> W,28.097,79.86
+Light traffic,118,W -> B -> A -> E -> D -> F -> C -> W,28.361,79.92
+Light traffic,119,W -> A -> C -> E -> F -> D -> B -> W,28.065,79.93
+Light traffic,120,W -> B -> C -> E -> F -> D -> A -> W,28.064,79.94
+Light traffic,121,W -> E -> D -> F -> C -> A -> B -> W,28.343,79.94
+Light traffic,122,W -> C -> F -> D -> E -> B -> A -> W,28.326,80.05
+Light traffic,123,W -> A -> D -> E -> F -> C -> B -> W,28.429,80.12
+Light traffic,124,W -> D -> F -> E -> C -> A -> B -> W,28.659,80.67
+Light traffic,125,W -> B -> A -> D -> F -> E -> C -> W,28.677,80.67
+Light traffic,126,W -> B -> D -> E -> F -> C -> A -> W,28.457,80.88
+Light traffic,127,W -> B -> F -> D -> E -> C -> A -> W,28.52,80.92
+Light traffic,128,W -> B -> F -> C -> E -> D -> A -> W,28.519,80.93
+Light traffic,129,W -> A -> D -> F -> C -> E -> B -> W,28.97,81.39
+Light traffic,130,W -> D -> F -> C -> E -> A -> B -> W,29.216,81.45
+Light traffic,131,W -> B -> A -> D -> F -> C -> E -> W,29.216,81.49
+Light traffic,132,W -> B -> E -> C -> F -> D -> A -> W,28.735,81.53
+Light traffic,133,W -> E -> D -> C -> B -> A -> F -> W,29.267,81.55
+Light traffic,134,W -> A -> D -> E -> C -> F -> B -> W,29.082,81.57
+Light traffic,135,W -> E -> C -> F -> D -> A -> B -> W,28.981,81.61
+Light traffic,136,W -> C -> F -> E -> D -> A -> B -> W,28.951,81.84
+Light traffic,137,W -> B -> A -> E -> C -> F -> D -> W,28.999,81.87
+Light traffic,138,W -> B -> A -> C -> F -> E -> D -> W,28.951,82.44
+Light traffic,139,W -> E -> C -> D -> B -> A -> F -> W,29.659,82.49
+Light traffic,140,W -> C -> F -> D -> E -> A -> B -> W,29.509,82.61
+Light traffic,141,W -> C -> E -> F -> D -> A -> B -> W,29.262,82.71
+Light traffic,142,W -> A -> C -> F -> D -> E -> B -> W,29.245,82.87
+Light traffic,143,W -> B -> A -> C -> E -> F -> D -> W,29.262,83.02
+Light traffic,144,W -> D -> E -> F -> C -> A -> B -> W,29.609,83.2
+Light traffic,145,W -> B -> A -> D -> E -> F -> C -> W,29.627,83.2
+Light traffic,146,W -> B -> A -> C -> F -> D -> E -> W,29.491,83.26
+Light traffic,147,W -> E -> D -> C -> B -> F -> A -> W,30.188,83.47
+Light traffic,148,W -> F -> A -> B -> D -> C -> E -> W,30.168,83.53
+Light traffic,149,W -> F -> A -> E -> D -> C -> B -> W,30.204,83.72
+Light traffic,150,W -> F -> A -> B -> C -> D -> E -> W,30.168,83.82
+Light traffic,151,W -> A -> E -> D -> C -> B -> F -> W,30.261,83.87
+Light traffic,152,W -> F -> A -> B -> E -> D -> C -> W,30.219,84.22
+Light traffic,153,W -> E -> C -> D -> B -> F -> A -> W,30.58,84.41
+Light traffic,154,W -> F -> A -> E -> C -> D -> B -> W,30.596,84.66
+Light traffic,155,W -> E -> B -> C -> D -> F -> A -> W,30.666,84.7
+Light traffic,156,W -> A -> E -> C -> D -> B -> F -> W,30.653,84.81
+Light traffic,157,W -> A -> E -> B -> C -> D -> F -> W,30.739,84.81
+Light traffic,158,W -> F -> D -> C -> B -> E -> A -> W,30.788,85.05
+Light traffic,159,W -> F -> A -> B -> E -> C -> D -> W,30.61,85.17
+Light traffic,160,W -> E -> A -> B -> C -> D -> F -> W,30.985,85.19
+Light traffic,161,W -> A -> F -> D -> C -> B -> E -> W,30.715,85.24
+Light traffic,162,W -> D -> C -> B -> E -> F -> A -> W,31.031,85.38
+Light traffic,163,W -> F -> B -> D -> C -> E -> A -> W,31.162,85.57
+Light traffic,164,W -> B -> C -> D -> E -> A -> F -> W,31.105,85.72
+Light traffic,165,W -> B -> D -> C -> E -> A -> F -> W,31.105,85.72
+Light traffic,166,W -> F -> D -> C -> B -> A -> E -> W,31.034,85.73
+Light traffic,167,W -> A -> F -> B -> D -> C -> E -> W,31.089,85.76
+Light traffic,168,W -> D -> C -> E -> B -> A -> F -> W,31.074,85.78
+Light traffic,169,W -> A -> D -> C -> B -> E -> F -> W,31.104,85.8
+Light traffic,170,W -> C -> D -> B -> E -> F -> A -> W,31.077,85.82
+Light traffic,171,W -> F -> B -> C -> D -> E -> A -> W,31.162,85.86
+Light traffic,172,W -> F -> C -> D -> B -> E -> A -> W,31.18,85.99
+Light traffic,173,W -> A -> F -> B -> C -> D -> E -> W,31.089,86.05
+Light traffic,174,W -> D -> C -> B -> A -> F -> E -> W,31.277,86.06
+Light traffic,175,W -> E -> B -> D -> C -> F -> A -> W,31.305,86.08
+Light traffic,176,W -> A -> F -> E -> B -> D -> C -> W,31.077,86.13
+Light traffic,177,W -> A -> F -> B -> E -> D -> C -> W,31.14,86.16
+Light traffic,178,W -> D -> C -> B -> A -> E -> F -> W,31.35,86.17
+Light traffic,179,W -> A -> F -> C -> D -> B -> E -> W,31.107,86.18
+Light traffic,180,W -> C -> D -> E -> B -> A -> F -> W,31.12,86.23
+Light traffic,181,W -> A -> F -> E -> B -> C -> D -> W,31.076,86.42
+Light traffic,182,W -> B -> E -> D -> C -> A -> F -> W,31.138,86.45
+Light traffic,183,W -> A -> E -> B -> D -> C -> F -> W,31.378,86.48
+Light traffic,184,W -> C -> D -> B -> A -> F -> E -> W,31.323,86.5
+Light traffic,185,W -> E -> F -> A -> B -> D -> C -> W,31.323,86.5
+Light traffic,186,W -> A -> C -> D -> B -> E -> F -> W,31.132,86.56
+Light traffic,187,W -> F -> E -> B -> D -> C -> A -> W,31.132,86.56
+Light traffic,188,W -> F -> B -> E -> D -> C -> A -> W,31.195,86.59
+Light traffic,189,W -> C -> D -> B -> A -> E -> F -> W,31.396,86.61
+Light traffic,190,W -> F -> E -> A -> B -> D -> C -> W,31.396,86.61
+Light traffic,191,W -> F -> B -> A -> E -> D -> C -> W,31.459,86.65
+Light traffic,192,W -> F -> C -> D -> B -> A -> E -> W,31.426,86.67
+Light traffic,193,W -> E -> F -> A -> B -> C -> D -> W,31.322,86.79
+Light traffic,194,W -> F -> E -> B -> C -> D -> A -> W,31.131,86.86
+Light traffic,195,W -> E -> A -> B -> D -> C -> F -> W,31.624,86.86
+Light traffic,196,W -> F -> E -> A -> B -> C -> D -> W,31.395,86.9
+Light traffic,197,W -> E -> D -> C -> A -> B -> F -> W,31.441,87.27
+Light traffic,198,W -> B -> C -> D -> F -> A -> E -> W,31.849,87.27
+Light traffic,199,W -> A -> F -> B -> E -> C -> D -> W,31.531,87.4
+Light traffic,200,W -> B -> E -> C -> D -> A -> F -> W,31.529,87.41
+Light traffic,201,W -> E -> A -> F -> D -> C -> B -> W,31.898,87.51
+Light traffic,202,W -> F -> B -> E -> C -> D -> A -> W,31.586,87.84
+Light traffic,203,W -> F -> B -> A -> E -> C -> D -> W,31.85,87.89
+Light traffic,204,W -> E -> C -> D -> A -> B -> F -> W,31.832,87.93
+Light traffic,205,W -> F -> A -> D -> C -> E -> B -> W,32.011,87.98
+Light traffic,206,W -> D -> C -> E -> B -> F -> A -> W,31.995,88.0
+Light traffic,207,W -> E -> B -> A -> F -> D -> C -> W,31.913,88.03
+Light traffic,208,W -> C -> D -> F -> A -> B -> E -> W,31.864,88.06
+Light traffic,209,W -> D -> C -> B -> F -> E -> A -> W,32.271,88.09
+Light traffic,210,W -> A -> D -> C -> E -> B -> F -> W,32.068,88.12
+Light traffic,211,W -> F -> B -> A -> D -> C -> E -> W,32.314,88.22
+Light traffic,212,W -> E -> B -> A -> C -> D -> F -> W,31.919,88.23
+Light traffic,213,W -> E -> F -> A -> D -> C -> B -> W,32.214,88.25
+Light traffic,214,W -> F -> E -> A -> D -> C -> B -> W,32.287,88.36
+Light traffic,215,W -> A -> D -> C -> B -> F -> E -> W,32.271,88.4
+Light traffic,216,W -> C -> D -> E -> B -> F -> A -> W,32.041,88.45
+Light traffic,217,W -> D -> C -> E -> A -> B -> F -> W,32.314,88.48
+Light traffic,218,W -> C -> D -> B -> F -> E -> A -> W,32.317,88.53
+Light traffic,219,W -> B -> F -> A -> E -> D -> C -> W,32.323,88.73
+Light traffic,220,W -> F -> D -> C -> A -> B -> E -> W,31.968,88.74
+Light traffic,221,W -> F -> A -> C -> D -> E -> B -> W,32.039,88.75
+Light traffic,222,W -> E -> A -> F -> C -> D -> B -> W,32.29,88.75
+Light traffic,223,W -> A -> E -> F -> B -> D -> C -> W,32.317,88.83
+Light traffic,224,W -> E -> B -> A -> D -> C -> F -> W,32.53,88.84
+Light traffic,225,W -> F -> E -> B -> A -> D -> C -> W,32.302,88.88
+Light traffic,226,W -> A -> C -> D -> E -> B -> F -> W,32.096,88.89
+Light traffic,227,W -> C -> D -> E -> A -> B -> F -> W,32.36,88.93
+Light traffic,228,W -> B -> D -> C -> F -> A -> E -> W,32.488,88.93
+Light traffic,229,W -> B -> D -> C -> A -> F -> E -> W,32.242,89.02
+Light traffic,230,W -> B -> C -> D -> A -> F -> E -> W,32.241,89.03
+Light traffic,231,W -> E -> D -> C -> A -> F -> B -> W,32.305,89.06
+Light traffic,232,W -> E -> C -> B -> D -> F -> A -> W,32.748,89.08
+Light traffic,233,W -> A -> E -> F -> B -> C -> D -> W,32.316,89.12
+Light traffic,234,W -> B -> D -> C -> A -> E -> F -> W,32.315,89.13
+Light traffic,235,W -> B -> C -> D -> A -> E -> F -> W,32.314,89.14
+Light traffic,236,W -> E -> F -> B -> C -> D -> A -> W,32.298,89.16
+Light traffic,237,W -> A -> C -> D -> B -> F -> E -> W,32.299,89.16
+Light traffic,238,W -> E -> F -> B -> D -> C -> A -> W,32.299,89.16
+Light traffic,239,W -> D -> C -> A -> B -> E -> F -> W,32.284,89.18
+Light traffic,240,W -> A -> E -> C -> B -> D -> F -> W,32.821,89.19
+Light traffic,241,W -> E -> B -> A -> F -> C -> D -> W,32.304,89.27
+Light traffic,242,W -> D -> C -> F -> A -> B -> E -> W,32.457,89.27
+Light traffic,243,W -> F -> B -> A -> C -> D -> E -> W,32.342,89.28
+Light traffic,244,W -> E -> F -> A -> C -> D -> B -> W,32.242,89.31
+Light traffic,245,W -> F -> C -> D -> A -> B -> E -> W,32.359,89.41
+Light traffic,246,W -> F -> E -> A -> C -> D -> B -> W,32.315,89.42
+Light traffic,247,W -> E -> D -> B -> C -> F -> A -> W,32.995,89.5
+Light traffic,248,W -> C -> D -> A -> B -> E -> F -> W,32.329,89.64
+Light traffic,249,W -> C -> E -> D -> B -> A -> F -> W,32.81,89.65
+Light traffic,250,W -> A -> F -> E -> D -> B -> C -> W,32.767,89.84
+Light traffic,251,W -> A -> E -> D -> B -> C -> F -> W,33.068,89.9
+Light traffic,252,W -> F -> E -> B -> A -> C -> D -> W,32.329,89.94
+Light traffic,253,W -> F -> A -> B -> C -> E -> D -> W,32.809,89.94
+Light traffic,254,W -> C -> D -> F -> A -> E -> B -> W,32.801,89.96
+Light traffic,255,W -> B -> F -> A -> E -> C -> D -> W,32.714,89.97
+Light traffic,256,W -> F -> E -> D -> B -> C -> A -> W,32.822,89.98
+Light traffic,257,W -> E -> C -> D -> A -> F -> B -> W,32.696,90.02
+Light traffic,258,W -> C -> D -> F -> B -> E -> A -> W,32.858,90.1
+Light traffic,259,W -> D -> E -> C -> B -> A -> F -> W,33.156,90.16
+Light traffic,260,W -> B -> E -> A -> F -> D -> C -> W,32.85,90.21
+Light traffic,261,W -> B -> F -> A -> D -> C -> E -> W,33.178,90.3
+Light traffic,262,W -> A -> E -> B -> F -> D -> C -> W,32.907,90.35
+Light traffic,263,W -> E -> B -> F -> D -> C -> A -> W,32.889,90.39
+Light traffic,264,W -> B -> E -> A -> C -> D -> F -> W,32.856,90.41
+Light traffic,265,W -> A -> C -> D -> F -> B -> E -> W,32.84,90.44
+Light traffic,266,W -> F -> D -> B -> C -> E -> A -> W,33.379,90.47
+Light traffic,267,W -> C -> D -> F -> B -> A -> E -> W,33.104,90.49
+Light traffic,268,W -> C -> B -> E -> D -> F -> A -> W,33.308,90.53
+Light traffic,269,W -> D -> C -> E -> A -> F -> B -> W,33.178,90.57
+Light traffic,270,W -> F -> A -> B -> D -> E -> C -> W,33.202,90.6
+Light traffic,271,W -> F -> D -> C -> A -> E -> B -> W,32.905,90.64
+Light traffic,272,W -> A -> F -> D -> B -> C -> E -> W,33.306,90.66
+Light traffic,273,W -> E -> A -> B -> F -> D -> C -> W,33.153,90.73
+Light traffic,274,W -> A -> F -> E -> C -> B -> D -> W,33.158,90.8
+Light traffic,275,W -> D -> B -> C -> E -> F -> A -> W,33.622,90.8
+Light traffic,276,W -> F -> E -> C -> B -> D -> A -> W,33.213,90.94
+Light traffic,277,W -> B -> E -> F -> A -> D -> C -> W,33.166,90.95
+Light traffic,278,W -> D -> C -> A -> F -> E -> B -> W,33.148,90.97
+Light traffic,279,W -> C -> D -> E -> A -> F -> B -> W,33.224,91.02
+Light traffic,280,W -> B -> E -> A -> D -> C -> F -> W,33.467,91.02
+Light traffic,281,W -> B -> E -> A -> F -> C -> D -> W,33.241,91.17
+Light traffic,282,W -> D -> C -> F -> A -> E -> B -> W,33.394,91.17
+Light traffic,283,W -> A -> D -> B -> C -> E -> F -> W,33.695,91.22
+Light traffic,284,W -> A -> C -> B -> E -> D -> F -> W,33.363,91.27
+Light traffic,285,W -> A -> E -> B -> F -> C -> D -> W,33.298,91.31
+Light traffic,286,W -> D -> C -> F -> B -> E -> A -> W,33.451,91.31
+Light traffic,287,W -> C -> B -> A -> E -> D -> F -> W,33.627,91.32
+Light traffic,288,W -> A -> D -> C -> F -> B -> E -> W,33.451,91.33
+Light traffic,289,W -> B -> F -> A -> C -> D -> E -> W,33.206,91.36
+Light traffic,290,W -> C -> D -> A -> F -> E -> B -> W,33.193,91.43
+Light traffic,291,W -> E -> F -> B -> A -> D -> C -> W,33.469,91.48
+Light traffic,292,W -> E -> D -> F -> A -> B -> C -> W,33.554,91.49
+Light traffic,293,W -> C -> B -> D -> E -> F -> A -> W,33.668,91.55
+Light traffic,294,W -> F -> C -> D -> A -> E -> B -> W,33.296,91.6
+Light traffic,295,W -> A -> F -> C -> B -> D -> E -> W,33.698,91.62
+Light traffic,296,W -> E -> B -> F -> C -> D -> A -> W,33.28,91.63
+Light traffic,297,W -> E -> A -> B -> F -> C -> D -> W,33.544,91.69
+Light traffic,298,W -> D -> C -> F -> B -> A -> E -> W,33.697,91.7
+Light traffic,299,W -> F -> C -> B -> D -> E -> A -> W,33.771,91.72
+Light traffic,300,W -> B -> E -> F -> A -> C -> D -> W,33.193,91.73
+Light traffic,301,W -> D -> C -> A -> B -> F -> E -> W,33.451,91.78
+Light traffic,302,W -> E -> C -> B -> A -> D -> F -> W,33.973,91.84
+Light traffic,303,W -> C -> E -> D -> B -> F -> A -> W,33.731,91.87
+Light traffic,304,W -> A -> C -> B -> D -> E -> F -> W,33.723,92.0
+Light traffic,305,W -> A -> F -> D -> B -> E -> C -> W,33.749,92.01
+Light traffic,306,W -> F -> A -> D -> E -> C -> B -> W,34.093,92.06
+Light traffic,307,W -> F -> D -> B -> E -> C -> A -> W,33.804,92.15
+Light traffic,308,W -> F -> A -> C -> E -> D -> B -> W,33.729,92.17
+Light traffic,309,W -> A -> F -> B -> C -> E -> D -> W,33.73,92.17
+Light traffic,310,W -> B -> C -> E -> D -> A -> F -> W,33.728,92.18
+Light traffic,311,W -> C -> D -> A -> B -> F -> E -> W,33.496,92.24
+Light traffic,312,W -> E -> F -> B -> A -> C -> D -> W,33.496,92.26
+Light traffic,313,W -> A -> F -> C -> B -> E -> D -> W,33.748,92.31
+Light traffic,314,W -> F -> B -> C -> E -> D -> A -> W,33.785,92.31
+Light traffic,315,W -> A -> C -> E -> D -> B -> F -> W,33.786,92.31
+Light traffic,316,W -> D -> E -> C -> B -> F -> A -> W,34.077,92.38
+Light traffic,317,W -> E -> D -> B -> A -> F -> C -> W,33.995,92.4
+Light traffic,318,W -> D -> B -> E -> C -> F -> A -> W,34.293,92.4
+Light traffic,319,W -> F -> C -> B -> E -> D -> A -> W,33.803,92.45
+Light traffic,320,W -> F -> D -> B -> A -> E -> C -> W,34.068,92.5
+Light traffic,321,W -> A -> D -> E -> C -> B -> F -> W,34.15,92.5
+Light traffic,322,W -> E -> C -> A -> B -> D -> F -> W,34.001,92.59
+Light traffic,323,W -> E -> C -> B -> A -> F -> D -> W,33.994,92.7
+Light traffic,324,W -> F -> C -> B -> A -> E -> D -> W,34.067,92.8
+Light traffic,325,W -> C -> E -> B -> D -> F -> A -> W,34.209,92.82
+Light traffic,326,W -> A -> D -> B -> E -> C -> F -> W,34.366,92.82
+Light traffic,327,W -> A -> F -> B -> D -> E -> C -> W,34.123,92.83
+Light traffic,328,W -> D -> B -> A -> F -> E -> C -> W,34.311,92.83
+Light traffic,329,W -> C -> B -> A -> F -> E -> D -> W,33.964,92.93
+Light traffic,330,W -> F -> B -> D -> E -> C -> A -> W,34.178,92.97
+Light traffic,331,W -> E -> A -> C -> D -> F -> B -> W,34.023,93.01
+Light traffic,332,W -> D -> F -> A -> B -> C -> E -> W,34.409,93.04
+Light traffic,333,W -> F -> E -> D -> A -> B -> C -> W,34.019,93.07
+Light traffic,334,W -> B -> D -> E -> C -> A -> F -> W,34.121,93.12
+Light traffic,335,W -> D -> B -> A -> E -> C -> F -> W,34.612,93.19
+Light traffic,336,W -> C -> B -> D -> F -> E -> A -> W,34.485,93.2
+Light traffic,337,W -> B -> F -> D -> C -> A -> E -> W,34.072,93.25
+Light traffic,338,W -> E -> D -> A -> B -> C -> F -> W,34.247,93.32
+Light traffic,339,W -> E -> D -> B -> A -> C -> F -> W,34.248,93.32
+Light traffic,340,W -> F -> E -> D -> B -> A -> C -> W,34.02,93.36
+Light traffic,341,W -> A -> F -> D -> E -> B -> C -> W,34.258,93.36
+Light traffic,342,W -> A -> E -> D -> F -> B -> C -> W,34.548,93.53
+Light traffic,343,W -> A -> C -> B -> D -> F -> E -> W,34.467,93.54
+Light traffic,344,W -> F -> E -> C -> B -> A -> D -> W,34.383,93.55
+Light traffic,345,W -> A -> C -> E -> B -> D -> F -> W,34.264,93.56
+Light traffic,346,W -> D -> F -> A -> E -> C -> B -> W,34.837,93.59
+Light traffic,347,W -> C -> E -> A -> B -> D -> F -> W,34.528,93.6
+Light traffic,348,W -> E -> A -> D -> C -> F -> B -> W,34.634,93.62
+Light traffic,349,W -> B -> F -> E -> A -> D -> C -> W,34.406,93.67
+Light traffic,350,W -> D -> C -> A -> E -> F -> B -> W,34.388,93.68
+Light traffic,351,W -> E -> D -> F -> A -> C -> B -> W,34.473,93.72
+Light traffic,352,W -> A -> E -> F -> D -> B -> C -> W,34.534,93.73
+Light traffic,353,W -> C -> B -> A -> F -> D -> E -> W,34.504,93.75
+Light traffic,354,W -> F -> D -> E -> B -> C -> A -> W,34.313,93.79
+Light traffic,355,W -> B -> C -> A -> E -> D -> F -> W,34.546,93.83
+Light traffic,356,W -> F -> D -> E -> A -> B -> C -> W,34.577,93.84
+Light traffic,357,W -> E -> D -> F -> B -> C -> A -> W,34.53,93.86
+Light traffic,358,W -> D -> B -> A -> F -> C -> E -> W,34.85,93.95
+Light traffic,359,W -> D -> E -> B -> C -> F -> A -> W,34.802,94.04
+Light traffic,360,W -> E -> F -> D -> B -> C -> A -> W,34.516,94.06
+Light traffic,361,W -> E -> C -> F -> A -> B -> D -> W,34.584,94.1
+Light traffic,362,W -> D -> B -> C -> F -> E -> A -> W,35.078,94.12
+Light traffic,363,W -> C -> D -> A -> E -> F -> B -> W,34.433,94.14
+Light traffic,364,W -> F -> D -> A -> B -> C -> E -> W,34.558,94.18
+Light traffic,365,W -> F -> D -> B -> A -> C -> E -> W,34.559,94.18
+Light traffic,366,W -> B -> F -> C -> D -> A -> E -> W,34.463,94.21
+Light traffic,367,W -> F -> E -> C -> A -> B -> D -> W,34.411,94.3
+Light traffic,368,W -> C -> B -> A -> D -> E -> F -> W,34.893,94.31
+Light traffic,369,W -> C -> A -> B -> E -> D -> F -> W,34.561,94.33
+Light traffic,370,W -> B -> D -> F -> A -> E -> C -> W,34.883,94.34
+Light traffic,371,W -> F -> C -> B -> A -> D -> E -> W,34.923,94.37
+Light traffic,372,W -> D -> F -> A -> B -> E -> C -> W,34.852,94.39
+Light traffic,373,W -> A -> D -> B -> C -> F -> E -> W,35.078,94.43
+Light traffic,374,W -> B -> F -> E -> A -> C -> D -> W,34.433,94.45
+Light traffic,375,W -> D -> E -> F -> A -> B -> C -> W,34.82,94.46
+Light traffic,376,W -> A -> D -> E -> B -> C -> F -> W,34.875,94.46
+Light traffic,377,W -> A -> F -> C -> E -> B -> D -> W,34.649,94.6
+Light traffic,378,W -> D -> A -> B -> C -> E -> F -> W,34.874,94.62
+Light traffic,379,W -> D -> B -> A -> C -> E -> F -> W,34.875,94.62
+Light traffic,380,W -> E -> D -> A -> F -> C -> B -> W,34.913,94.63
+Light traffic,381,W -> A -> E -> D -> B -> F -> C -> W,34.989,94.72
+Light traffic,382,W -> F -> D -> A -> E -> C -> B -> W,34.986,94.73
+Light traffic,383,W -> F -> C -> E -> B -> D -> A -> W,34.704,94.74
+Light traffic,384,W -> E -> D -> B -> F -> C -> A -> W,34.971,94.76
+Light traffic,385,W -> D -> E -> A -> B -> C -> F -> W,35.121,94.82
+Light traffic,386,W -> E -> C -> A -> F -> D -> B -> W,34.914,94.91
+Light traffic,387,W -> A -> E -> F -> C -> B -> D -> W,34.925,94.98
+Light traffic,388,W -> F -> C -> A -> E -> D -> B -> W,34.987,95.01
+Light traffic,389,W -> E -> F -> C -> B -> D -> A -> W,34.907,95.02
+Light traffic,390,W -> A -> E -> C -> B -> F -> D -> W,34.988,95.02
+Light traffic,391,W -> C -> F -> A -> E -> D -> B -> W,35.13,95.04
+Light traffic,392,W -> B -> C -> F -> A -> E -> D -> W,35.129,95.05
+Light traffic,393,W -> C -> A -> B -> D -> E -> F -> W,34.921,95.06
+Light traffic,394,W -> E -> C -> B -> F -> D -> A -> W,34.97,95.06
+Light traffic,395,W -> F -> C -> E -> A -> B -> D -> W,34.968,95.08
+Light traffic,396,W -> D -> F -> B -> C -> E -> A -> W,35.403,95.08
+Light traffic,397,W -> F -> C -> A -> B -> D -> E -> W,34.951,95.12
+Light traffic,398,W -> C -> A -> F -> E -> D -> B -> W,34.884,95.14
+Light traffic,399,W -> B -> C -> A -> F -> E -> D -> W,34.883,95.15
+Light traffic,400,W -> C -> F -> A -> B -> D -> E -> W,35.094,95.15
+Light traffic,401,W -> A -> D -> B -> F -> E -> C -> W,35.305,95.17
+Light traffic,402,W -> D -> B -> F -> E -> C -> A -> W,35.287,95.19
+Light traffic,403,W -> C -> E -> F -> A -> B -> D -> W,34.865,95.2
+Light traffic,404,W -> D -> F -> C -> B -> E -> A -> W,35.421,95.22
+Light traffic,405,W -> C -> B -> F -> E -> D -> A -> W,34.94,95.29
+Light traffic,406,W -> F -> B -> A -> D -> E -> C -> W,35.348,95.29
+Light traffic,407,W -> A -> C -> B -> F -> E -> D -> W,34.94,95.3
+Light traffic,408,W -> D -> A -> F -> E -> C -> B -> W,35.229,95.36
+Light traffic,409,W -> B -> C -> E -> A -> D -> F -> W,35.419,95.36
+Light traffic,410,W -> C -> E -> D -> A -> B -> F -> W,34.983,95.39
+Light traffic,411,W -> A -> D -> F -> B -> C -> E -> W,35.403,95.39
+Light traffic,412,W -> F -> B -> A -> C -> E -> D -> W,34.983,95.4
+Light traffic,413,W -> F -> C -> A -> B -> E -> D -> W,35.001,95.52
+Light traffic,414,W -> F -> D -> A -> B -> E -> C -> W,35.001,95.53
+Light traffic,415,W -> A -> D -> F -> C -> B -> E -> W,35.421,95.53
+Light traffic,416,W -> C -> F -> A -> B -> E -> D -> W,35.144,95.55
+Light traffic,417,W -> E -> C -> F -> A -> D -> B -> W,35.476,95.56
+Light traffic,418,W -> D -> E -> C -> A -> B -> F -> W,35.33,95.58
+Light traffic,419,W -> F -> E -> D -> A -> C -> B -> W,34.938,95.59
+Light traffic,420,W -> D -> F -> C -> B -> A -> E -> W,35.667,95.6
+Light traffic,421,W -> F -> E -> C -> A -> D -> B -> W,35.303,95.76
+Light traffic,422,W -> A -> D -> F -> E -> B -> C -> W,35.391,95.76
+Light traffic,423,W -> C -> B -> F -> D -> E -> A -> W,35.498,95.78
+Light traffic,424,W -> B -> D -> A -> F -> E -> C -> W,35.275,95.81
+Light traffic,425,W -> C -> B -> A -> D -> F -> E -> W,35.637,95.85
+Light traffic,426,W -> C -> E -> B -> A -> D -> F -> W,35.434,95.87
+Light traffic,427,W -> C -> E -> A -> F -> D -> B -> W,35.441,95.92
+Light traffic,428,W -> B -> C -> E -> A -> F -> D -> W,35.44,95.93
+Light traffic,429,W -> A -> E -> B -> D -> F -> C -> W,35.467,95.96
+Light traffic,430,W -> D -> B -> F -> C -> E -> A -> W,35.844,95.98
+Light traffic,431,W -> E -> B -> D -> F -> C -> A -> W,35.449,96.0
+Light traffic,432,W -> B -> D -> F -> A -> C -> E -> W,35.374,96.02
+Light traffic,433,W -> D -> F -> E -> B -> C -> A -> W,35.373,96.07
+Light traffic,434,W -> D -> F -> E -> A -> B -> C -> W,35.637,96.12
+Light traffic,435,W -> D -> E -> A -> F -> C -> B -> W,35.787,96.13
+Light traffic,436,W -> B -> D -> A -> E -> C -> F -> W,35.576,96.17
+Light traffic,437,W -> D -> A -> B -> E -> C -> F -> W,35.545,96.22
+Light traffic,438,W -> B -> C -> A -> F -> D -> E -> W,35.423,96.26
+Light traffic,439,W -> A -> D -> B -> F -> C -> E -> W,35.844,96.29
+Light traffic,440,W -> E -> A -> B -> D -> F -> C -> W,35.713,96.34
+Light traffic,441,W -> F -> D -> E -> A -> C -> B -> W,35.496,96.36
+Light traffic,442,W -> C -> F -> D -> B -> E -> A -> W,35.714,96.37
+Light traffic,443,W -> B -> E -> D -> F -> A -> C -> W,35.425,96.41
+Light traffic,444,W -> A -> C -> B -> F -> D -> E -> W,35.48,96.41
+Light traffic,445,W -> A -> E -> C -> F -> B -> D -> W,35.578,96.43
+Light traffic,446,W -> C -> E -> B -> A -> F -> D -> W,35.455,96.44
+Light traffic,447,W -> E -> C -> F -> B -> D -> A -> W,35.56,96.47
+Light traffic,448,W -> F -> C -> E -> A -> D -> B -> W,35.86,96.54
+Light traffic,449,W -> B -> D -> E -> A -> F -> C -> W,35.833,96.58
+Light traffic,450,W -> C -> A -> B -> D -> F -> E -> W,35.665,96.6
+Light traffic,451,W -> D -> E -> B -> A -> F -> C -> W,35.802,96.64
+Light traffic,452,W -> A -> D -> B -> E -> F -> C -> W,35.832,96.65
+Light traffic,453,W -> C -> E -> F -> A -> D -> B -> W,35.757,96.66
+Light traffic,454,W -> A -> E -> B -> C -> F -> D -> W,35.713,96.67
+Light traffic,455,W -> D -> B -> E -> F -> C -> A -> W,35.814,96.67
+Light traffic,456,W -> A -> D -> F -> B -> E -> C -> W,35.846,96.74
+Light traffic,457,W -> C -> F -> D -> B -> A -> E -> W,35.96,96.75
+Light traffic,458,W -> C -> B -> E -> F -> D -> A -> W,35.467,96.76
+Light traffic,459,W -> D -> F -> B -> E -> C -> A -> W,35.828,96.76
+Light traffic,460,W -> A -> C -> B -> E -> F -> D -> W,35.467,96.77
+Light traffic,461,W -> A -> D -> E -> F -> B -> C -> W,35.814,96.81
+Light traffic,462,W -> C -> B -> A -> E -> F -> D -> W,35.731,96.82
+Light traffic,463,W -> B -> C -> A -> D -> E -> F -> W,35.812,96.82
+Light traffic,464,W -> D -> F -> B -> A -> E -> C -> W,36.092,96.82
+Light traffic,465,W -> F -> D -> E -> B -> A -> C -> W,35.511,96.87
+Light traffic,466,W -> B -> C -> F -> A -> D -> E -> W,35.985,96.91
+Light traffic,467,W -> B -> D -> A -> F -> C -> E -> W,35.814,96.93
+Light traffic,468,W -> E -> D -> F -> B -> A -> C -> W,35.728,96.94
+Light traffic,469,W -> B -> C -> E -> F -> A -> D -> W,35.756,96.96
+Light traffic,470,W -> D -> E -> F -> A -> C -> B -> W,35.739,96.98
+Light traffic,471,W -> E -> B -> C -> F -> D -> A -> W,35.695,97.0
+Light traffic,472,W -> A -> C -> F -> D -> B -> E -> W,35.696,97.0
+Light traffic,473,W -> D -> B -> A -> E -> F -> C -> W,36.078,97.02
+Light traffic,474,W -> B -> E -> C -> A -> D -> F -> W,35.844,97.04
+Light traffic,475,W -> E -> A -> B -> C -> F -> D -> W,35.959,97.05
+Light traffic,476,W -> D -> E -> F -> B -> C -> A -> W,35.796,97.12
+Light traffic,477,W -> E -> F -> D -> B -> A -> C -> W,35.714,97.14
+Light traffic,478,W -> E -> F -> D -> A -> B -> C -> W,35.713,97.15
+Light traffic,479,W -> C -> F -> B -> D -> E -> A -> W,36.088,97.19
+Light traffic,480,W -> B -> E -> D -> A -> F -> C -> W,35.865,97.32
+Light traffic,481,W -> F -> C -> E -> B -> A -> D -> W,35.874,97.35
+Light traffic,482,W -> B -> F -> A -> D -> E -> C -> W,36.212,97.37
+Light traffic,483,W -> B -> D -> E -> F -> A -> C -> W,35.785,97.43
+Light traffic,484,W -> B -> F -> A -> C -> E -> D -> W,35.847,97.48
+Light traffic,485,W -> C -> E -> D -> A -> F -> B -> W,35.847,97.48
+Light traffic,486,W -> B -> D -> E -> A -> C -> F -> W,36.086,97.5
+Light traffic,487,W -> D -> E -> B -> A -> C -> F -> W,36.055,97.56
+Light traffic,488,W -> C -> E -> F -> B -> D -> A -> W,35.841,97.57
+Light traffic,489,W -> B -> D -> A -> C -> E -> F -> W,35.839,97.6
+Light traffic,490,W -> B -> E -> C -> A -> F -> D -> W,35.865,97.61
+Light traffic,491,W -> E -> F -> C -> B -> A -> D -> W,36.077,97.63
+Light traffic,492,W -> D -> E -> C -> A -> F -> B -> W,36.194,97.67
+Light traffic,493,W -> E -> A -> D -> F -> C -> B -> W,36.604,97.8
+Light traffic,494,W -> A -> C -> F -> B -> D -> E -> W,36.07,97.82
+Light traffic,495,W -> D -> A -> B -> C -> F -> E -> W,36.257,97.83
+Light traffic,496,W -> D -> B -> A -> C -> F -> E -> W,36.258,97.83
+Light traffic,497,W -> A -> C -> E -> F -> B -> D -> W,35.841,97.87
+Light traffic,498,W -> D -> F -> A -> C -> E -> B -> W,36.28,97.97
+Light traffic,499,W -> E -> C -> A -> B -> F -> D -> W,36.168,98.13
+Light traffic,500,W -> E -> D -> A -> B -> F -> C -> W,36.168,98.14
+Light traffic,501,W -> C -> F -> E -> B -> D -> A -> W,36.057,98.18
+Light traffic,502,W -> C -> F -> B -> E -> D -> A -> W,36.12,98.21
+Light traffic,503,W -> A -> C -> F -> B -> E -> D -> W,36.12,98.22
+Light traffic,504,W -> B -> E -> D -> A -> C -> F -> W,36.118,98.24
+Light traffic,505,W -> C -> F -> B -> A -> E -> D -> W,36.384,98.27
+Light traffic,506,W -> E -> B -> A -> D -> F -> C -> W,36.619,98.32
+Light traffic,507,W -> C -> A -> B -> F -> E -> D -> W,36.138,98.36
+Light traffic,508,W -> B -> C -> A -> D -> F -> E -> W,36.556,98.36
+Light traffic,509,W -> E -> F -> C -> A -> B -> D -> W,36.105,98.38
+Light traffic,510,W -> A -> C -> F -> E -> B -> D -> W,36.057,98.48
+Light traffic,511,W -> D -> F -> B -> A -> C -> E -> W,36.583,98.49
+Light traffic,512,W -> C -> F -> E -> A -> B -> D -> W,36.321,98.52
+Light traffic,513,W -> B -> E -> C -> F -> A -> D -> W,36.427,98.55
+Light traffic,514,W -> D -> A -> B -> F -> E -> C -> W,36.484,98.57
+Light traffic,515,W -> D -> F -> C -> A -> B -> E -> W,36.601,98.61
+Light traffic,516,W -> D -> F -> E -> A -> C -> B -> W,36.556,98.64
+Light traffic,517,W -> C -> A -> F -> D -> E -> B -> W,36.375,98.66
+Light traffic,518,W -> C -> A -> E -> D -> F -> B -> W,36.665,98.83
+Light traffic,519,W -> B -> D -> F -> C -> A -> E -> W,36.632,98.86
+Light traffic,520,W -> E -> C -> F -> B -> A -> D -> W,36.73,99.08
+Light traffic,521,W -> C -> E -> B -> F -> D -> A -> W,36.431,99.09
+Light traffic,522,W -> B -> D -> F -> E -> A -> C -> W,36.602,99.09
+Light traffic,523,W -> A -> C -> E -> B -> F -> D -> W,36.431,99.1
+Light traffic,524,W -> F -> D -> A -> C -> E -> B -> W,36.429,99.11
+Light traffic,525,W -> C -> E -> A -> B -> F -> D -> W,36.695,99.14
+Light traffic,526,W -> D -> F -> E -> B -> A -> C -> W,36.571,99.15
+Light traffic,527,W -> D -> A -> F -> C -> E -> B -> W,36.72,99.17
+Light traffic,528,W -> D -> A -> E -> F -> C -> B -> W,36.996,99.25
+Light traffic,529,W -> F -> C -> A -> D -> E -> B -> W,36.794,99.28
+Light traffic,530,W -> A -> D -> E -> B -> F -> C -> W,36.796,99.28
+Light traffic,531,W -> D -> E -> B -> F -> C -> A -> W,36.778,99.3
+Light traffic,532,W -> C -> F -> A -> D -> E -> B -> W,36.937,99.31
+Light traffic,533,W -> C -> A -> E -> F -> D -> B -> W,36.651,99.32
+Light traffic,534,W -> B -> C -> A -> E -> F -> D -> W,36.65,99.33
+Light traffic,535,W -> E -> C -> A -> D -> F -> B -> W,37.011,99.35
+Light traffic,536,W -> C -> A -> B -> F -> D -> E -> W,36.678,99.47
+Light traffic,537,W -> E -> A -> C -> F -> D -> B -> W,36.879,99.57
+Light traffic,538,W -> B -> C -> F -> D -> A -> E -> W,36.878,99.58
+Light traffic,539,W -> D -> E -> A -> B -> F -> C -> W,37.042,99.64
+Light traffic,540,W -> E -> F -> D -> A -> C -> B -> W,36.632,99.67
+Light traffic,541,W -> D -> A -> B -> F -> C -> E -> W,37.023,99.69
+Light traffic,542,W -> C -> F -> D -> A -> B -> E -> W,36.893,99.78
+Light traffic,543,W -> C -> A -> B -> E -> F -> D -> W,36.665,99.83
+Light traffic,544,W -> E -> F -> C -> A -> D -> B -> W,36.997,99.84
+Light traffic,545,W -> C -> F -> E -> A -> D -> B -> W,37.213,99.98
+Light traffic,546,W -> B -> D -> A -> E -> F -> C -> W,37.042,100.0
+Light traffic,547,W -> B -> F -> D -> A -> E -> C -> W,37.105,100.04
+Light traffic,548,W -> D -> A -> B -> E -> F -> C -> W,37.011,100.05
+Light traffic,549,W -> E -> B -> A -> C -> F -> D -> W,36.893,100.09
+Light traffic,550,W -> C -> F -> B -> A -> D -> E -> W,37.24,100.13
+Light traffic,551,W -> C -> E -> F -> B -> A -> D -> W,37.011,100.18
+Light traffic,552,W -> D -> E -> F -> B -> A -> C -> W,36.994,100.2
+Light traffic,553,W -> B -> C -> F -> E -> A -> D -> W,37.212,100.28
+Light traffic,554,W -> B -> F -> C -> A -> E -> D -> W,37.105,100.32
+Light traffic,555,W -> C -> E -> A -> D -> F -> B -> W,37.538,100.36
+Light traffic,556,W -> B -> E -> A -> D -> F -> C -> W,37.556,100.5
+Light traffic,557,W -> D -> A -> E -> C -> F -> B -> W,37.649,100.72
+Light traffic,558,W -> C -> F -> E -> B -> A -> D -> W,37.227,100.79
+Light traffic,559,W -> B -> D -> A -> C -> F -> E -> W,37.222,100.81
+Light traffic,560,W -> D -> F -> C -> A -> E -> B -> W,37.538,100.81
+Light traffic,561,W -> E -> D -> A -> C -> F -> B -> W,37.285,100.85
+Light traffic,562,W -> B -> F -> E -> D -> A -> C -> W,37.057,100.89
+Light traffic,563,W -> C -> A -> D -> F -> E -> B -> W,37.508,101.05
+Light traffic,564,W -> B -> F -> E -> C -> A -> D -> W,37.421,101.36
+Light traffic,565,W -> B -> F -> D -> E -> A -> C -> W,37.615,101.66
+Light traffic,566,W -> B -> F -> D -> A -> C -> E -> W,37.596,101.71
+Light traffic,567,W -> C -> F -> D -> A -> E -> B -> W,37.83,101.98
+Light traffic,568,W -> D -> C -> B -> E -> A -> F -> W,38.462,102.1
+Light traffic,569,W -> C -> A -> D -> E -> F -> B -> W,37.931,102.11
+Light traffic,570,W -> B -> F -> C -> E -> A -> D -> W,37.978,102.14
+Light traffic,571,W -> D -> A -> C -> E -> F -> B -> W,37.912,102.15
+Light traffic,572,W -> B -> F -> C -> A -> D -> E -> W,37.961,102.18
+Light traffic,573,W -> B -> E -> A -> C -> F -> D -> W,37.83,102.27
+Light traffic,574,W -> D -> E -> A -> C -> F -> B -> W,38.159,102.35
+Light traffic,575,W -> B -> E -> F -> D -> A -> C -> W,37.584,102.36
+Light traffic,576,W -> F -> A -> D -> C -> B -> E -> W,38.462,102.41
+Light traffic,577,W -> C -> D -> B -> E -> A -> F -> W,38.508,102.54
+Light traffic,578,W -> D -> A -> C -> F -> E -> B -> W,38.128,102.76
+Light traffic,579,W -> B -> E -> F -> C -> A -> D -> W,37.948,102.83
+Light traffic,580,W -> F -> A -> E -> B -> D -> C -> W,38.508,102.84
+Light traffic,581,W -> F -> A -> E -> B -> C -> D -> W,38.507,102.85
+Light traffic,582,W -> E -> B -> D -> C -> A -> F -> W,38.49,102.88
+Light traffic,583,W -> F -> A -> C -> D -> B -> E -> W,38.49,103.17
+Light traffic,584,W -> E -> B -> C -> D -> A -> F -> W,38.489,103.18
+Light traffic,585,W -> D -> C -> B -> F -> A -> E -> W,39.629,104.71
+Light traffic,586,W -> E -> A -> D -> C -> B -> F -> W,39.702,104.82
+Light traffic,587,W -> C -> D -> B -> F -> A -> E -> W,39.675,105.15
+Light traffic,588,W -> E -> A -> F -> B -> D -> C -> W,39.675,105.45
+Light traffic,589,W -> E -> A -> F -> B -> C -> D -> W,39.674,105.46
+Light traffic,590,W -> F -> B -> D -> C -> A -> E -> W,39.73,105.59
+Light traffic,591,W -> E -> A -> C -> D -> B -> F -> W,39.73,105.88
+Light traffic,592,W -> F -> B -> C -> D -> A -> E -> W,39.729,105.89
+Light traffic,593,W -> F -> A -> E -> D -> B -> C -> W,40.198,106.26
+Light traffic,594,W -> E -> D -> B -> C -> A -> F -> W,40.18,106.3
+Light traffic,595,W -> F -> A -> E -> C -> B -> D -> W,40.589,107.22
+Light traffic,596,W -> D -> B -> C -> E -> A -> F -> W,41.053,107.52
+Light traffic,597,W -> E -> C -> B -> D -> A -> F -> W,40.571,107.56
+Light traffic,598,W -> E -> B -> F -> A -> D -> C -> W,40.581,107.71
+Light traffic,599,W -> D -> C -> A -> F -> B -> E -> W,40.563,107.73
+Light traffic,600,W -> F -> B -> E -> A -> D -> C -> W,40.654,107.81
+Light traffic,601,W -> D -> C -> A -> E -> B -> F -> W,40.636,107.83
+Light traffic,602,W -> F -> A -> D -> B -> C -> E -> W,41.053,107.83
+Light traffic,603,W -> C -> D -> A -> F -> B -> E -> W,40.608,108.19
+Light traffic,604,W -> C -> B -> D -> E -> A -> F -> W,41.099,108.27
+Light traffic,605,W -> C -> D -> A -> E -> B -> F -> W,40.681,108.29
+Light traffic,606,W -> E -> B -> F -> A -> C -> D -> W,40.608,108.49
+Light traffic,607,W -> F -> B -> E -> A -> C -> D -> W,40.681,108.59
+Light traffic,608,W -> F -> A -> C -> B -> D -> E -> W,41.081,108.9
+Light traffic,609,W -> C -> B -> E -> D -> A -> F -> W,41.131,109.0
+Light traffic,610,W -> F -> A -> D -> B -> E -> C -> W,41.496,109.18
+Light traffic,611,W -> D -> B -> E -> C -> A -> F -> W,41.478,109.2
+Light traffic,612,W -> F -> A -> C -> B -> E -> D -> W,41.131,109.3
+Light traffic,613,W -> C -> B -> D -> F -> A -> E -> W,41.843,109.82
+Light traffic,614,W -> E -> A -> C -> B -> D -> F -> W,41.898,110.27
+Light traffic,615,W -> E -> A -> F -> D -> B -> C -> W,41.892,110.35
+Light traffic,616,W -> F -> D -> B -> C -> A -> E -> W,41.947,110.49
+Light traffic,617,W -> F -> A -> D -> E -> B -> C -> W,42.005,110.53
+Light traffic,618,W -> D -> B -> C -> F -> A -> E -> W,42.436,110.74
+Light traffic,619,W -> D -> B -> C -> A -> F -> E -> W,42.19,110.81
+Light traffic,620,W -> D -> E -> B -> C -> A -> F -> W,41.987,110.84
+Light traffic,621,W -> D -> B -> C -> A -> E -> F -> W,42.263,110.93
+Light traffic,622,W -> E -> F -> A -> D -> B -> C -> W,42.208,111.09
+Light traffic,623,W -> E -> A -> D -> B -> C -> F -> W,42.509,111.16
+Light traffic,624,W -> F -> E -> A -> D -> B -> C -> W,42.281,111.2
+Light traffic,625,W -> C -> B -> F -> A -> E -> D -> W,42.316,111.28
+Light traffic,626,W -> C -> E -> B -> D -> A -> F -> W,42.032,111.29
+Light traffic,627,W -> E -> A -> F -> C -> B -> D -> W,42.283,111.31
+Light traffic,628,W -> D -> B -> F -> A -> E -> C -> W,42.663,111.48
+Light traffic,629,W -> C -> B -> D -> A -> F -> E -> W,42.235,111.57
+Light traffic,630,W -> F -> A -> C -> E -> B -> D -> W,42.032,111.59
+Light traffic,631,W -> E -> D -> B -> F -> A -> C -> W,42.299,111.6
+Light traffic,632,W -> E -> D -> A -> F -> B -> C -> W,42.298,111.62
+Light traffic,633,W -> C -> B -> D -> A -> E -> F -> W,42.308,111.69
+Light traffic,634,W -> C -> A -> E -> D -> B -> F -> W,42.372,111.7
+Light traffic,635,W -> F -> B -> C -> A -> E -> D -> W,42.371,111.71
+Light traffic,636,W -> F -> C -> B -> D -> A -> E -> W,42.338,111.75
+Light traffic,637,W -> E -> F -> A -> C -> B -> D -> W,42.235,111.87
+Light traffic,638,W -> D -> A -> E -> C -> B -> F -> W,42.717,111.92
+Light traffic,639,W -> F -> E -> A -> C -> B -> D -> W,42.308,111.98
+Light traffic,640,W -> E -> D -> A -> C -> B -> F -> W,42.353,112.05
+Light traffic,641,W -> D -> F -> A -> E -> B -> C -> W,42.749,112.06
+Light traffic,642,W -> E -> C -> B -> F -> A -> D -> W,42.662,112.08
+Light traffic,643,W -> C -> B -> E -> A -> D -> F -> W,42.822,112.18
+Light traffic,644,W -> E -> C -> A -> D -> B -> F -> W,42.718,112.22
+Light traffic,645,W -> D -> F -> A -> C -> B -> E -> W,42.731,112.39
+Light traffic,646,W -> E -> B -> C -> A -> D -> F -> W,42.804,112.51
+Light traffic,647,W -> F -> B -> D -> A -> E -> C -> W,42.763,112.67
+Light traffic,648,W -> C -> B -> E -> A -> F -> D -> W,42.843,112.75
+Light traffic,649,W -> E -> B -> D -> F -> A -> C -> W,42.777,112.84
+Light traffic,650,W -> E -> C -> A -> F -> B -> D -> W,42.69,112.85
+Light traffic,651,W -> C -> A -> E -> B -> D -> F -> W,42.85,112.95
+Light traffic,652,W -> D -> B -> E -> A -> F -> C -> W,43.19,112.95
+Light traffic,653,W -> E -> B -> C -> A -> F -> D -> W,42.825,113.08
+Light traffic,654,W -> C -> A -> F -> D -> B -> E -> W,42.826,113.08
+Light traffic,655,W -> D -> E -> A -> F -> B -> C -> W,43.172,113.12
+Light traffic,656,W -> C -> B -> F -> A -> D -> E -> W,43.172,113.13
+Light traffic,657,W -> D -> B -> F -> A -> C -> E -> W,43.154,113.15
+Light traffic,658,W -> F -> D -> B -> E -> A -> C -> W,42.899,113.18
+Light traffic,659,W -> F -> D -> A -> E -> B -> C -> W,42.898,113.2
+Light traffic,660,W -> C -> E -> A -> D -> B -> F -> W,43.245,113.23
+Light traffic,661,W -> D -> A -> F -> B -> C -> E -> W,43.153,113.46
+Light traffic,662,W -> D -> B -> E -> F -> A -> C -> W,43.142,113.51
+Light traffic,663,W -> F -> B -> C -> E -> A -> D -> W,43.244,113.52
+Light traffic,664,W -> F -> D -> A -> C -> B -> E -> W,42.88,113.53
+Light traffic,665,W -> D -> E -> A -> C -> B -> F -> W,43.227,113.55
+Light traffic,666,W -> F -> B -> C -> A -> D -> E -> W,43.227,113.56
+Light traffic,667,W -> D -> A -> F -> C -> B -> E -> W,43.171,113.59
+Light traffic,668,W -> F -> C -> B -> E -> A -> D -> W,43.262,113.66
+Light traffic,669,W -> F -> C -> A -> D -> B -> E -> W,43.245,113.7
+Light traffic,670,W -> C -> F -> A -> D -> B -> E -> W,43.388,113.73
+Light traffic,671,W -> C -> B -> E -> F -> A -> D -> W,43.159,113.78
+Light traffic,672,W -> D -> A -> F -> E -> B -> C -> W,43.141,113.83
+Light traffic,673,W -> C -> E -> A -> F -> B -> D -> W,43.217,113.86
+Light traffic,674,W -> D -> B -> E -> A -> C -> F -> W,43.443,113.87
+Light traffic,675,W -> D -> A -> E -> B -> C -> F -> W,43.442,113.89
+Light traffic,676,W -> C -> A -> F -> B -> D -> E -> W,43.2,113.9
+Light traffic,677,W -> C -> A -> D -> B -> E -> F -> W,43.215,113.93
+Light traffic,678,W -> D -> A -> C -> B -> E -> F -> W,43.196,113.97
+Light traffic,679,W -> F -> B -> D -> E -> A -> C -> W,43.273,114.0
+Light traffic,680,W -> E -> B -> C -> F -> A -> D -> W,43.387,114.02
+Light traffic,681,W -> E -> B -> D -> A -> F -> C -> W,43.217,114.04
+Light traffic,682,W -> F -> E -> B -> C -> A -> D -> W,43.214,114.22
+Light traffic,683,W -> C -> A -> F -> B -> E -> D -> W,43.25,114.3
+Light traffic,684,W -> F -> B -> D -> A -> C -> E -> W,43.254,114.34
+Light traffic,685,W -> F -> C -> A -> E -> B -> D -> W,43.29,114.43
+Light traffic,686,W -> C -> F -> A -> E -> B -> D -> W,43.433,114.46
+Light traffic,687,W -> C -> A -> F -> E -> B -> D -> W,43.187,114.56
+Light traffic,688,W -> E -> A -> D -> F -> B -> C -> W,43.989,114.79
+Light traffic,689,W -> D -> A -> F -> B -> E -> C -> W,43.596,114.81
+Light traffic,690,W -> E -> B -> D -> A -> C -> F -> W,43.47,114.96
+Light traffic,691,W -> F -> E -> B -> D -> A -> C -> W,43.242,115.0
+Light traffic,692,W -> F -> B -> E -> D -> A -> C -> W,43.305,115.03
+Light traffic,693,W -> D -> F -> B -> C -> A -> E -> W,43.971,115.1
+Light traffic,694,W -> F -> B -> E -> C -> A -> D -> W,43.669,115.2
+Light traffic,695,W -> C -> B -> F -> D -> A -> E -> W,44.065,115.8
+Light traffic,696,W -> E -> A -> C -> B -> F -> D -> W,44.065,115.8
+Light traffic,697,W -> E -> A -> D -> B -> F -> C -> W,44.43,115.97
+Light traffic,698,W -> D -> B -> F -> C -> A -> E -> W,44.412,116.0
+Light traffic,699,W -> C -> E -> B -> F -> A -> D -> W,44.123,116.11
+Light traffic,700,W -> D -> E -> B -> F -> A -> C -> W,44.106,116.14
+Light traffic,701,W -> D -> B -> F -> E -> A -> C -> W,44.382,116.22
+Light traffic,702,W -> D -> A -> E -> F -> B -> C -> W,44.381,116.24
+Light traffic,703,W -> C -> A -> D -> E -> B -> F -> W,44.179,116.26
+Light traffic,704,W -> D -> A -> C -> E -> B -> F -> W,44.16,116.3
+Light traffic,705,W -> C -> B -> F -> E -> A -> D -> W,44.399,116.5
+Light traffic,706,W -> C -> A -> D -> B -> F -> E -> W,44.382,116.52
+Light traffic,707,W -> D -> A -> C -> B -> F -> E -> W,44.363,116.56
+Light traffic,708,W -> E -> F -> B -> C -> A -> D -> W,44.381,116.82
+Light traffic,709,W -> C -> F -> B -> D -> A -> E -> W,44.655,117.21
+Light traffic,710,W -> C -> A -> E -> F -> B -> D -> W,44.427,117.26
+Light traffic,711,W -> E -> A -> C -> F -> B -> D -> W,44.655,117.51
+Light traffic,712,W -> E -> F -> B -> D -> A -> C -> W,44.409,117.6
+Light traffic,713,W -> D -> F -> B -> E -> A -> C -> W,44.923,117.79
+Light traffic,714,W -> C -> A -> D -> F -> B -> E -> W,44.923,117.81
+Light traffic,715,W -> C -> A -> E -> B -> F -> D -> W,45.017,118.48
+Light traffic,716,W -> D -> A -> E -> B -> F -> C -> W,45.363,118.7
+Light traffic,717,W -> E -> B -> F -> D -> A -> C -> W,44.999,118.82
+Light traffic,718,W -> E -> B -> F -> C -> A -> D -> W,45.363,119.29
+Light traffic,719,W -> C -> F -> B -> E -> A -> D -> W,45.579,119.42
+Light traffic,720,W -> D -> A -> C -> F -> B -> E -> W,45.543,119.52
+Typical simulated conditions,1,W -> F -> E -> D -> C -> B -> A -> W,21.909,85.44
+Typical simulated conditions,2,W -> F -> E -> C -> D -> B -> A -> W,22.301,86.56
+Typical simulated conditions,3,W -> A -> B -> C -> D -> E -> F -> W,22.81,88.23
+Typical simulated conditions,4,W -> A -> B -> D -> C -> E -> F -> W,22.81,88.23
+Typical simulated conditions,5,W -> A -> F -> E -> D -> C -> B -> W,22.773,88.46
+Typical simulated conditions,6,W -> A -> B -> E -> C -> D -> F -> W,22.842,88.62
+Typical simulated conditions,7,W -> A -> B -> E -> D -> C -> F -> W,23.089,88.95
+Typical simulated conditions,8,W -> A -> F -> E -> C -> D -> B -> W,23.165,89.58
+Typical simulated conditions,9,W -> A -> B -> C -> D -> F -> E -> W,23.554,89.84
+Typical simulated conditions,10,W -> B -> C -> D -> E -> F -> A -> W,23.674,90.09
+Typical simulated conditions,11,W -> B -> D -> C -> E -> F -> A -> W,23.674,90.09
+Typical simulated conditions,12,W -> F -> D -> C -> E -> B -> A -> W,23.4,90.1
+Typical simulated conditions,13,W -> E -> F -> D -> C -> B -> A -> W,23.603,90.22
+Typical simulated conditions,14,W -> B -> E -> C -> D -> F -> A -> W,23.706,90.48
+Typical simulated conditions,15,W -> E -> C -> D -> F -> A -> B -> W,23.952,90.75
+Typical simulated conditions,16,W -> B -> A -> E -> C -> D -> F -> W,24.025,90.83
+Typical simulated conditions,17,W -> E -> C -> D -> F -> B -> A -> W,24.009,90.91
+Typical simulated conditions,18,W -> F -> C -> D -> E -> B -> A -> W,23.792,91.21
+Typical simulated conditions,19,W -> E -> F -> C -> D -> B -> A -> W,23.995,91.33
+Typical simulated conditions,20,W -> B -> E -> D -> C -> F -> A -> W,23.953,91.39
+Typical simulated conditions,21,W -> B -> A -> F -> E -> D -> C -> W,23.971,91.63
+Typical simulated conditions,22,W -> E -> D -> C -> F -> A -> B -> W,24.199,91.66
+Typical simulated conditions,23,W -> B -> A -> E -> D -> C -> F -> W,24.272,91.74
+Typical simulated conditions,24,W -> A -> B -> F -> E -> D -> C -> W,24.028,91.79
+Typical simulated conditions,25,W -> B -> C -> D -> F -> E -> A -> W,24.491,91.79
+Typical simulated conditions,26,W -> E -> D -> C -> F -> B -> A -> W,24.256,91.82
+Typical simulated conditions,27,W -> A -> B -> D -> C -> F -> E -> W,24.193,91.87
+Typical simulated conditions,28,W -> F -> E -> D -> C -> A -> B -> W,24.026,92.4
+Typical simulated conditions,29,W -> A -> F -> D -> C -> E -> B -> W,24.264,92.53
+Typical simulated conditions,30,W -> A -> E -> F -> D -> C -> B -> W,24.54,92.74
+Typical simulated conditions,31,W -> B -> A -> F -> D -> C -> E -> W,24.51,92.8
+Typical simulated conditions,32,W -> F -> D -> C -> E -> A -> B -> W,24.583,92.88
+Typical simulated conditions,33,W -> A -> B -> F -> D -> C -> E -> W,24.567,92.96
+Typical simulated conditions,34,W -> B -> A -> D -> C -> E -> F -> W,24.899,93.14
+Typical simulated conditions,35,W -> A -> B -> C -> E -> D -> F -> W,25.041,93.17
+Typical simulated conditions,36,W -> C -> D -> F -> E -> B -> A -> W,24.506,93.33
+Typical simulated conditions,37,W -> B -> A -> F -> E -> C -> D -> W,24.362,93.34
+Typical simulated conditions,38,W -> A -> E -> C -> D -> F -> B -> W,24.946,93.43
+Typical simulated conditions,39,W -> A -> B -> F -> E -> C -> D -> W,24.419,93.5
+Typical simulated conditions,40,W -> F -> E -> C -> D -> A -> B -> W,24.417,93.53
+Typical simulated conditions,41,W -> D -> C -> E -> F -> A -> B -> W,24.826,93.63
+Typical simulated conditions,42,W -> A -> F -> C -> D -> E -> B -> W,24.656,93.64
+Typical simulated conditions,43,W -> A -> B -> E -> F -> D -> C -> W,24.555,93.7
+Typical simulated conditions,44,W -> D -> C -> E -> F -> B -> A -> W,24.883,93.79
+Typical simulated conditions,45,W -> B -> D -> C -> F -> E -> A -> W,25.13,93.82
+Typical simulated conditions,46,W -> B -> A -> F -> C -> D -> E -> W,24.902,93.91
+Typical simulated conditions,47,W -> F -> C -> D -> E -> A -> B -> W,24.975,93.99
+Typical simulated conditions,48,W -> A -> B -> F -> C -> D -> E -> W,24.959,94.07
+Typical simulated conditions,49,W -> A -> E -> D -> C -> F -> B -> W,25.193,94.34
+Typical simulated conditions,50,W -> C -> D -> E -> F -> A -> B -> W,24.872,94.42
+Typical simulated conditions,51,W -> A -> E -> F -> C -> D -> B -> W,24.932,94.43
+Typical simulated conditions,52,W -> D -> C -> F -> E -> B -> A -> W,25.099,94.57
+Typical simulated conditions,53,W -> C -> D -> E -> F -> B -> A -> W,24.929,94.58
+Typical simulated conditions,54,W -> F -> C -> E -> D -> B -> A -> W,25.482,94.66
+Typical simulated conditions,55,W -> F -> D -> E -> C -> B -> A -> W,25.482,94.67
+Typical simulated conditions,56,W -> B -> F -> D -> C -> E -> A -> W,25.504,94.91
+Typical simulated conditions,57,W -> B -> F -> E -> D -> C -> A -> W,24.947,95.01
+Typical simulated conditions,58,W -> B -> A -> C -> D -> E -> F -> W,24.927,95.2
+Typical simulated conditions,59,W -> A -> B -> E -> F -> C -> D -> W,24.946,95.4
+Typical simulated conditions,60,W -> B -> C -> E -> D -> F -> A -> W,25.905,95.61
+Typical simulated conditions,61,W -> A -> B -> D -> E -> C -> F -> W,26.072,95.74
+Typical simulated conditions,62,W -> C -> D -> F -> E -> A -> B -> W,25.689,96.11
+Typical simulated conditions,63,W -> B -> F -> E -> C -> D -> A -> W,25.338,96.13
+Typical simulated conditions,64,W -> E -> D -> F -> C -> B -> A -> W,26.226,96.27
+Typical simulated conditions,65,W -> A -> D -> C -> E -> F -> B -> W,25.82,96.32
+Typical simulated conditions,66,W -> B -> A -> E -> F -> D -> C -> W,25.738,96.49
+Typical simulated conditions,67,W -> A -> C -> D -> F -> E -> B -> W,25.425,96.54
+Typical simulated conditions,68,W -> B -> F -> C -> D -> E -> A -> W,25.896,96.6
+Typical simulated conditions,69,W -> B -> A -> D -> C -> F -> E -> W,26.282,96.78
+Typical simulated conditions,70,W -> B -> A -> C -> D -> F -> E -> W,25.671,96.81
+Typical simulated conditions,71,W -> B -> E -> F -> D -> C -> A -> W,25.474,96.92
+Typical simulated conditions,72,W -> A -> D -> C -> F -> E -> B -> W,26.036,97.09
+Typical simulated conditions,73,W -> A -> F -> D -> E -> C -> B -> W,26.346,97.11
+Typical simulated conditions,74,W -> D -> F -> E -> C -> B -> A -> W,26.542,97.11
+Typical simulated conditions,75,W -> E -> F -> D -> C -> A -> B -> W,25.72,97.18
+Typical simulated conditions,76,W -> A -> B -> D -> F -> E -> C -> W,26.588,97.32
+Typical simulated conditions,77,W -> D -> C -> F -> E -> A -> B -> W,26.282,97.35
+Typical simulated conditions,78,W -> A -> F -> C -> E -> D -> B -> W,26.346,97.68
+Typical simulated conditions,79,W -> A -> C -> D -> E -> F -> B -> W,25.848,97.8
+Typical simulated conditions,80,W -> B -> E -> F -> C -> D -> A -> W,25.865,98.03
+Typical simulated conditions,81,W -> B -> D -> E -> C -> F -> A -> W,26.936,98.18
+Typical simulated conditions,82,W -> B -> A -> E -> F -> C -> D -> W,26.129,98.19
+Typical simulated conditions,83,W -> E -> F -> C -> D -> A -> B -> W,26.111,98.3
+Typical simulated conditions,84,W -> E -> C -> F -> D -> B -> A -> W,26.865,98.31
+Typical simulated conditions,85,W -> A -> B -> D -> F -> C -> E -> W,27.127,98.48
+Typical simulated conditions,86,W -> C -> E -> D -> F -> A -> B -> W,27.103,98.77
+Typical simulated conditions,87,W -> A -> E -> D -> F -> C -> B -> W,27.163,98.79
+Typical simulated conditions,88,W -> C -> F -> E -> D -> B -> A -> W,26.835,98.81
+Typical simulated conditions,89,W -> C -> E -> D -> F -> B -> A -> W,27.16,98.94
+Typical simulated conditions,90,W -> A -> B -> C -> F -> E -> D -> W,26.834,99.4
+Typical simulated conditions,91,W -> A -> D -> F -> E -> C -> B -> W,27.479,99.64
+Typical simulated conditions,92,W -> D -> E -> F -> C -> B -> A -> W,27.492,99.69
+Typical simulated conditions,93,W -> A -> B -> E -> D -> F -> C -> W,27.178,99.75
+Typical simulated conditions,94,W -> C -> E -> F -> D -> B -> A -> W,27.146,99.95
+Typical simulated conditions,95,W -> A -> B -> C -> F -> D -> E -> W,27.374,99.98
+Typical simulated conditions,96,W -> B -> A -> C -> E -> D -> F -> W,27.158,100.14
+Typical simulated conditions,97,W -> A -> B -> D -> E -> F -> C -> W,27.538,100.48
+Typical simulated conditions,98,W -> A -> B -> C -> E -> F -> D -> W,27.145,100.54
+Typical simulated conditions,99,W -> B -> D -> F -> E -> C -> A -> W,27.507,100.54
+Typical simulated conditions,100,W -> A -> E -> C -> F -> D -> B -> W,27.802,100.83
+Typical simulated conditions,101,W -> B -> A -> F -> C -> E -> D -> W,27.543,100.86
+Typical simulated conditions,102,W -> B -> A -> F -> D -> E -> C -> W,27.544,100.86
+Typical simulated conditions,103,W -> B -> D -> F -> C -> E -> A -> W,28.064,101.01
+Typical simulated conditions,104,W -> A -> B -> F -> C -> E -> D -> W,27.6,101.02
+Typical simulated conditions,105,W -> A -> B -> F -> D -> E -> C -> W,27.601,101.02
+Typical simulated conditions,106,W -> D -> E -> C -> F -> A -> B -> W,28.088,101.13
+Typical simulated conditions,107,W -> D -> F -> C -> E -> B -> A -> W,28.033,101.17
+Typical simulated conditions,108,W -> B -> A -> D -> E -> C -> F -> W,28.161,101.23
+Typical simulated conditions,109,W -> D -> E -> C -> F -> B -> A -> W,28.145,101.3
+Typical simulated conditions,110,W -> F -> C -> E -> D -> A -> B -> W,27.598,101.63
+Typical simulated conditions,111,W -> F -> D -> E -> C -> A -> B -> W,27.599,101.63
+Typical simulated conditions,112,W -> B -> C -> F -> D -> E -> A -> W,28.311,101.93
+Typical simulated conditions,113,W -> B -> C -> F -> E -> D -> A -> W,27.753,102.03
+Typical simulated conditions,114,W -> A -> C -> F -> E -> D -> B -> W,27.754,102.03
+Typical simulated conditions,115,W -> A -> B -> E -> C -> F -> D -> W,27.816,102.38
+Typical simulated conditions,116,W -> B -> E -> D -> F -> C -> A -> W,28.097,102.39
+Typical simulated conditions,117,W -> B -> A -> E -> D -> F -> C -> W,28.361,102.54
+Typical simulated conditions,118,W -> A -> C -> E -> D -> F -> B -> W,28.079,102.74
+Typical simulated conditions,119,W -> A -> D -> E -> F -> C -> B -> W,28.429,102.8
+Typical simulated conditions,120,W -> B -> A -> D -> F -> E -> C -> W,28.677,102.81
+Typical simulated conditions,121,W -> C -> F -> D -> E -> B -> A -> W,28.326,102.88
+Typical simulated conditions,122,W -> B -> C -> E -> F -> D -> A -> W,28.064,103.17
+Typical simulated conditions,123,W -> A -> C -> E -> F -> D -> B -> W,28.065,103.17
+Typical simulated conditions,124,W -> E -> D -> F -> C -> A -> B -> W,28.343,103.23
+Typical simulated conditions,125,W -> E -> D -> C -> B -> A -> F -> W,29.267,103.37
+Typical simulated conditions,126,W -> B -> F -> D -> E -> C -> A -> W,28.52,103.66
+Typical simulated conditions,127,W -> B -> D -> E -> F -> C -> A -> W,28.457,103.7
+Typical simulated conditions,128,W -> A -> D -> F -> C -> E -> B -> W,28.97,103.7
+Typical simulated conditions,129,W -> A -> D -> E -> C -> F -> B -> W,29.082,103.83
+Typical simulated conditions,130,W -> D -> F -> C -> E -> A -> B -> W,29.216,103.96
+Typical simulated conditions,131,W -> B -> A -> D -> F -> C -> E -> W,29.216,103.97
+Typical simulated conditions,132,W -> D -> F -> E -> C -> A -> B -> W,28.659,104.07
+Typical simulated conditions,133,W -> B -> F -> C -> E -> D -> A -> W,28.519,104.23
+Typical simulated conditions,134,W -> E -> C -> D -> B -> A -> F -> W,29.659,104.49
+Typical simulated conditions,135,W -> B -> A -> E -> C -> F -> D -> W,28.999,104.58
+Typical simulated conditions,136,W -> B -> E -> C -> F -> D -> A -> W,28.735,105.01
+Typical simulated conditions,137,W -> E -> C -> F -> D -> A -> B -> W,28.981,105.28
+Typical simulated conditions,138,W -> C -> F -> D -> E -> A -> B -> W,29.509,105.67
+Typical simulated conditions,139,W -> C -> F -> E -> D -> A -> B -> W,28.951,105.78
+Typical simulated conditions,140,W -> B -> A -> C -> F -> E -> D -> W,28.951,105.79
+Typical simulated conditions,141,W -> F -> A -> E -> D -> C -> B -> W,30.204,105.9
+Typical simulated conditions,142,W -> B -> A -> D -> E -> F -> C -> W,29.627,105.97
+Typical simulated conditions,143,W -> E -> D -> C -> B -> F -> A -> W,30.188,105.97
+Typical simulated conditions,144,W -> F -> A -> B -> C -> D -> E -> W,30.168,106.17
+Typical simulated conditions,145,W -> F -> A -> B -> D -> C -> E -> W,30.168,106.17
+Typical simulated conditions,146,W -> A -> E -> D -> C -> B -> F -> W,30.261,106.63
+Typical simulated conditions,147,W -> D -> E -> F -> C -> A -> B -> W,29.609,106.65
+Typical simulated conditions,148,W -> A -> C -> F -> D -> E -> B -> W,29.245,106.68
+Typical simulated conditions,149,W -> F -> A -> B -> E -> D -> C -> W,30.219,106.86
+Typical simulated conditions,150,W -> B -> A -> C -> E -> F -> D -> W,29.262,106.92
+Typical simulated conditions,151,W -> C -> E -> F -> D -> A -> B -> W,29.262,106.92
+Typical simulated conditions,152,W -> B -> A -> C -> F -> D -> E -> W,29.491,106.95
+Typical simulated conditions,153,W -> E -> C -> D -> B -> F -> A -> W,30.58,107.09
+Typical simulated conditions,154,W -> E -> B -> C -> D -> F -> A -> W,30.666,107.52
+Typical simulated conditions,155,W -> F -> A -> E -> C -> D -> B -> W,30.596,107.6
+Typical simulated conditions,156,W -> A -> E -> B -> C -> D -> F -> W,30.739,107.6
+Typical simulated conditions,157,W -> A -> E -> C -> D -> B -> F -> W,30.653,107.75
+Typical simulated conditions,158,W -> E -> A -> B -> C -> D -> F -> W,30.985,107.86
+Typical simulated conditions,159,W -> F -> D -> C -> B -> E -> A -> W,30.788,107.98
+Typical simulated conditions,160,W -> F -> A -> B -> E -> C -> D -> W,30.61,107.99
+Typical simulated conditions,161,W -> F -> D -> C -> B -> A -> E -> W,31.034,108.23
+Typical simulated conditions,162,W -> F -> B -> D -> C -> E -> A -> W,31.162,108.28
+Typical simulated conditions,163,W -> A -> F -> D -> C -> B -> E -> W,30.715,108.47
+Typical simulated conditions,164,W -> B -> C -> D -> E -> A -> F -> W,31.105,108.69
+Typical simulated conditions,165,W -> B -> D -> C -> E -> A -> F -> W,31.105,108.69
+Typical simulated conditions,166,W -> D -> C -> B -> E -> F -> A -> W,31.031,108.72
+Typical simulated conditions,167,W -> A -> F -> B -> C -> D -> E -> W,31.089,108.77
+Typical simulated conditions,168,W -> A -> F -> B -> D -> C -> E -> W,31.089,108.77
+Typical simulated conditions,169,W -> A -> D -> C -> B -> E -> F -> W,31.104,108.81
+Typical simulated conditions,170,W -> D -> C -> E -> B -> A -> F -> W,31.074,108.86
+Typical simulated conditions,171,W -> F -> B -> C -> D -> E -> A -> W,31.162,108.86
+Typical simulated conditions,172,W -> C -> D -> B -> E -> F -> A -> W,31.077,108.93
+Typical simulated conditions,173,W -> E -> B -> D -> C -> F -> A -> W,31.305,108.97
+Typical simulated conditions,174,W -> D -> C -> B -> A -> F -> E -> W,31.277,108.99
+Typical simulated conditions,175,W -> D -> C -> B -> A -> E -> F -> W,31.35,109.07
+Typical simulated conditions,176,W -> F -> C -> D -> B -> E -> A -> W,31.18,109.09
+Typical simulated conditions,177,W -> C -> D -> B -> A -> F -> E -> W,31.323,109.19
+Typical simulated conditions,178,W -> C -> D -> B -> A -> E -> F -> W,31.396,109.27
+Typical simulated conditions,179,W -> F -> C -> D -> B -> A -> E -> W,31.426,109.34
+Typical simulated conditions,180,W -> A -> F -> B -> E -> D -> C -> W,31.14,109.46
+Typical simulated conditions,181,W -> A -> F -> C -> D -> B -> E -> W,31.107,109.58
+Typical simulated conditions,182,W -> A -> E -> B -> D -> C -> F -> W,31.378,109.63
+Typical simulated conditions,183,W -> C -> D -> E -> B -> A -> F -> W,31.12,109.65
+Typical simulated conditions,184,W -> F -> B -> A -> E -> D -> C -> W,31.459,109.81
+Typical simulated conditions,185,W -> E -> A -> B -> D -> C -> F -> W,31.624,109.89
+Typical simulated conditions,186,W -> A -> F -> E -> B -> D -> C -> W,31.077,110.1
+Typical simulated conditions,187,W -> A -> F -> E -> B -> C -> D -> W,31.076,110.11
+Typical simulated conditions,188,W -> F -> B -> E -> D -> C -> A -> W,31.195,110.24
+Typical simulated conditions,189,W -> A -> C -> D -> B -> E -> F -> W,31.132,110.29
+Typical simulated conditions,190,W -> B -> C -> D -> F -> A -> E -> W,31.849,110.29
+Typical simulated conditions,191,W -> F -> E -> B -> C -> D -> A -> W,31.131,110.3
+Typical simulated conditions,192,W -> F -> E -> B -> D -> C -> A -> W,31.132,110.3
+Typical simulated conditions,193,W -> E -> F -> A -> B -> D -> C -> W,31.323,110.36
+Typical simulated conditions,194,W -> E -> F -> A -> B -> C -> D -> W,31.322,110.37
+Typical simulated conditions,195,W -> F -> E -> A -> B -> D -> C -> W,31.396,110.44
+Typical simulated conditions,196,W -> F -> E -> A -> B -> C -> D -> W,31.395,110.45
+Typical simulated conditions,197,W -> E -> D -> C -> A -> B -> F -> W,31.441,110.49
+Typical simulated conditions,198,W -> A -> F -> B -> E -> C -> D -> W,31.531,110.59
+Typical simulated conditions,199,W -> B -> E -> D -> C -> A -> F -> W,31.138,110.65
+Typical simulated conditions,200,W -> E -> A -> F -> D -> C -> B -> W,31.898,110.68
+Typical simulated conditions,201,W -> F -> B -> A -> E -> C -> D -> W,31.85,110.94
+Typical simulated conditions,202,W -> C -> D -> F -> A -> B -> E -> W,31.864,111.26
+Typical simulated conditions,203,W -> F -> B -> E -> C -> D -> A -> W,31.586,111.36
+Typical simulated conditions,204,W -> F -> A -> D -> C -> E -> B -> W,32.011,111.39
+Typical simulated conditions,205,W -> D -> C -> E -> B -> F -> A -> W,31.995,111.46
+Typical simulated conditions,206,W -> E -> F -> A -> D -> C -> B -> W,32.214,111.52
+Typical simulated conditions,207,W -> F -> E -> A -> D -> C -> B -> W,32.287,111.6
+Typical simulated conditions,208,W -> E -> C -> D -> A -> B -> F -> W,31.832,111.62
+Typical simulated conditions,209,W -> E -> B -> A -> F -> D -> C -> W,31.913,111.64
+Typical simulated conditions,210,W -> A -> D -> C -> B -> F -> E -> W,32.271,111.67
+Typical simulated conditions,211,W -> D -> C -> B -> F -> E -> A -> W,32.271,111.68
+Typical simulated conditions,212,W -> B -> E -> C -> D -> A -> F -> W,31.529,111.78
+Typical simulated conditions,213,W -> E -> A -> F -> C -> D -> B -> W,32.29,111.79
+Typical simulated conditions,214,W -> D -> C -> E -> A -> B -> F -> W,32.314,111.8
+Typical simulated conditions,215,W -> F -> B -> A -> D -> C -> E -> W,32.314,111.82
+Typical simulated conditions,216,W -> C -> D -> B -> F -> E -> A -> W,32.317,111.88
+Typical simulated conditions,217,W -> E -> B -> A -> C -> D -> F -> W,31.919,112.05
+Typical simulated conditions,218,W -> E -> C -> B -> D -> F -> A -> W,32.748,112.09
+Typical simulated conditions,219,W -> A -> D -> C -> E -> B -> F -> W,32.068,112.13
+Typical simulated conditions,220,W -> C -> D -> E -> B -> F -> A -> W,32.041,112.25
+Typical simulated conditions,221,W -> B -> F -> A -> E -> D -> C -> W,32.323,112.25
+Typical simulated conditions,222,W -> B -> D -> C -> F -> A -> E -> W,32.488,112.32
+Typical simulated conditions,223,W -> F -> D -> C -> A -> B -> E -> W,31.968,112.41
+Typical simulated conditions,224,W -> D -> C -> F -> A -> B -> E -> W,32.457,112.5
+Typical simulated conditions,225,W -> C -> D -> E -> A -> B -> F -> W,32.36,112.59
+Typical simulated conditions,226,W -> E -> B -> A -> D -> C -> F -> W,32.53,112.6
+Typical simulated conditions,227,W -> D -> C -> A -> B -> E -> F -> W,32.284,112.66
+Typical simulated conditions,228,W -> A -> E -> C -> B -> D -> F -> W,32.821,112.75
+Typical simulated conditions,229,W -> E -> B -> A -> F -> C -> D -> W,32.304,112.77
+Typical simulated conditions,230,W -> F -> A -> C -> D -> E -> B -> W,32.039,112.87
+Typical simulated conditions,231,W -> E -> D -> C -> A -> F -> B -> W,32.305,112.94
+Typical simulated conditions,232,W -> B -> D -> C -> A -> F -> E -> W,32.242,112.99
+Typical simulated conditions,233,W -> B -> C -> D -> A -> F -> E -> W,32.241,113.0
+Typical simulated conditions,234,W -> E -> F -> A -> C -> D -> B -> W,32.242,113.0
+Typical simulated conditions,235,W -> E -> D -> B -> C -> F -> A -> W,32.995,113.0
+Typical simulated conditions,236,W -> A -> E -> F -> B -> D -> C -> W,32.317,113.04
+Typical simulated conditions,237,W -> A -> E -> F -> B -> C -> D -> W,32.316,113.05
+Typical simulated conditions,238,W -> B -> D -> C -> A -> E -> F -> W,32.315,113.07
+Typical simulated conditions,239,W -> B -> C -> D -> A -> E -> F -> W,32.314,113.08
+Typical simulated conditions,240,W -> F -> E -> A -> C -> D -> B -> W,32.315,113.08
+Typical simulated conditions,241,W -> A -> E -> D -> B -> C -> F -> W,33.068,113.08
+Typical simulated conditions,242,W -> C -> E -> D -> B -> A -> F -> W,32.81,113.1
+Typical simulated conditions,243,W -> F -> A -> B -> C -> E -> D -> W,32.809,113.12
+Typical simulated conditions,244,W -> A -> C -> D -> B -> F -> E -> W,32.299,113.15
+Typical simulated conditions,245,W -> F -> E -> B -> A -> D -> C -> W,32.302,113.15
+Typical simulated conditions,246,W -> E -> F -> B -> C -> D -> A -> W,32.298,113.16
+Typical simulated conditions,247,W -> E -> F -> B -> D -> C -> A -> W,32.299,113.16
+Typical simulated conditions,248,W -> F -> B -> A -> C -> D -> E -> W,32.342,113.3
+Typical simulated conditions,249,W -> B -> F -> A -> E -> C -> D -> W,32.714,113.38
+Typical simulated conditions,250,W -> D -> E -> C -> B -> A -> F -> W,33.156,113.43
+Typical simulated conditions,251,W -> C -> D -> A -> B -> E -> F -> W,32.329,113.46
+Typical simulated conditions,252,W -> F -> C -> D -> A -> B -> E -> W,32.359,113.53
+Typical simulated conditions,253,W -> A -> F -> E -> D -> B -> C -> W,32.767,113.55
+Typical simulated conditions,254,W -> A -> C -> D -> E -> B -> F -> W,32.096,113.61
+Typical simulated conditions,255,W -> F -> E -> D -> B -> C -> A -> W,32.822,113.75
+Typical simulated conditions,256,W -> C -> D -> F -> A -> E -> B -> W,32.801,113.78
+Typical simulated conditions,257,W -> C -> B -> E -> D -> F -> A -> W,33.308,113.87
+Typical simulated conditions,258,W -> C -> D -> F -> B -> E -> A -> W,32.858,113.95
+Typical simulated conditions,259,W -> E -> C -> D -> A -> F -> B -> W,32.696,114.07
+Typical simulated conditions,260,W -> A -> F -> D -> B -> C -> E -> W,33.306,114.14
+Typical simulated conditions,261,W -> B -> E -> A -> F -> D -> C -> W,32.85,114.15
+Typical simulated conditions,262,W -> C -> D -> F -> B -> A -> E -> W,33.104,114.2
+Typical simulated conditions,263,W -> F -> A -> B -> D -> E -> C -> W,33.202,114.23
+Typical simulated conditions,264,W -> F -> D -> B -> C -> E -> A -> W,33.379,114.23
+Typical simulated conditions,265,W -> D -> C -> E -> A -> F -> B -> W,33.178,114.25
+Typical simulated conditions,266,W -> B -> F -> A -> D -> C -> E -> W,33.178,114.26
+Typical simulated conditions,267,W -> A -> E -> B -> F -> D -> C -> W,32.907,114.32
+Typical simulated conditions,268,W -> D -> B -> C -> E -> F -> A -> W,33.622,114.39
+Typical simulated conditions,269,W -> A -> D -> B -> C -> E -> F -> W,33.695,114.48
+Typical simulated conditions,270,W -> B -> E -> A -> C -> D -> F -> W,32.856,114.56
+Typical simulated conditions,271,W -> E -> A -> B -> F -> D -> C -> W,33.153,114.58
+Typical simulated conditions,272,W -> F -> E -> B -> A -> C -> D -> W,32.329,114.64
+Typical simulated conditions,273,W -> E -> D -> F -> A -> B -> C -> W,33.554,114.72
+Typical simulated conditions,274,W -> C -> B -> A -> E -> D -> F -> W,33.627,114.8
+Typical simulated conditions,275,W -> F -> D -> C -> A -> E -> B -> W,32.905,114.93
+Typical simulated conditions,276,W -> D -> C -> F -> A -> E -> B -> W,33.394,115.02
+Typical simulated conditions,277,W -> E -> B -> F -> D -> C -> A -> W,32.889,115.03
+Typical simulated conditions,278,W -> C -> D -> E -> A -> F -> B -> W,33.224,115.04
+Typical simulated conditions,279,W -> D -> C -> A -> F -> E -> B -> W,33.148,115.1
+Typical simulated conditions,280,W -> B -> E -> A -> D -> C -> F -> W,33.467,115.11
+Typical simulated conditions,281,W -> C -> B -> D -> E -> F -> A -> W,33.668,115.18
+Typical simulated conditions,282,W -> D -> C -> F -> B -> E -> A -> W,33.451,115.19
+Typical simulated conditions,283,W -> A -> C -> D -> F -> B -> E -> W,32.84,115.22
+Typical simulated conditions,284,W -> A -> C -> B -> E -> D -> F -> W,33.363,115.23
+Typical simulated conditions,285,W -> A -> F -> E -> C -> B -> D -> W,33.158,115.26
+Typical simulated conditions,286,W -> B -> E -> A -> F -> C -> D -> W,33.241,115.28
+Typical simulated conditions,287,W -> F -> C -> B -> D -> E -> A -> W,33.771,115.34
+Typical simulated conditions,288,W -> D -> C -> F -> B -> A -> E -> W,33.697,115.44
+Typical simulated conditions,289,W -> F -> E -> C -> B -> D -> A -> W,33.213,115.45
+Typical simulated conditions,290,W -> A -> E -> B -> F -> C -> D -> W,33.298,115.45
+Typical simulated conditions,291,W -> D -> C -> A -> B -> F -> E -> W,33.451,115.52
+Typical simulated conditions,292,W -> B -> E -> F -> A -> D -> C -> W,33.166,115.58
+Typical simulated conditions,293,W -> C -> E -> D -> B -> F -> A -> W,33.731,115.7
+Typical simulated conditions,294,W -> E -> A -> B -> F -> C -> D -> W,33.544,115.71
+Typical simulated conditions,295,W -> A -> F -> B -> C -> E -> D -> W,33.73,115.72
+Typical simulated conditions,296,W -> E -> C -> B -> A -> D -> F -> W,33.973,115.72
+Typical simulated conditions,297,W -> B -> F -> A -> C -> D -> E -> W,33.206,115.74
+Typical simulated conditions,298,W -> A -> D -> C -> F -> B -> E -> W,33.451,115.77
+Typical simulated conditions,299,W -> A -> F -> C -> B -> D -> E -> W,33.698,115.83
+Typical simulated conditions,300,W -> C -> D -> A -> F -> E -> B -> W,33.193,115.9
+Typical simulated conditions,301,W -> A -> F -> D -> B -> E -> C -> W,33.749,115.95
+Typical simulated conditions,302,W -> F -> A -> D -> E -> C -> B -> W,34.093,115.97
+Typical simulated conditions,303,W -> E -> F -> B -> A -> D -> C -> W,33.469,116.01
+Typical simulated conditions,304,W -> D -> E -> C -> B -> F -> A -> W,34.077,116.03
+Typical simulated conditions,305,W -> F -> C -> D -> A -> E -> B -> W,33.296,116.05
+Typical simulated conditions,306,W -> A -> D -> E -> C -> B -> F -> W,34.15,116.12
+Typical simulated conditions,307,W -> E -> B -> F -> C -> D -> A -> W,33.28,116.14
+Typical simulated conditions,308,W -> E -> D -> B -> A -> F -> C -> W,33.995,116.21
+Typical simulated conditions,309,W -> D -> B -> E -> C -> F -> A -> W,34.293,116.23
+Typical simulated conditions,310,W -> F -> D -> B -> A -> E -> C -> W,34.068,116.3
+Typical simulated conditions,311,W -> C -> D -> A -> B -> F -> E -> W,33.496,116.32
+Typical simulated conditions,312,W -> A -> D -> B -> E -> C -> F -> W,34.366,116.32
+Typical simulated conditions,313,W -> F -> A -> C -> E -> D -> B -> W,33.729,116.33
+Typical simulated conditions,314,W -> D -> B -> A -> F -> E -> C -> W,34.311,116.47
+Typical simulated conditions,315,W -> F -> B -> C -> E -> D -> A -> W,33.785,116.49
+Typical simulated conditions,316,W -> A -> F -> C -> B -> E -> D -> W,33.748,116.53
+Typical simulated conditions,317,W -> A -> C -> B -> D -> E -> F -> W,33.723,116.54
+Typical simulated conditions,318,W -> D -> B -> A -> E -> C -> F -> W,34.612,116.58
+Typical simulated conditions,319,W -> F -> C -> B -> E -> D -> A -> W,33.803,116.72
+Typical simulated conditions,320,W -> D -> F -> A -> B -> C -> E -> W,34.409,116.72
+Typical simulated conditions,321,W -> F -> D -> B -> E -> C -> A -> W,33.804,116.73
+Typical simulated conditions,322,W -> C -> B -> A -> F -> E -> D -> W,33.964,116.73
+Typical simulated conditions,323,W -> E -> C -> B -> A -> F -> D -> W,33.994,116.8
+Typical simulated conditions,324,W -> A -> F -> B -> D -> E -> C -> W,34.123,116.83
+Typical simulated conditions,325,W -> F -> C -> B -> A -> E -> D -> W,34.067,116.88
+Typical simulated conditions,326,W -> C -> B -> D -> F -> E -> A -> W,34.485,116.88
+Typical simulated conditions,327,W -> B -> C -> E -> D -> A -> F -> W,33.728,116.91
+Typical simulated conditions,328,W -> E -> D -> A -> B -> C -> F -> W,34.247,116.95
+Typical simulated conditions,329,W -> F -> B -> D -> E -> C -> A -> W,34.178,117.03
+Typical simulated conditions,330,W -> A -> C -> E -> D -> B -> F -> W,33.786,117.06
+Typical simulated conditions,331,W -> B -> E -> F -> A -> C -> D -> W,33.193,117.07
+Typical simulated conditions,332,W -> E -> C -> A -> B -> D -> F -> W,34.001,117.19
+Typical simulated conditions,333,W -> C -> E -> B -> D -> F -> A -> W,34.209,117.25
+Typical simulated conditions,334,W -> E -> A -> D -> C -> F -> B -> W,34.634,117.4
+Typical simulated conditions,335,W -> E -> A -> C -> D -> F -> B -> W,34.023,117.43
+Typical simulated conditions,336,W -> B -> D -> E -> C -> A -> F -> W,34.121,117.44
+Typical simulated conditions,337,W -> F -> E -> D -> B -> A -> C -> W,34.02,117.49
+Typical simulated conditions,338,W -> E -> F -> B -> A -> C -> D -> W,33.496,117.5
+Typical simulated conditions,339,W -> F -> E -> D -> A -> B -> C -> W,34.019,117.5
+Typical simulated conditions,340,W -> E -> D -> B -> A -> C -> F -> W,34.248,117.53
+Typical simulated conditions,341,W -> D -> F -> A -> E -> C -> B -> W,34.837,117.57
+Typical simulated conditions,342,W -> C -> E -> A -> B -> D -> F -> W,34.528,117.59
+Typical simulated conditions,343,W -> D -> B -> A -> F -> C -> E -> W,34.85,117.63
+Typical simulated conditions,344,W -> F -> E -> C -> B -> A -> D -> W,34.383,117.72
+Typical simulated conditions,345,W -> B -> F -> D -> C -> A -> E -> W,34.072,117.8
+Typical simulated conditions,346,W -> C -> B -> A -> F -> D -> E -> W,34.504,117.88
+Typical simulated conditions,347,W -> D -> E -> B -> C -> F -> A -> W,34.802,117.91
+Typical simulated conditions,348,W -> E -> D -> F -> A -> C -> B -> W,34.473,117.94
+Typical simulated conditions,349,W -> F -> D -> E -> A -> B -> C -> W,34.577,117.97
+Typical simulated conditions,350,W -> A -> E -> D -> F -> B -> C -> W,34.548,117.98
+Typical simulated conditions,351,W -> B -> C -> A -> E -> D -> F -> W,34.546,118.01
+Typical simulated conditions,352,W -> A -> C -> E -> B -> D -> F -> W,34.264,118.03
+Typical simulated conditions,353,W -> D -> C -> A -> E -> F -> B -> W,34.388,118.05
+Typical simulated conditions,354,W -> F -> D -> A -> B -> C -> E -> W,34.558,118.09
+Typical simulated conditions,355,W -> E -> D -> F -> B -> C -> A -> W,34.53,118.1
+Typical simulated conditions,356,W -> A -> D -> B -> C -> F -> E -> W,35.078,118.12
+Typical simulated conditions,357,W -> D -> B -> C -> F -> E -> A -> W,35.078,118.12
+Typical simulated conditions,358,W -> A -> C -> B -> D -> F -> E -> W,34.467,118.15
+Typical simulated conditions,359,W -> A -> F -> D -> E -> B -> C -> W,34.258,118.21
+Typical simulated conditions,360,W -> D -> E -> A -> B -> C -> F -> W,35.121,118.25
+Typical simulated conditions,361,W -> B -> D -> F -> A -> E -> C -> W,34.883,118.36
+Typical simulated conditions,362,W -> F -> D -> E -> B -> C -> A -> W,34.313,118.41
+Typical simulated conditions,363,W -> A -> E -> F -> D -> B -> C -> W,34.534,118.41
+Typical simulated conditions,364,W -> E -> C -> F -> A -> B -> D -> W,34.584,118.46
+Typical simulated conditions,365,W -> B -> F -> E -> A -> D -> C -> W,34.406,118.53
+Typical simulated conditions,366,W -> E -> F -> D -> B -> C -> A -> W,34.516,118.53
+Typical simulated conditions,367,W -> D -> F -> A -> B -> E -> C -> W,34.852,118.53
+Typical simulated conditions,368,W -> A -> D -> E -> B -> C -> F -> W,34.875,118.58
+Typical simulated conditions,369,W -> F -> D -> B -> A -> C -> E -> W,34.559,118.67
+Typical simulated conditions,370,W -> D -> E -> F -> A -> B -> C -> W,34.82,118.72
+Typical simulated conditions,371,W -> C -> B -> A -> D -> E -> F -> W,34.893,118.81
+Typical simulated conditions,372,W -> D -> F -> B -> C -> E -> A -> W,35.403,118.83
+Typical simulated conditions,373,W -> C -> D -> A -> E -> F -> B -> W,34.433,118.85
+Typical simulated conditions,374,W -> E -> D -> A -> F -> C -> B -> W,34.913,118.85
+Typical simulated conditions,375,W -> F -> C -> B -> A -> D -> E -> W,34.923,118.88
+Typical simulated conditions,376,W -> A -> E -> D -> B -> F -> C -> W,34.989,118.88
+Typical simulated conditions,377,W -> D -> A -> B -> C -> E -> F -> W,34.874,118.92
+Typical simulated conditions,378,W -> D -> B -> A -> C -> E -> F -> W,34.875,118.92
+Typical simulated conditions,379,W -> F -> D -> A -> E -> C -> B -> W,34.986,118.94
+Typical simulated conditions,380,W -> C -> A -> B -> E -> D -> F -> W,34.561,118.97
+Typical simulated conditions,381,W -> A -> D -> B -> F -> E -> C -> W,35.305,119.15
+Typical simulated conditions,382,W -> F -> E -> C -> A -> B -> D -> W,34.411,119.2
+Typical simulated conditions,383,W -> C -> F -> A -> E -> D -> B -> W,35.13,119.27
+Typical simulated conditions,384,W -> B -> C -> F -> A -> E -> D -> W,35.129,119.28
+Typical simulated conditions,385,W -> B -> C -> E -> A -> D -> F -> W,35.419,119.32
+Typical simulated conditions,386,W -> A -> F -> C -> E -> B -> D -> W,34.649,119.33
+Typical simulated conditions,387,W -> A -> D -> F -> B -> C -> E -> W,35.403,119.41
+Typical simulated conditions,388,W -> E -> C -> A -> F -> D -> B -> W,34.914,119.42
+Typical simulated conditions,389,W -> A -> E -> C -> B -> F -> D -> W,34.988,119.48
+Typical simulated conditions,390,W -> B -> F -> C -> D -> A -> E -> W,34.463,119.5
+Typical simulated conditions,391,W -> F -> C -> A -> E -> D -> B -> W,34.987,119.5
+Typical simulated conditions,392,W -> C -> B -> F -> E -> D -> A -> W,34.94,119.52
+Typical simulated conditions,393,W -> A -> E -> F -> C -> B -> D -> W,34.925,119.53
+Typical simulated conditions,394,W -> E -> C -> B -> F -> D -> A -> W,34.97,119.59
+Typical simulated conditions,395,W -> E -> D -> B -> F -> C -> A -> W,34.971,119.59
+Typical simulated conditions,396,W -> A -> D -> F -> C -> B -> E -> W,35.421,119.64
+Typical simulated conditions,397,W -> D -> F -> C -> B -> E -> A -> W,35.421,119.64
+Typical simulated conditions,398,W -> F -> C -> E -> A -> B -> D -> W,34.968,119.67
+Typical simulated conditions,399,W -> D -> A -> F -> E -> C -> B -> W,35.229,119.69
+Typical simulated conditions,400,W -> D -> B -> F -> E -> C -> A -> W,35.287,119.85
+Typical simulated conditions,401,W -> F -> B -> A -> D -> E -> C -> W,35.348,119.88
+Typical simulated conditions,402,W -> D -> F -> C -> B -> A -> E -> W,35.667,119.89
+Typical simulated conditions,403,W -> F -> D -> A -> B -> E -> C -> W,35.001,119.9
+Typical simulated conditions,404,W -> C -> A -> F -> E -> D -> B -> W,34.884,119.93
+Typical simulated conditions,405,W -> B -> C -> A -> F -> E -> D -> W,34.883,119.94
+Typical simulated conditions,406,W -> C -> B -> F -> D -> E -> A -> W,35.498,119.99
+Typical simulated conditions,407,W -> B -> F -> E -> A -> C -> D -> W,34.433,120.02
+Typical simulated conditions,408,W -> F -> C -> E -> B -> D -> A -> W,34.704,120.1
+Typical simulated conditions,409,W -> C -> E -> F -> A -> B -> D -> W,34.865,120.1
+Typical simulated conditions,410,W -> A -> C -> B -> F -> E -> D -> W,34.94,120.11
+Typical simulated conditions,411,W -> C -> F -> A -> B -> D -> E -> W,35.094,120.12
+Typical simulated conditions,412,W -> D -> E -> A -> F -> C -> B -> W,35.787,120.15
+Typical simulated conditions,413,W -> E -> C -> F -> A -> D -> B -> W,35.476,120.19
+Typical simulated conditions,414,W -> E -> F -> C -> B -> D -> A -> W,34.907,120.22
+Typical simulated conditions,415,W -> C -> E -> D -> A -> B -> F -> W,34.983,120.23
+Typical simulated conditions,416,W -> F -> B -> A -> C -> E -> D -> W,34.983,120.25
+Typical simulated conditions,417,W -> C -> A -> B -> D -> E -> F -> W,34.921,120.28
+Typical simulated conditions,418,W -> C -> E -> B -> A -> D -> F -> W,35.434,120.29
+Typical simulated conditions,419,W -> A -> D -> B -> F -> C -> E -> W,35.844,120.31
+Typical simulated conditions,420,W -> D -> B -> F -> C -> E -> A -> W,35.844,120.32
+Typical simulated conditions,421,W -> F -> C -> A -> B -> D -> E -> W,34.951,120.35
+Typical simulated conditions,422,W -> C -> E -> A -> F -> D -> B -> W,35.441,120.4
+Typical simulated conditions,423,W -> B -> C -> E -> A -> F -> D -> W,35.44,120.41
+Typical simulated conditions,424,W -> D -> F -> E -> A -> B -> C -> W,35.637,120.41
+Typical simulated conditions,425,W -> C -> B -> A -> D -> F -> E -> W,35.637,120.42
+Typical simulated conditions,426,W -> A -> E -> B -> D -> F -> C -> W,35.467,120.43
+Typical simulated conditions,427,W -> B -> D -> A -> F -> E -> C -> W,35.275,120.48
+Typical simulated conditions,428,W -> D -> E -> C -> A -> B -> F -> W,35.33,120.55
+Typical simulated conditions,429,W -> E -> B -> D -> F -> C -> A -> W,35.449,120.55
+Typical simulated conditions,430,W -> B -> D -> A -> E -> C -> F -> W,35.576,120.59
+Typical simulated conditions,431,W -> E -> A -> B -> D -> F -> C -> W,35.713,120.69
+Typical simulated conditions,432,W -> F -> E -> D -> A -> C -> B -> W,34.938,120.72
+Typical simulated conditions,433,W -> B -> D -> F -> A -> C -> E -> W,35.374,120.73
+Typical simulated conditions,434,W -> A -> D -> F -> E -> B -> C -> W,35.391,120.74
+Typical simulated conditions,435,W -> D -> A -> B -> E -> C -> F -> W,35.545,120.76
+Typical simulated conditions,436,W -> C -> F -> A -> B -> E -> D -> W,35.144,120.82
+Typical simulated conditions,437,W -> D -> F -> E -> B -> C -> A -> W,35.373,120.85
+Typical simulated conditions,438,W -> D -> F -> B -> A -> E -> C -> W,36.092,120.89
+Typical simulated conditions,439,W -> F -> E -> C -> A -> D -> B -> W,35.303,120.93
+Typical simulated conditions,440,W -> F -> C -> A -> B -> E -> D -> W,35.001,121.05
+Typical simulated conditions,441,W -> A -> D -> B -> E -> F -> C -> W,35.832,121.06
+Typical simulated conditions,442,W -> B -> C -> A -> F -> D -> E -> W,35.423,121.09
+Typical simulated conditions,443,W -> D -> E -> B -> A -> F -> C -> W,35.802,121.11
+Typical simulated conditions,444,W -> A -> E -> C -> F -> B -> D -> W,35.578,121.14
+Typical simulated conditions,445,W -> F -> D -> E -> A -> C -> B -> W,35.496,121.19
+Typical simulated conditions,446,W -> A -> D -> F -> B -> E -> C -> W,35.846,121.22
+Typical simulated conditions,447,W -> A -> C -> B -> F -> D -> E -> W,35.48,121.26
+Typical simulated conditions,448,W -> B -> C -> F -> A -> D -> E -> W,35.985,121.27
+Typical simulated conditions,449,W -> D -> B -> A -> E -> F -> C -> W,36.078,121.32
+Typical simulated conditions,450,W -> D -> F -> B -> E -> C -> A -> W,35.828,121.33
+Typical simulated conditions,451,W -> A -> E -> B -> C -> F -> D -> W,35.713,121.35
+Typical simulated conditions,452,W -> C -> F -> D -> B -> E -> A -> W,35.714,121.35
+Typical simulated conditions,453,W -> C -> E -> B -> A -> F -> D -> W,35.455,121.38
+Typical simulated conditions,454,W -> F -> C -> E -> A -> D -> B -> W,35.86,121.4
+Typical simulated conditions,455,W -> B -> E -> D -> F -> A -> C -> W,35.425,121.41
+Typical simulated conditions,456,W -> C -> B -> E -> F -> D -> A -> W,35.467,121.42
+Typical simulated conditions,457,W -> B -> D -> E -> A -> F -> C -> W,35.833,121.52
+Typical simulated conditions,458,W -> C -> B -> A -> E -> F -> D -> W,35.731,121.58
+Typical simulated conditions,459,W -> C -> F -> D -> B -> A -> E -> W,35.96,121.6
+Typical simulated conditions,460,W -> E -> A -> B -> C -> F -> D -> W,35.959,121.61
+Typical simulated conditions,461,W -> B -> D -> A -> F -> C -> E -> W,35.814,121.64
+Typical simulated conditions,462,W -> D -> B -> E -> F -> C -> A -> W,35.814,121.75
+Typical simulated conditions,463,W -> B -> E -> C -> A -> D -> F -> W,35.844,121.82
+Typical simulated conditions,464,W -> E -> C -> F -> B -> D -> A -> W,35.56,121.83
+Typical simulated conditions,465,W -> B -> C -> E -> F -> A -> D -> W,35.756,121.83
+Typical simulated conditions,466,W -> C -> E -> F -> A -> D -> B -> W,35.757,121.83
+Typical simulated conditions,467,W -> E -> D -> F -> B -> A -> C -> W,35.728,121.84
+Typical simulated conditions,468,W -> E -> A -> D -> F -> C -> B -> W,36.604,121.85
+Typical simulated conditions,469,W -> C -> A -> B -> D -> F -> E -> W,35.665,121.89
+Typical simulated conditions,470,W -> D -> E -> F -> A -> C -> B -> W,35.739,121.94
+Typical simulated conditions,471,W -> A -> D -> E -> F -> B -> C -> W,35.814,121.99
+Typical simulated conditions,472,W -> A -> C -> B -> E -> F -> D -> W,35.467,122.01
+Typical simulated conditions,473,W -> B -> C -> A -> D -> E -> F -> W,35.812,122.02
+Typical simulated conditions,474,W -> E -> B -> C -> F -> D -> A -> W,35.695,122.04
+Typical simulated conditions,475,W -> D -> E -> F -> B -> C -> A -> W,35.796,122.1
+Typical simulated conditions,476,W -> F -> D -> E -> B -> A -> C -> W,35.511,122.15
+Typical simulated conditions,477,W -> C -> F -> B -> D -> E -> A -> W,36.088,122.23
+Typical simulated conditions,478,W -> E -> F -> D -> B -> A -> C -> W,35.714,122.27
+Typical simulated conditions,479,W -> E -> F -> D -> A -> B -> C -> W,35.713,122.28
+Typical simulated conditions,480,W -> B -> F -> A -> D -> E -> C -> W,36.212,122.32
+Typical simulated conditions,481,W -> F -> C -> E -> B -> A -> D -> W,35.874,122.37
+Typical simulated conditions,482,W -> D -> E -> B -> A -> C -> F -> W,36.055,122.43
+Typical simulated conditions,483,W -> E -> F -> C -> B -> A -> D -> W,36.077,122.49
+Typical simulated conditions,484,W -> D -> A -> B -> C -> F -> E -> W,36.257,122.56
+Typical simulated conditions,485,W -> D -> B -> A -> C -> F -> E -> W,36.258,122.56
+Typical simulated conditions,486,W -> A -> C -> F -> D -> B -> E -> W,35.696,122.62
+Typical simulated conditions,487,W -> C -> E -> D -> A -> F -> B -> W,35.847,122.68
+Typical simulated conditions,488,W -> B -> F -> A -> C -> E -> D -> W,35.847,122.69
+Typical simulated conditions,489,W -> B -> D -> E -> F -> A -> C -> W,35.785,122.72
+Typical simulated conditions,490,W -> E -> D -> A -> B -> F -> C -> W,36.168,122.75
+Typical simulated conditions,491,W -> B -> D -> E -> A -> C -> F -> W,36.086,122.84
+Typical simulated conditions,492,W -> B -> E -> C -> A -> F -> D -> W,35.865,122.91
+Typical simulated conditions,493,W -> B -> E -> D -> A -> F -> C -> W,35.865,122.91
+Typical simulated conditions,494,W -> A -> C -> F -> B -> D -> E -> W,36.07,122.92
+Typical simulated conditions,495,W -> B -> D -> A -> C -> E -> F -> W,35.839,122.93
+Typical simulated conditions,496,W -> D -> E -> C -> A -> F -> B -> W,36.194,123.0
+Typical simulated conditions,497,W -> C -> F -> B -> A -> E -> D -> W,36.384,123.19
+Typical simulated conditions,498,W -> D -> F -> B -> A -> C -> E -> W,36.583,123.26
+Typical simulated conditions,499,W -> E -> B -> A -> D -> F -> C -> W,36.619,123.4
+Typical simulated conditions,500,W -> D -> F -> A -> C -> E -> B -> W,36.28,123.42
+Typical simulated conditions,501,W -> C -> E -> F -> B -> D -> A -> W,35.841,123.47
+Typical simulated conditions,502,W -> A -> C -> E -> F -> B -> D -> W,35.841,123.48
+Typical simulated conditions,503,W -> D -> A -> B -> F -> E -> C -> W,36.484,123.59
+Typical simulated conditions,504,W -> C -> F -> B -> E -> D -> A -> W,36.12,123.61
+Typical simulated conditions,505,W -> A -> C -> F -> B -> E -> D -> W,36.12,123.62
+Typical simulated conditions,506,W -> D -> F -> E -> A -> C -> B -> W,36.556,123.63
+Typical simulated conditions,507,W -> B -> C -> A -> D -> F -> E -> W,36.556,123.63
+Typical simulated conditions,508,W -> C -> F -> E -> B -> D -> A -> W,36.057,123.67
+Typical simulated conditions,509,W -> B -> E -> C -> F -> A -> D -> W,36.427,123.67
+Typical simulated conditions,510,W -> C -> A -> E -> D -> F -> B -> W,36.665,123.78
+Typical simulated conditions,511,W -> C -> F -> E -> A -> B -> D -> W,36.321,123.82
+Typical simulated conditions,512,W -> C -> A -> B -> F -> E -> D -> W,36.138,123.85
+Typical simulated conditions,513,W -> B -> D -> F -> C -> A -> E -> W,36.632,123.9
+Typical simulated conditions,514,W -> E -> C -> A -> B -> F -> D -> W,36.168,123.92
+Typical simulated conditions,515,W -> E -> F -> C -> A -> B -> D -> W,36.105,123.97
+Typical simulated conditions,516,W -> D -> E -> A -> B -> F -> C -> W,37.042,124.05
+Typical simulated conditions,517,W -> D -> F -> C -> A -> B -> E -> W,36.601,124.07
+Typical simulated conditions,518,W -> E -> C -> F -> B -> A -> D -> W,36.73,124.1
+Typical simulated conditions,519,W -> C -> A -> E -> F -> D -> B -> W,36.651,124.2
+Typical simulated conditions,520,W -> B -> E -> D -> A -> C -> F -> W,36.118,124.23
+Typical simulated conditions,521,W -> A -> C -> F -> E -> B -> D -> W,36.057,124.26
+Typical simulated conditions,522,W -> C -> E -> A -> B -> F -> D -> W,36.695,124.31
+Typical simulated conditions,523,W -> D -> A -> F -> C -> E -> B -> W,36.72,124.33
+Typical simulated conditions,524,W -> A -> D -> E -> B -> F -> C -> W,36.796,124.38
+Typical simulated conditions,525,W -> B -> D -> F -> E -> A -> C -> W,36.602,124.42
+Typical simulated conditions,526,W -> D -> E -> B -> F -> C -> A -> W,36.778,124.49
+Typical simulated conditions,527,W -> D -> A -> E -> F -> C -> B -> W,36.996,124.54
+Typical simulated conditions,528,W -> C -> A -> F -> D -> E -> B -> W,36.375,124.58
+Typical simulated conditions,529,W -> D -> F -> E -> B -> A -> C -> W,36.571,124.59
+Typical simulated conditions,530,W -> E -> C -> A -> D -> F -> B -> W,37.011,124.7
+Typical simulated conditions,531,W -> A -> C -> E -> B -> F -> D -> W,36.431,124.75
+Typical simulated conditions,532,W -> C -> E -> B -> F -> D -> A -> W,36.431,124.75
+Typical simulated conditions,533,W -> D -> A -> B -> F -> C -> E -> W,37.023,124.75
+Typical simulated conditions,534,W -> C -> F -> A -> D -> E -> B -> W,36.937,124.76
+Typical simulated conditions,535,W -> F -> D -> A -> C -> E -> B -> W,36.429,124.79
+Typical simulated conditions,536,W -> B -> C -> A -> E -> F -> D -> W,36.65,124.79
+Typical simulated conditions,537,W -> B -> C -> F -> D -> A -> E -> W,36.878,124.82
+Typical simulated conditions,538,W -> E -> A -> C -> F -> D -> B -> W,36.879,124.82
+Typical simulated conditions,539,W -> F -> C -> A -> D -> E -> B -> W,36.794,124.99
+Typical simulated conditions,540,W -> C -> A -> B -> F -> D -> E -> W,36.678,125.0
+Typical simulated conditions,541,W -> C -> F -> B -> A -> D -> E -> W,37.24,125.18
+Typical simulated conditions,542,W -> B -> D -> A -> E -> F -> C -> W,37.042,125.33
+Typical simulated conditions,543,W -> E -> F -> D -> A -> C -> B -> W,36.632,125.5
+Typical simulated conditions,544,W -> D -> A -> B -> E -> F -> C -> W,37.011,125.5
+Typical simulated conditions,545,W -> B -> C -> F -> E -> A -> D -> W,37.212,125.55
+Typical simulated conditions,546,W -> C -> F -> E -> A -> D -> B -> W,37.213,125.55
+Typical simulated conditions,547,W -> C -> E -> A -> D -> F -> B -> W,37.538,125.68
+Typical simulated conditions,548,W -> E -> F -> C -> A -> D -> B -> W,36.997,125.7
+Typical simulated conditions,549,W -> C -> E -> F -> B -> A -> D -> W,37.011,125.74
+Typical simulated conditions,550,W -> C -> A -> B -> E -> F -> D -> W,36.665,125.75
+Typical simulated conditions,551,W -> C -> F -> D -> A -> B -> E -> W,36.893,125.79
+Typical simulated conditions,552,W -> E -> B -> A -> C -> F -> D -> W,36.893,125.8
+Typical simulated conditions,553,W -> D -> E -> F -> B -> A -> C -> W,36.994,125.84
+Typical simulated conditions,554,W -> B -> F -> C -> A -> E -> D -> W,37.105,125.86
+Typical simulated conditions,555,W -> B -> F -> D -> A -> E -> C -> W,37.105,125.87
+Typical simulated conditions,556,W -> B -> E -> A -> D -> F -> C -> W,37.556,125.91
+Typical simulated conditions,557,W -> C -> F -> E -> B -> A -> D -> W,37.227,125.93
+Typical simulated conditions,558,W -> D -> A -> E -> C -> F -> B -> W,37.649,126.15
+Typical simulated conditions,559,W -> E -> D -> A -> C -> F -> B -> W,37.285,126.52
+Typical simulated conditions,560,W -> C -> A -> D -> F -> E -> B -> W,37.508,126.53
+Typical simulated conditions,561,W -> B -> D -> A -> C -> F -> E -> W,37.222,126.57
+Typical simulated conditions,562,W -> D -> F -> C -> A -> E -> B -> W,37.538,126.59
+Typical simulated conditions,563,W -> B -> F -> E -> C -> A -> D -> W,37.421,127.28
+Typical simulated conditions,564,W -> D -> C -> B -> E -> A -> F -> W,38.462,127.32
+Typical simulated conditions,565,W -> F -> A -> D -> C -> B -> E -> W,38.462,127.33
+Typical simulated conditions,566,W -> C -> D -> B -> E -> A -> F -> W,38.508,127.53
+Typical simulated conditions,567,W -> B -> F -> D -> E -> A -> C -> W,37.615,127.54
+Typical simulated conditions,568,W -> B -> F -> E -> D -> A -> C -> W,37.057,127.65
+Typical simulated conditions,569,W -> B -> F -> C -> E -> A -> D -> W,37.978,127.75
+Typical simulated conditions,570,W -> C -> A -> D -> E -> F -> B -> W,37.931,127.79
+Typical simulated conditions,571,W -> D -> E -> A -> C -> F -> B -> W,38.159,127.82
+Typical simulated conditions,572,W -> B -> F -> C -> A -> D -> E -> W,37.961,127.85
+Typical simulated conditions,573,W -> F -> A -> E -> B -> D -> C -> W,38.508,128.12
+Typical simulated conditions,574,W -> F -> A -> E -> B -> C -> D -> W,38.507,128.13
+Typical simulated conditions,575,W -> E -> B -> D -> C -> A -> F -> W,38.49,128.23
+Typical simulated conditions,576,W -> B -> F -> D -> A -> C -> E -> W,37.596,128.24
+Typical simulated conditions,577,W -> B -> E -> A -> C -> F -> D -> W,37.83,128.31
+Typical simulated conditions,578,W -> C -> F -> D -> A -> E -> B -> W,37.83,128.31
+Typical simulated conditions,579,W -> D -> A -> C -> E -> F -> B -> W,37.912,128.49
+Typical simulated conditions,580,W -> E -> B -> C -> D -> A -> F -> W,38.489,128.81
+Typical simulated conditions,581,W -> F -> A -> C -> D -> B -> E -> W,38.49,128.81
+Typical simulated conditions,582,W -> B -> E -> F -> C -> A -> D -> W,37.948,129.18
+Typical simulated conditions,583,W -> D -> A -> C -> F -> E -> B -> W,38.128,129.26
+Typical simulated conditions,584,W -> B -> E -> F -> D -> A -> C -> W,37.584,129.56
+Typical simulated conditions,585,W -> E -> A -> D -> C -> B -> F -> W,39.702,129.69
+Typical simulated conditions,586,W -> D -> C -> B -> F -> A -> E -> W,39.629,130.18
+Typical simulated conditions,587,W -> C -> D -> B -> F -> A -> E -> W,39.675,130.38
+Typical simulated conditions,588,W -> E -> A -> F -> B -> D -> C -> W,39.675,130.98
+Typical simulated conditions,589,W -> E -> A -> F -> B -> C -> D -> W,39.674,130.99
+Typical simulated conditions,590,W -> F -> B -> D -> C -> A -> E -> W,39.73,131.17
+Typical simulated conditions,591,W -> F -> A -> E -> D -> B -> C -> W,40.198,131.57
+Typical simulated conditions,592,W -> F -> B -> C -> D -> A -> E -> W,39.729,131.75
+Typical simulated conditions,593,W -> E -> A -> C -> D -> B -> F -> W,39.73,131.75
+Typical simulated conditions,594,W -> C -> B -> D -> E -> A -> F -> W,41.099,132.07
+Typical simulated conditions,595,W -> D -> C -> A -> E -> B -> F -> W,40.636,132.14
+Typical simulated conditions,596,W -> E -> D -> B -> C -> A -> F -> W,40.18,132.26
+Typical simulated conditions,597,W -> C -> D -> A -> E -> B -> F -> W,40.681,132.94
+Typical simulated conditions,598,W -> D -> B -> C -> E -> A -> F -> W,41.053,132.99
+Typical simulated conditions,599,W -> F -> A -> E -> C -> B -> D -> W,40.589,133.28
+Typical simulated conditions,600,W -> E -> C -> B -> D -> A -> F -> W,40.571,133.38
+Typical simulated conditions,601,W -> C -> B -> E -> D -> A -> F -> W,41.131,133.45
+Typical simulated conditions,602,W -> F -> A -> D -> B -> C -> E -> W,41.053,133.58
+Typical simulated conditions,603,W -> E -> B -> F -> A -> D -> C -> W,40.581,133.68
+Typical simulated conditions,604,W -> F -> B -> E -> A -> D -> C -> W,40.654,133.75
+Typical simulated conditions,605,W -> D -> C -> A -> F -> B -> E -> W,40.563,133.78
+Typical simulated conditions,606,W -> D -> B -> E -> C -> A -> F -> W,41.478,133.78
+Typical simulated conditions,607,W -> C -> D -> A -> F -> B -> E -> W,40.608,134.58
+Typical simulated conditions,608,W -> D -> B -> C -> F -> A -> E -> W,42.436,134.92
+Typical simulated conditions,609,W -> E -> A -> D -> B -> C -> F -> W,42.509,135.01
+Typical simulated conditions,610,W -> E -> A -> C -> B -> D -> F -> W,41.898,135.04
+Typical simulated conditions,611,W -> F -> A -> C -> B -> D -> E -> W,41.081,135.06
+Typical simulated conditions,612,W -> E -> B -> F -> A -> C -> D -> W,40.608,135.18
+Typical simulated conditions,613,W -> F -> B -> E -> A -> C -> D -> W,40.681,135.25
+Typical simulated conditions,614,W -> C -> B -> D -> F -> A -> E -> W,41.843,135.38
+Typical simulated conditions,615,W -> F -> A -> D -> B -> E -> C -> W,41.496,135.39
+Typical simulated conditions,616,W -> F -> D -> B -> C -> A -> E -> W,41.947,135.42
+Typical simulated conditions,617,W -> D -> E -> B -> C -> A -> F -> W,41.987,135.46
+Typical simulated conditions,618,W -> D -> B -> C -> A -> F -> E -> W,42.19,135.59
+Typical simulated conditions,619,W -> D -> B -> C -> A -> E -> F -> W,42.263,135.66
+Typical simulated conditions,620,W -> F -> A -> C -> B -> E -> D -> W,41.131,135.76
+Typical simulated conditions,621,W -> E -> A -> F -> D -> B -> C -> W,41.892,136.35
+Typical simulated conditions,622,W -> C -> B -> D -> A -> F -> E -> W,42.235,136.38
+Typical simulated conditions,623,W -> C -> A -> E -> D -> B -> F -> W,42.372,136.39
+Typical simulated conditions,624,W -> C -> B -> D -> A -> E -> F -> W,42.308,136.45
+Typical simulated conditions,625,W -> C -> B -> E -> A -> D -> F -> W,42.822,136.45
+Typical simulated conditions,626,W -> F -> C -> B -> D -> A -> E -> W,42.338,136.53
+Typical simulated conditions,627,W -> D -> A -> E -> C -> B -> F -> W,42.717,136.73
+Typical simulated conditions,628,W -> C -> E -> B -> D -> A -> F -> W,42.032,136.83
+Typical simulated conditions,629,W -> F -> A -> D -> E -> B -> C -> W,42.005,137.06
+Typical simulated conditions,630,W -> E -> D -> A -> C -> B -> F -> W,42.353,137.1
+Typical simulated conditions,631,W -> E -> F -> A -> D -> B -> C -> W,42.208,137.19
+Typical simulated conditions,632,W -> F -> E -> A -> D -> B -> C -> W,42.281,137.27
+Typical simulated conditions,633,W -> E -> C -> A -> D -> B -> F -> W,42.718,137.31
+Typical simulated conditions,634,W -> C -> B -> F -> A -> E -> D -> W,42.316,137.34
+Typical simulated conditions,635,W -> C -> A -> D -> B -> E -> F -> W,43.215,137.44
+Typical simulated conditions,636,W -> E -> A -> F -> C -> B -> D -> W,42.283,137.47
+Typical simulated conditions,637,W -> C -> B -> F -> A -> D -> E -> W,43.172,137.63
+Typical simulated conditions,638,W -> D -> B -> F -> A -> E -> C -> W,42.663,137.66
+Typical simulated conditions,639,W -> D -> F -> A -> C -> B -> E -> W,42.731,137.66
+Typical simulated conditions,640,W -> E -> B -> C -> A -> D -> F -> W,42.804,137.73
+Typical simulated conditions,641,W -> C -> A -> E -> B -> D -> F -> W,42.85,137.93
+Typical simulated conditions,642,W -> E -> D -> A -> F -> B -> C -> W,42.298,138.04
+Typical simulated conditions,643,W -> D -> A -> C -> B -> E -> F -> W,43.196,138.14
+Typical simulated conditions,644,W -> E -> C -> B -> F -> A -> D -> W,42.662,138.25
+Typical simulated conditions,645,W -> C -> E -> A -> D -> B -> F -> W,43.245,138.29
+Typical simulated conditions,646,W -> F -> D -> A -> E -> B -> C -> W,42.898,138.33
+Typical simulated conditions,647,W -> D -> B -> F -> A -> C -> E -> W,43.154,138.33
+Typical simulated conditions,648,W -> D -> A -> F -> B -> C -> E -> W,43.153,138.34
+Typical simulated conditions,649,W -> D -> E -> A -> C -> B -> F -> W,43.227,138.4
+Typical simulated conditions,650,W -> F -> A -> C -> E -> B -> D -> W,42.032,138.55
+Typical simulated conditions,651,W -> D -> A -> F -> C -> B -> E -> W,43.171,138.57
+Typical simulated conditions,652,W -> E -> D -> B -> F -> A -> C -> W,42.299,138.61
+Typical simulated conditions,653,W -> D -> F -> A -> E -> B -> C -> W,42.749,138.66
+Typical simulated conditions,654,W -> E -> F -> A -> C -> B -> D -> W,42.235,138.68
+Typical simulated conditions,655,W -> F -> B -> C -> A -> E -> D -> W,42.371,138.7
+Typical simulated conditions,656,W -> F -> E -> A -> C -> B -> D -> W,42.308,138.76
+Typical simulated conditions,657,W -> C -> A -> F -> D -> B -> E -> W,42.826,138.82
+Typical simulated conditions,658,W -> F -> D -> B -> E -> A -> C -> W,42.899,138.91
+Typical simulated conditions,659,W -> F -> B -> C -> A -> D -> E -> W,43.227,138.99
+Typical simulated conditions,660,W -> C -> F -> A -> D -> B -> E -> W,43.388,139.0
+Typical simulated conditions,661,W -> F -> D -> A -> C -> B -> E -> W,42.88,139.03
+Typical simulated conditions,662,W -> D -> B -> E -> F -> A -> C -> W,43.142,139.07
+Typical simulated conditions,663,W -> D -> A -> F -> E -> B -> C -> W,43.141,139.08
+Typical simulated conditions,664,W -> D -> A -> E -> B -> C -> F -> W,43.442,139.18
+Typical simulated conditions,665,W -> D -> B -> E -> A -> C -> F -> W,43.443,139.18
+Typical simulated conditions,666,W -> F -> B -> D -> E -> A -> C -> W,43.273,139.21
+Typical simulated conditions,667,W -> F -> B -> D -> A -> E -> C -> W,42.763,139.23
+Typical simulated conditions,668,W -> F -> C -> A -> D -> B -> E -> W,43.245,139.23
+Typical simulated conditions,669,W -> C -> B -> E -> A -> F -> D -> W,42.843,139.25
+Typical simulated conditions,670,W -> D -> E -> A -> F -> B -> C -> W,43.172,139.34
+Typical simulated conditions,671,W -> E -> A -> D -> F -> B -> C -> W,43.989,139.34
+Typical simulated conditions,672,W -> E -> B -> D -> A -> F -> C -> W,43.217,139.36
+Typical simulated conditions,673,W -> E -> B -> D -> F -> A -> C -> W,42.777,139.57
+Typical simulated conditions,674,W -> D -> B -> E -> A -> F -> C -> W,43.19,139.57
+Typical simulated conditions,675,W -> C -> A -> F -> B -> D -> E -> W,43.2,139.7
+Typical simulated conditions,676,W -> E -> C -> A -> F -> B -> D -> W,42.69,139.74
+Typical simulated conditions,677,W -> F -> B -> D -> A -> C -> E -> W,43.254,139.9
+Typical simulated conditions,678,W -> F -> B -> C -> E -> A -> D -> W,43.244,140.01
+Typical simulated conditions,679,W -> D -> F -> B -> C -> A -> E -> W,43.971,140.02
+Typical simulated conditions,680,W -> C -> B -> E -> F -> A -> D -> W,43.159,140.08
+Typical simulated conditions,681,W -> D -> A -> F -> B -> E -> C -> W,43.596,140.15
+Typical simulated conditions,682,W -> F -> C -> B -> E -> A -> D -> W,43.262,140.24
+Typical simulated conditions,683,W -> C -> A -> D -> B -> F -> E -> W,44.382,140.31
+Typical simulated conditions,684,W -> E -> B -> C -> A -> F -> D -> W,42.825,140.53
+Typical simulated conditions,685,W -> E -> B -> D -> A -> C -> F -> W,43.47,140.67
+Typical simulated conditions,686,W -> E -> B -> C -> F -> A -> D -> W,43.387,140.7
+Typical simulated conditions,687,W -> C -> E -> A -> F -> B -> D -> W,43.217,140.72
+Typical simulated conditions,688,W -> E -> A -> D -> B -> F -> C -> W,44.43,140.82
+Typical simulated conditions,689,W -> D -> A -> C -> B -> F -> E -> W,44.363,141.01
+Typical simulated conditions,690,W -> F -> B -> E -> D -> A -> C -> W,43.305,141.17
+Typical simulated conditions,691,W -> C -> B -> F -> D -> A -> E -> W,44.065,141.18
+Typical simulated conditions,692,W -> F -> E -> B -> D -> A -> C -> W,43.242,141.23
+Typical simulated conditions,693,W -> F -> E -> B -> C -> A -> D -> W,43.214,141.45
+Typical simulated conditions,694,W -> C -> F -> A -> E -> B -> D -> W,43.433,141.49
+Typical simulated conditions,695,W -> D -> B -> F -> C -> A -> E -> W,44.412,141.51
+Typical simulated conditions,696,W -> F -> C -> A -> E -> B -> D -> W,43.29,141.72
+Typical simulated conditions,697,W -> D -> E -> B -> F -> A -> C -> W,44.106,141.81
+Typical simulated conditions,698,W -> C -> A -> D -> E -> B -> F -> W,44.179,141.88
+Typical simulated conditions,699,W -> D -> A -> E -> F -> B -> C -> W,44.381,142.03
+Typical simulated conditions,700,W -> D -> B -> F -> E -> A -> C -> W,44.382,142.03
+Typical simulated conditions,701,W -> C -> A -> F -> B -> E -> D -> W,43.25,142.1
+Typical simulated conditions,702,W -> C -> A -> F -> E -> B -> D -> W,43.187,142.15
+Typical simulated conditions,703,W -> F -> B -> E -> C -> A -> D -> W,43.669,142.51
+Typical simulated conditions,704,W -> D -> A -> C -> E -> B -> F -> W,44.16,142.58
+Typical simulated conditions,705,W -> C -> B -> F -> E -> A -> D -> W,44.399,143.04
+Typical simulated conditions,706,W -> C -> E -> B -> F -> A -> D -> W,44.123,143.41
+Typical simulated conditions,707,W -> C -> F -> B -> D -> A -> E -> W,44.655,143.42
+Typical simulated conditions,708,W -> E -> A -> C -> B -> F -> D -> W,44.065,143.47
+Typical simulated conditions,709,W -> C -> A -> D -> F -> B -> E -> W,44.923,143.51
+Typical simulated conditions,710,W -> D -> F -> B -> E -> A -> C -> W,44.923,143.51
+Typical simulated conditions,711,W -> E -> F -> B -> D -> A -> C -> W,44.409,144.09
+Typical simulated conditions,712,W -> E -> F -> B -> C -> A -> D -> W,44.381,144.31
+Typical simulated conditions,713,W -> C -> A -> E -> F -> B -> D -> W,44.427,144.52
+Typical simulated conditions,714,W -> D -> A -> E -> B -> F -> C -> W,45.363,144.99
+Typical simulated conditions,715,W -> E -> A -> C -> F -> B -> D -> W,44.655,145.14
+Typical simulated conditions,716,W -> C -> F -> B -> E -> A -> D -> W,45.579,145.42
+Typical simulated conditions,717,W -> E -> B -> F -> C -> A -> D -> W,45.363,145.58
+Typical simulated conditions,718,W -> E -> B -> F -> D -> A -> C -> W,44.999,145.96
+Typical simulated conditions,719,W -> D -> A -> C -> F -> B -> E -> W,45.543,146.24
+Typical simulated conditions,720,W -> C -> A -> E -> B -> F -> D -> W,45.017,146.36
+Heavy traffic,1,W -> F -> E -> D -> C -> B -> A -> W,21.909,106.25
+Heavy traffic,2,W -> F -> E -> C -> D -> B -> A -> W,22.301,107.53
+Heavy traffic,3,W -> A -> B -> C -> D -> E -> F -> W,22.81,108.66
+Heavy traffic,4,W -> A -> B -> D -> C -> E -> F -> W,22.81,108.66
+Heavy traffic,5,W -> A -> F -> E -> D -> C -> B -> W,22.773,109.04
+Heavy traffic,6,W -> A -> B -> E -> C -> D -> F -> W,22.842,109.21
+Heavy traffic,7,W -> A -> B -> E -> D -> C -> F -> W,23.089,109.46
+Heavy traffic,8,W -> A -> F -> E -> C -> D -> B -> W,23.165,110.33
+Heavy traffic,9,W -> A -> B -> C -> D -> F -> E -> W,23.554,110.33
+Heavy traffic,10,W -> B -> D -> C -> E -> F -> A -> W,23.674,110.58
+Heavy traffic,11,W -> E -> F -> D -> C -> B -> A -> W,23.603,110.84
+Heavy traffic,12,W -> F -> D -> C -> E -> B -> A -> W,23.4,110.85
+Heavy traffic,13,W -> B -> E -> C -> D -> F -> A -> W,23.706,111.13
+Heavy traffic,14,W -> E -> C -> D -> F -> A -> B -> W,23.952,111.27
+Heavy traffic,15,W -> B -> A -> E -> C -> D -> F -> W,24.025,111.37
+Heavy traffic,16,W -> B -> C -> D -> E -> F -> A -> W,23.674,111.45
+Heavy traffic,17,W -> E -> C -> D -> F -> B -> A -> W,24.009,111.47
+Heavy traffic,18,W -> F -> C -> D -> E -> B -> A -> W,23.792,112.13
+Heavy traffic,19,W -> B -> E -> D -> C -> F -> A -> W,23.953,112.25
+Heavy traffic,20,W -> E -> D -> C -> F -> A -> B -> W,24.199,112.39
+Heavy traffic,21,W -> B -> A -> E -> D -> C -> F -> W,24.272,112.48
+Heavy traffic,22,W -> E -> D -> C -> F -> B -> A -> W,24.256,112.59
+Heavy traffic,23,W -> A -> B -> D -> C -> F -> E -> W,24.193,112.74
+Heavy traffic,24,W -> E -> F -> C -> D -> B -> A -> W,23.995,112.99
+Heavy traffic,25,W -> B -> C -> D -> F -> E -> A -> W,24.491,113.18
+Heavy traffic,26,W -> B -> A -> F -> E -> D -> C -> W,23.971,113.48
+Heavy traffic,27,W -> A -> B -> F -> E -> D -> C -> W,24.028,113.65
+Heavy traffic,28,W -> A -> F -> D -> C -> E -> B -> W,24.264,113.65
+Heavy traffic,29,W -> A -> E -> F -> D -> C -> B -> W,24.54,113.69
+Heavy traffic,30,W -> B -> A -> F -> D -> C -> E -> W,24.51,113.82
+Heavy traffic,31,W -> A -> B -> C -> E -> D -> F -> W,25.041,113.84
+Heavy traffic,32,W -> F -> D -> C -> E -> A -> B -> W,24.583,113.86
+Heavy traffic,33,W -> B -> A -> D -> C -> E -> F -> W,24.899,113.95
+Heavy traffic,34,W -> A -> B -> F -> D -> C -> E -> W,24.567,113.99
+Heavy traffic,35,W -> F -> E -> D -> C -> A -> B -> W,24.026,114.56
+Heavy traffic,36,W -> C -> D -> F -> E -> B -> A -> W,24.506,114.58
+Heavy traffic,37,W -> D -> C -> E -> F -> A -> B -> W,24.826,114.72
+Heavy traffic,38,W -> B -> D -> C -> F -> E -> A -> W,25.13,114.73
+Heavy traffic,39,W -> B -> A -> F -> E -> C -> D -> W,24.362,114.79
+Heavy traffic,40,W -> D -> C -> E -> F -> B -> A -> W,24.883,114.92
+Heavy traffic,41,W -> A -> B -> F -> E -> C -> D -> W,24.419,114.96
+Heavy traffic,42,W -> B -> A -> F -> C -> D -> E -> W,24.902,115.11
+Heavy traffic,43,W -> F -> C -> D -> E -> A -> B -> W,24.975,115.14
+Heavy traffic,44,W -> A -> E -> C -> D -> F -> B -> W,24.946,115.19
+Heavy traffic,45,W -> A -> B -> F -> C -> D -> E -> W,24.959,115.28
+Heavy traffic,46,W -> A -> E -> D -> C -> F -> B -> W,25.193,115.45
+Heavy traffic,47,W -> F -> C -> E -> D -> B -> A -> W,25.482,115.63
+Heavy traffic,48,W -> F -> D -> E -> C -> B -> A -> W,25.482,115.64
+Heavy traffic,49,W -> A -> F -> C -> D -> E -> B -> W,24.656,115.8
+Heavy traffic,50,W -> A -> E -> F -> C -> D -> B -> W,24.932,115.84
+Heavy traffic,51,W -> D -> C -> F -> E -> B -> A -> W,25.099,115.85
+Heavy traffic,52,W -> C -> D -> E -> F -> A -> B -> W,24.872,115.86
+Heavy traffic,53,W -> F -> E -> C -> D -> A -> B -> W,24.417,115.87
+Heavy traffic,54,W -> A -> B -> E -> F -> D -> C -> W,24.555,115.98
+Heavy traffic,55,W -> B -> F -> D -> C -> E -> A -> W,25.504,115.98
+Heavy traffic,56,W -> C -> D -> E -> F -> B -> A -> W,24.929,116.06
+Heavy traffic,57,W -> B -> C -> E -> D -> F -> A -> W,25.905,116.63
+Heavy traffic,58,W -> B -> F -> E -> D -> C -> A -> W,24.947,116.68
+Heavy traffic,59,W -> B -> A -> C -> D -> E -> F -> W,24.927,117.01
+Heavy traffic,60,W -> A -> B -> E -> F -> C -> D -> W,24.946,117.28
+Heavy traffic,61,W -> E -> D -> F -> C -> B -> A -> W,26.226,117.29
+Heavy traffic,62,W -> D -> F -> E -> C -> B -> A -> W,26.542,117.36
+Heavy traffic,63,W -> A -> B -> D -> E -> C -> F -> W,26.072,117.54
+Heavy traffic,64,W -> C -> D -> F -> E -> A -> B -> W,25.689,117.59
+Heavy traffic,65,W -> A -> D -> C -> E -> F -> B -> W,25.82,117.79
+Heavy traffic,66,W -> B -> F -> E -> C -> D -> A -> W,25.338,117.98
+Heavy traffic,67,W -> B -> A -> D -> C -> F -> E -> W,26.282,118.03
+Heavy traffic,68,W -> B -> A -> E -> F -> D -> C -> W,25.738,118.12
+Heavy traffic,69,W -> B -> F -> C -> D -> E -> A -> W,25.896,118.13
+Heavy traffic,70,W -> A -> F -> D -> E -> C -> B -> W,26.346,118.44
+Heavy traffic,71,W -> A -> C -> D -> F -> E -> B -> W,25.425,118.5
+Heavy traffic,72,W -> B -> A -> C -> D -> F -> E -> W,25.671,118.68
+Heavy traffic,73,W -> A -> D -> C -> F -> E -> B -> W,26.036,118.72
+Heavy traffic,74,W -> D -> C -> F -> E -> A -> B -> W,26.282,118.86
+Heavy traffic,75,W -> B -> E -> F -> D -> C -> A -> W,25.474,119.01
+Heavy traffic,76,W -> E -> F -> D -> C -> A -> B -> W,25.72,119.16
+Heavy traffic,77,W -> A -> F -> C -> E -> D -> B -> W,26.346,119.3
+Heavy traffic,78,W -> A -> B -> D -> F -> E -> C -> W,26.588,119.38
+Heavy traffic,79,W -> B -> A -> E -> F -> C -> D -> W,26.129,119.43
+Heavy traffic,80,W -> B -> D -> E -> C -> F -> A -> W,26.936,119.46
+Heavy traffic,81,W -> E -> C -> F -> D -> B -> A -> W,26.865,119.71
+Heavy traffic,82,W -> A -> C -> D -> E -> F -> B -> W,25.848,119.98
+Heavy traffic,83,W -> A -> E -> D -> F -> C -> B -> W,27.163,120.14
+Heavy traffic,84,W -> A -> D -> F -> E -> C -> B -> W,27.479,120.23
+Heavy traffic,85,W -> B -> E -> F -> C -> D -> A -> W,25.865,120.3
+Heavy traffic,86,W -> C -> F -> E -> D -> B -> A -> W,26.835,120.49
+Heavy traffic,87,W -> A -> B -> C -> F -> E -> D -> W,26.834,120.51
+Heavy traffic,88,W -> A -> B -> D -> F -> C -> E -> W,27.127,120.58
+Heavy traffic,89,W -> C -> E -> D -> F -> A -> B -> W,27.103,121.03
+Heavy traffic,90,W -> D -> E -> F -> C -> B -> A -> W,27.492,121.16
+Heavy traffic,91,W -> C -> E -> D -> F -> B -> A -> W,27.16,121.23
+Heavy traffic,92,W -> E -> F -> C -> D -> A -> B -> W,26.111,121.33
+Heavy traffic,93,W -> A -> B -> E -> D -> F -> C -> W,27.178,121.57
+Heavy traffic,94,W -> A -> B -> C -> F -> D -> E -> W,27.374,121.7
+Heavy traffic,95,W -> C -> E -> F -> D -> B -> A -> W,27.146,121.89
+Heavy traffic,96,W -> A -> B -> C -> E -> F -> D -> W,27.145,121.9
+Heavy traffic,97,W -> B -> A -> C -> E -> D -> F -> W,27.158,122.19
+Heavy traffic,98,W -> B -> D -> F -> E -> C -> A -> W,27.507,122.41
+Heavy traffic,99,W -> B -> D -> F -> C -> E -> A -> W,28.064,122.57
+Heavy traffic,100,W -> D -> E -> C -> F -> A -> B -> W,28.088,122.73
+Heavy traffic,101,W -> D -> F -> C -> E -> B -> A -> W,28.033,122.83
+Heavy traffic,102,W -> B -> A -> D -> E -> C -> F -> W,28.161,122.83
+Heavy traffic,103,W -> B -> A -> F -> C -> E -> D -> W,27.543,122.88
+Heavy traffic,104,W -> B -> A -> F -> D -> E -> C -> W,27.544,122.88
+Heavy traffic,105,W -> D -> E -> C -> F -> B -> A -> W,28.145,122.93
+Heavy traffic,106,W -> A -> B -> F -> C -> E -> D -> W,27.6,123.05
+Heavy traffic,107,W -> A -> B -> F -> D -> E -> C -> W,27.601,123.05
+Heavy traffic,108,W -> A -> B -> D -> E -> F -> C -> W,27.538,123.18
+Heavy traffic,109,W -> A -> E -> C -> F -> D -> B -> W,27.802,123.43
+Heavy traffic,110,W -> F -> C -> E -> D -> A -> B -> W,27.598,123.95
+Heavy traffic,111,W -> F -> D -> E -> C -> A -> B -> W,27.599,123.96
+Heavy traffic,112,W -> A -> D -> E -> F -> C -> B -> W,28.429,124.03
+Heavy traffic,113,W -> B -> C -> F -> E -> D -> A -> W,27.753,124.4
+Heavy traffic,114,W -> A -> C -> F -> E -> D -> B -> W,27.754,124.41
+Heavy traffic,115,W -> B -> C -> F -> D -> E -> A -> W,28.311,124.57
+Heavy traffic,116,W -> B -> A -> E -> D -> F -> C -> W,28.361,124.59
+Heavy traffic,117,W -> B -> A -> D -> F -> E -> C -> W,28.677,124.68
+Heavy traffic,118,W -> A -> B -> E -> C -> F -> D -> W,27.816,124.85
+Heavy traffic,119,W -> A -> C -> E -> D -> F -> B -> W,28.079,125.16
+Heavy traffic,120,W -> B -> E -> D -> F -> C -> A -> W,28.097,125.46
+Heavy traffic,121,W -> E -> D -> F -> C -> A -> B -> W,28.343,125.61
+Heavy traffic,122,W -> D -> F -> E -> C -> A -> B -> W,28.659,125.68
+Heavy traffic,123,W -> A -> D -> F -> C -> E -> B -> W,28.97,125.7
+Heavy traffic,124,W -> B -> C -> E -> F -> D -> A -> W,28.064,125.79
+Heavy traffic,125,W -> E -> D -> C -> B -> A -> F -> W,29.267,125.79
+Heavy traffic,126,W -> A -> C -> E -> F -> D -> B -> W,28.065,125.8
+Heavy traffic,127,W -> A -> D -> E -> C -> F -> B -> W,29.082,125.8
+Heavy traffic,128,W -> D -> F -> C -> E -> A -> B -> W,29.216,125.84
+Heavy traffic,129,W -> B -> A -> D -> F -> C -> E -> W,29.216,125.88
+Heavy traffic,130,W -> C -> F -> D -> E -> B -> A -> W,28.326,125.97
+Heavy traffic,131,W -> B -> F -> D -> E -> C -> A -> W,28.52,126.08
+Heavy traffic,132,W -> E -> D -> C -> B -> F -> A -> W,30.188,126.2
+Heavy traffic,133,W -> B -> D -> E -> F -> C -> A -> W,28.457,126.21
+Heavy traffic,134,W -> B -> F -> C -> E -> D -> A -> W,28.519,126.94
+Heavy traffic,135,W -> B -> A -> E -> C -> F -> D -> W,28.999,127.01
+Heavy traffic,136,W -> E -> C -> D -> B -> A -> F -> W,29.659,127.07
+Heavy traffic,137,W -> E -> B -> C -> D -> F -> A -> W,30.666,127.18
+Heavy traffic,138,W -> E -> C -> D -> B -> F -> A -> W,30.58,127.48
+Heavy traffic,139,W -> B -> E -> C -> F -> D -> A -> W,28.735,127.87
+Heavy traffic,140,W -> E -> C -> F -> D -> A -> B -> W,28.981,128.03
+Heavy traffic,141,W -> B -> A -> D -> E -> F -> C -> W,29.627,128.47
+Heavy traffic,142,W -> D -> C -> B -> E -> F -> A -> W,31.031,128.62
+Heavy traffic,143,W -> F -> D -> C -> B -> E -> A -> W,30.788,128.63
+Heavy traffic,144,W -> F -> A -> E -> D -> C -> B -> W,30.204,128.64
+Heavy traffic,145,W -> F -> B -> D -> C -> E -> A -> W,31.162,128.7
+Heavy traffic,146,W -> F -> B -> C -> D -> E -> A -> W,31.162,128.71
+Heavy traffic,147,W -> C -> F -> E -> D -> A -> B -> W,28.951,128.81
+Heavy traffic,148,W -> A -> E -> D -> C -> B -> F -> W,30.261,128.81
+Heavy traffic,149,W -> B -> A -> C -> F -> E -> D -> W,28.951,128.86
+Heavy traffic,150,W -> C -> F -> D -> E -> A -> B -> W,29.509,128.98
+Heavy traffic,151,W -> F -> A -> B -> D -> C -> E -> W,30.168,129.08
+Heavy traffic,152,W -> F -> A -> B -> C -> D -> E -> W,30.168,129.09
+Heavy traffic,153,W -> D -> E -> F -> C -> A -> B -> W,29.609,129.48
+Heavy traffic,154,W -> E -> B -> D -> C -> F -> A -> W,31.305,129.58
+Heavy traffic,155,W -> C -> D -> B -> E -> F -> A -> W,31.077,129.75
+Heavy traffic,156,W -> A -> C -> F -> D -> E -> B -> W,29.245,129.89
+Heavy traffic,157,W -> F -> C -> D -> B -> E -> A -> W,31.18,129.9
+Heavy traffic,158,W -> F -> A -> E -> C -> D -> B -> W,30.596,129.94
+Heavy traffic,159,W -> B -> A -> C -> F -> D -> E -> W,29.491,130.05
+Heavy traffic,160,W -> F -> A -> B -> E -> D -> C -> W,30.219,130.06
+Heavy traffic,161,W -> C -> E -> F -> D -> A -> B -> W,29.262,130.21
+Heavy traffic,162,W -> B -> A -> C -> E -> F -> D -> W,29.262,130.25
+Heavy traffic,163,W -> A -> E -> B -> C -> D -> F -> W,30.739,130.67
+Heavy traffic,164,W -> F -> B -> E -> D -> C -> A -> W,31.195,130.72
+Heavy traffic,165,W -> E -> A -> B -> C -> D -> F -> W,30.985,130.81
+Heavy traffic,166,W -> A -> E -> C -> D -> B -> F -> W,30.653,130.97
+Heavy traffic,167,W -> B -> D -> C -> E -> A -> F -> W,31.105,131.06
+Heavy traffic,168,W -> A -> F -> D -> C -> B -> E -> W,30.715,131.12
+Heavy traffic,169,W -> F -> D -> C -> B -> A -> E -> W,31.034,131.32
+Heavy traffic,170,W -> D -> C -> B -> A -> F -> E -> W,31.277,131.32
+Heavy traffic,171,W -> F -> A -> B -> E -> C -> D -> W,30.61,131.37
+Heavy traffic,172,W -> D -> C -> B -> A -> E -> F -> W,31.35,131.38
+Heavy traffic,173,W -> F -> A -> D -> C -> E -> B -> W,32.011,131.64
+Heavy traffic,174,W -> F -> E -> B -> D -> C -> A -> W,31.132,131.74
+Heavy traffic,175,W -> F -> E -> B -> C -> D -> A -> W,31.131,131.75
+Heavy traffic,176,W -> D -> C -> B -> F -> E -> A -> W,32.271,131.8
+Heavy traffic,177,W -> B -> C -> D -> E -> A -> F -> W,31.105,131.93
+Heavy traffic,178,W -> E -> A -> F -> C -> D -> B -> W,32.29,131.97
+Heavy traffic,179,W -> F -> B -> E -> C -> D -> A -> W,31.586,132.02
+Heavy traffic,180,W -> A -> F -> B -> D -> C -> E -> W,31.089,132.07
+Heavy traffic,181,W -> A -> F -> B -> C -> D -> E -> W,31.089,132.08
+Heavy traffic,182,W -> A -> D -> C -> B -> E -> F -> W,31.104,132.13
+Heavy traffic,183,W -> D -> C -> E -> B -> A -> F -> W,31.074,132.2
+Heavy traffic,184,W -> C -> D -> B -> A -> F -> E -> W,31.323,132.45
+Heavy traffic,185,W -> E -> F -> A -> D -> C -> B -> W,32.214,132.5
+Heavy traffic,186,W -> C -> D -> B -> A -> E -> F -> W,31.396,132.51
+Heavy traffic,187,W -> F -> E -> A -> D -> C -> B -> W,32.287,132.55
+Heavy traffic,188,W -> F -> C -> D -> B -> A -> E -> W,31.426,132.59
+Heavy traffic,189,W -> D -> C -> E -> B -> F -> A -> W,31.995,132.61
+Heavy traffic,190,W -> E -> C -> B -> D -> F -> A -> W,32.748,132.83
+Heavy traffic,191,W -> C -> D -> B -> F -> E -> A -> W,32.317,132.93
+Heavy traffic,192,W -> A -> F -> B -> E -> D -> C -> W,31.14,133.05
+Heavy traffic,193,W -> A -> E -> B -> D -> C -> F -> W,31.378,133.07
+Heavy traffic,194,W -> E -> D -> B -> C -> F -> A -> W,32.995,133.07
+Heavy traffic,195,W -> A -> F -> E -> B -> D -> C -> W,31.077,133.2
+Heavy traffic,196,W -> E -> A -> B -> D -> C -> F -> W,31.624,133.21
+Heavy traffic,197,W -> A -> F -> E -> B -> C -> D -> W,31.076,133.22
+Heavy traffic,198,W -> E -> A -> F -> D -> C -> B -> W,31.898,133.23
+Heavy traffic,199,W -> A -> F -> C -> D -> B -> E -> W,31.107,133.27
+Heavy traffic,200,W -> F -> B -> A -> E -> D -> C -> W,31.459,133.27
+Heavy traffic,201,W -> C -> D -> E -> B -> A -> F -> W,31.12,133.34
+Heavy traffic,202,W -> E -> F -> A -> B -> D -> C -> W,31.323,133.34
+Heavy traffic,203,W -> E -> F -> A -> B -> C -> D -> W,31.322,133.36
+Heavy traffic,204,W -> F -> E -> A -> B -> D -> C -> W,31.396,133.39
+Heavy traffic,205,W -> F -> E -> A -> B -> C -> D -> W,31.395,133.41
+Heavy traffic,206,W -> B -> C -> D -> F -> A -> E -> W,31.849,133.58
+Heavy traffic,207,W -> C -> D -> E -> B -> F -> A -> W,32.041,133.75
+Heavy traffic,208,W -> E -> B -> A -> D -> C -> F -> W,32.53,133.81
+Heavy traffic,209,W -> F -> A -> C -> D -> E -> B -> W,32.039,133.84
+Heavy traffic,210,W -> B -> D -> C -> A -> E -> F -> W,32.315,133.85
+Heavy traffic,211,W -> C -> D -> E -> A -> B -> F -> W,32.36,133.94
+Heavy traffic,212,W -> B -> E -> D -> C -> A -> F -> W,31.138,133.95
+Heavy traffic,213,W -> A -> E -> D -> B -> C -> F -> W,33.068,133.99
+Heavy traffic,214,W -> D -> C -> A -> B -> E -> F -> W,32.284,134.13
+Heavy traffic,215,W -> C -> E -> D -> B -> A -> F -> W,32.81,134.26
+Heavy traffic,216,W -> E -> D -> C -> A -> B -> F -> W,31.441,134.28
+Heavy traffic,217,W -> A -> C -> D -> B -> E -> F -> W,31.132,134.31
+Heavy traffic,218,W -> A -> F -> B -> E -> C -> D -> W,31.531,134.36
+Heavy traffic,219,W -> D -> B -> C -> E -> F -> A -> W,33.622,134.52
+Heavy traffic,220,W -> E -> D -> C -> A -> F -> B -> W,32.305,134.53
+Heavy traffic,221,W -> F -> D -> B -> C -> E -> A -> W,33.379,134.53
+Heavy traffic,222,W -> F -> B -> A -> E -> C -> D -> W,31.85,134.58
+Heavy traffic,223,W -> E -> F -> A -> C -> D -> B -> W,32.242,134.7
+Heavy traffic,224,W -> B -> C -> D -> A -> E -> F -> W,32.314,134.74
+Heavy traffic,225,W -> F -> E -> A -> C -> D -> B -> W,32.315,134.75
+Heavy traffic,226,W -> A -> C -> D -> E -> B -> F -> W,32.096,134.86
+Heavy traffic,227,W -> E -> F -> B -> D -> C -> A -> W,32.299,134.87
+Heavy traffic,228,W -> E -> F -> B -> C -> D -> A -> W,32.298,134.88
+Heavy traffic,229,W -> C -> B -> E -> D -> F -> A -> W,33.308,134.93
+Heavy traffic,230,W -> C -> D -> F -> A -> B -> E -> W,31.864,135.01
+Heavy traffic,231,W -> B -> D -> C -> F -> A -> E -> W,32.488,135.13
+Heavy traffic,232,W -> C -> B -> A -> E -> D -> F -> W,33.627,135.15
+Heavy traffic,233,W -> F -> E -> D -> B -> C -> A -> W,32.822,135.23
+Heavy traffic,234,W -> B -> E -> C -> D -> A -> F -> W,31.529,135.24
+Heavy traffic,235,W -> A -> D -> C -> E -> B -> F -> W,32.068,135.24
+Heavy traffic,236,W -> A -> D -> C -> B -> F -> E -> W,32.271,135.24
+Heavy traffic,237,W -> C -> D -> A -> B -> E -> F -> W,32.329,135.29
+Heavy traffic,238,W -> C -> D -> F -> A -> E -> B -> W,32.801,135.29
+Heavy traffic,239,W -> D -> C -> E -> A -> B -> F -> W,32.314,135.37
+Heavy traffic,240,W -> F -> B -> A -> D -> C -> E -> W,32.314,135.43
+Heavy traffic,241,W -> A -> E -> C -> B -> D -> F -> W,32.821,135.45
+Heavy traffic,242,W -> A -> D -> B -> C -> E -> F -> W,33.695,135.46
+Heavy traffic,243,W -> C -> D -> F -> B -> E -> A -> W,32.858,135.5
+Heavy traffic,244,W -> E -> B -> A -> F -> D -> C -> W,31.913,135.55
+Heavy traffic,245,W -> B -> E -> A -> C -> D -> F -> W,32.856,135.55
+Heavy traffic,246,W -> E -> C -> D -> A -> B -> F -> W,31.832,135.59
+Heavy traffic,247,W -> D -> C -> E -> A -> F -> B -> W,33.178,135.62
+Heavy traffic,248,W -> B -> E -> A -> D -> C -> F -> W,33.467,135.74
+Heavy traffic,249,W -> E -> C -> D -> A -> F -> B -> W,32.696,135.84
+Heavy traffic,250,W -> B -> F -> A -> E -> D -> C -> W,32.323,136.05
+Heavy traffic,251,W -> A -> C -> B -> E -> D -> F -> W,33.363,136.06
+Heavy traffic,252,W -> D -> E -> C -> B -> A -> F -> W,33.156,136.11
+Heavy traffic,253,W -> E -> B -> A -> C -> D -> F -> W,31.919,136.17
+Heavy traffic,254,W -> E -> C -> B -> A -> D -> F -> W,33.973,136.17
+Heavy traffic,255,W -> E -> B -> F -> D -> C -> A -> W,32.889,136.19
+Heavy traffic,256,W -> D -> C -> F -> A -> B -> E -> W,32.457,136.28
+Heavy traffic,257,W -> B -> D -> C -> A -> F -> E -> W,32.242,136.36
+Heavy traffic,258,W -> A -> E -> F -> B -> D -> C -> W,32.317,136.38
+Heavy traffic,259,W -> A -> E -> F -> B -> C -> D -> W,32.316,136.4
+Heavy traffic,260,W -> F -> A -> D -> E -> C -> B -> W,34.093,136.43
+Heavy traffic,261,W -> D -> E -> C -> B -> F -> A -> W,34.077,136.52
+Heavy traffic,262,W -> F -> E -> C -> B -> D -> A -> W,33.213,136.53
+Heavy traffic,263,W -> F -> E -> B -> A -> D -> C -> W,32.302,136.54
+Heavy traffic,264,W -> C -> B -> D -> E -> F -> A -> W,33.668,136.54
+Heavy traffic,265,W -> D -> C -> F -> A -> E -> B -> W,33.394,136.56
+Heavy traffic,266,W -> A -> D -> E -> C -> B -> F -> W,34.15,136.59
+Heavy traffic,267,W -> D -> B -> E -> C -> F -> A -> W,34.293,136.62
+Heavy traffic,268,W -> F -> D -> C -> A -> B -> E -> W,31.968,136.64
+Heavy traffic,269,W -> F -> C -> B -> D -> E -> A -> W,33.771,136.69
+Heavy traffic,270,W -> C -> D -> E -> A -> F -> B -> W,33.224,136.76
+Heavy traffic,271,W -> D -> C -> F -> B -> E -> A -> W,33.451,136.77
+Heavy traffic,272,W -> A -> D -> C -> F -> B -> E -> W,33.451,136.79
+Heavy traffic,273,W -> D -> B -> A -> E -> C -> F -> W,34.612,136.81
+Heavy traffic,274,W -> E -> B -> A -> F -> C -> D -> W,32.304,136.86
+Heavy traffic,275,W -> F -> A -> B -> C -> E -> D -> W,32.809,136.86
+Heavy traffic,276,W -> D -> C -> F -> B -> A -> E -> W,33.697,136.91
+Heavy traffic,277,W -> F -> D -> C -> A -> E -> B -> W,32.905,136.92
+Heavy traffic,278,W -> D -> C -> A -> F -> E -> B -> W,33.148,136.92
+Heavy traffic,279,W -> D -> F -> A -> B -> C -> E -> W,34.409,137.23
+Heavy traffic,280,W -> C -> E -> D -> B -> F -> A -> W,33.731,137.24
+Heavy traffic,281,W -> B -> C -> D -> A -> F -> E -> W,32.241,137.25
+Heavy traffic,282,W -> D -> C -> A -> B -> F -> E -> W,33.451,137.26
+Heavy traffic,283,W -> F -> A -> C -> E -> D -> B -> W,33.729,137.33
+Heavy traffic,284,W -> B -> F -> A -> E -> C -> D -> W,32.714,137.36
+Heavy traffic,285,W -> A -> C -> D -> B -> F -> E -> W,32.299,137.42
+Heavy traffic,286,W -> B -> E -> A -> F -> D -> C -> W,32.85,137.49
+Heavy traffic,287,W -> E -> B -> F -> C -> D -> A -> W,33.28,137.49
+Heavy traffic,288,W -> F -> B -> C -> E -> D -> A -> W,33.785,137.51
+Heavy traffic,289,W -> A -> F -> E -> D -> B -> C -> W,32.767,137.56
+Heavy traffic,290,W -> A -> D -> B -> E -> C -> F -> W,34.366,137.56
+Heavy traffic,291,W -> F -> B -> A -> C -> D -> E -> W,32.342,137.63
+Heavy traffic,292,W -> A -> C -> B -> D -> E -> F -> W,33.723,137.66
+Heavy traffic,293,W -> F -> D -> B -> E -> C -> A -> W,33.804,137.85
+Heavy traffic,294,W -> B -> F -> A -> C -> D -> E -> W,33.206,137.86
+Heavy traffic,295,W -> A -> F -> D -> B -> C -> E -> W,33.306,137.9
+Heavy traffic,296,W -> F -> C -> D -> A -> B -> E -> W,32.359,137.94
+Heavy traffic,297,W -> D -> F -> A -> E -> C -> B -> W,34.837,138.07
+Heavy traffic,298,W -> C -> D -> A -> F -> E -> B -> W,33.193,138.08
+Heavy traffic,299,W -> F -> A -> B -> D -> E -> C -> W,33.202,138.14
+Heavy traffic,300,W -> D -> B -> A -> F -> C -> E -> W,34.85,138.15
+Heavy traffic,301,W -> B -> C -> E -> D -> A -> F -> W,33.728,138.17
+Heavy traffic,302,W -> C -> D -> F -> B -> A -> E -> W,33.104,138.19
+Heavy traffic,303,W -> B -> F -> A -> D -> C -> E -> W,33.178,138.21
+Heavy traffic,304,W -> F -> C -> D -> A -> E -> B -> W,33.296,138.22
+Heavy traffic,305,W -> C -> E -> B -> D -> F -> A -> W,34.209,138.22
+Heavy traffic,306,W -> C -> B -> D -> F -> E -> A -> W,34.485,138.28
+Heavy traffic,307,W -> E -> C -> A -> B -> D -> F -> W,34.001,138.34
+Heavy traffic,308,W -> A -> C -> E -> D -> B -> F -> W,33.786,138.36
+Heavy traffic,309,W -> C -> D -> A -> B -> F -> E -> W,33.496,138.42
+Heavy traffic,310,W -> E -> D -> F -> A -> B -> C -> W,33.554,138.51
+Heavy traffic,311,W -> A -> E -> B -> F -> D -> C -> W,32.907,138.57
+Heavy traffic,312,W -> B -> D -> E -> C -> A -> F -> W,34.121,138.59
+Heavy traffic,313,W -> E -> D -> B -> A -> C -> F -> W,34.248,138.6
+Heavy traffic,314,W -> E -> D -> A -> B -> C -> F -> W,34.247,138.61
+Heavy traffic,315,W -> D -> B -> C -> F -> E -> A -> W,35.078,138.67
+Heavy traffic,316,W -> E -> A -> C -> D -> F -> B -> W,34.023,138.7
+Heavy traffic,317,W -> E -> A -> B -> F -> D -> C -> W,33.153,138.71
+Heavy traffic,318,W -> F -> C -> B -> E -> D -> A -> W,33.803,138.71
+Heavy traffic,319,W -> F -> E -> B -> A -> C -> D -> W,32.329,138.77
+Heavy traffic,320,W -> B -> E -> A -> F -> C -> D -> W,33.241,138.8
+Heavy traffic,321,W -> F -> B -> D -> E -> C -> A -> W,34.178,138.8
+Heavy traffic,322,W -> A -> F -> E -> C -> B -> D -> W,33.158,138.87
+Heavy traffic,323,W -> C -> B -> A -> F -> D -> E -> W,34.504,138.9
+Heavy traffic,324,W -> E -> A -> D -> C -> F -> B -> W,34.634,138.91
+Heavy traffic,325,W -> B -> C -> A -> E -> D -> F -> W,34.546,139.03
+Heavy traffic,326,W -> A -> C -> D -> F -> B -> E -> W,32.84,139.12
+Heavy traffic,327,W -> A -> F -> C -> B -> D -> E -> W,33.698,139.19
+Heavy traffic,328,W -> B -> F -> D -> C -> A -> E -> W,34.072,139.2
+Heavy traffic,329,W -> C -> E -> A -> B -> D -> F -> W,34.528,139.28
+Heavy traffic,330,W -> B -> E -> F -> A -> D -> C -> W,33.166,139.31
+Heavy traffic,331,W -> A -> C -> B -> D -> F -> E -> W,34.467,139.35
+Heavy traffic,332,W -> E -> D -> B -> A -> F -> C -> W,33.995,139.43
+Heavy traffic,333,W -> D -> E -> B -> C -> F -> A -> W,34.802,139.49
+Heavy traffic,334,W -> F -> D -> B -> A -> E -> C -> W,34.068,139.5
+Heavy traffic,335,W -> D -> B -> A -> F -> E -> C -> W,34.311,139.5
+Heavy traffic,336,W -> A -> D -> E -> B -> C -> F -> W,34.875,139.55
+Heavy traffic,337,W -> A -> D -> B -> C -> F -> E -> W,35.078,139.56
+Heavy traffic,338,W -> E -> F -> B -> A -> D -> C -> W,33.469,139.67
+Heavy traffic,339,W -> D -> E -> A -> B -> C -> F -> W,35.121,139.68
+Heavy traffic,340,W -> A -> F -> B -> C -> E -> D -> W,33.73,139.85
+Heavy traffic,341,W -> E -> D -> F -> A -> C -> B -> W,34.473,139.86
+Heavy traffic,342,W -> A -> E -> B -> F -> C -> D -> W,33.298,139.88
+Heavy traffic,343,W -> C -> B -> A -> D -> E -> F -> W,34.893,139.88
+Heavy traffic,344,W -> F -> C -> B -> A -> D -> E -> W,34.923,139.98
+Heavy traffic,345,W -> F -> D -> B -> A -> C -> E -> W,34.559,140.01
+Heavy traffic,346,W -> E -> A -> B -> F -> C -> D -> W,33.544,140.02
+Heavy traffic,347,W -> F -> D -> A -> B -> C -> E -> W,34.558,140.02
+Heavy traffic,348,W -> E -> D -> F -> B -> C -> A -> W,34.53,140.04
+Heavy traffic,349,W -> D -> B -> A -> C -> E -> F -> W,34.875,140.05
+Heavy traffic,350,W -> D -> A -> B -> C -> E -> F -> W,34.874,140.06
+Heavy traffic,351,W -> D -> C -> A -> E -> F -> B -> W,34.388,140.12
+Heavy traffic,352,W -> A -> F -> D -> B -> E -> C -> W,33.749,140.18
+Heavy traffic,353,W -> A -> F -> C -> B -> E -> D -> W,33.748,140.19
+Heavy traffic,354,W -> A -> C -> E -> B -> D -> F -> W,34.264,140.21
+Heavy traffic,355,W -> C -> B -> A -> F -> E -> D -> W,33.964,140.26
+Heavy traffic,356,W -> D -> F -> B -> C -> E -> A -> W,35.403,140.27
+Heavy traffic,357,W -> A -> D -> F -> B -> C -> E -> W,35.403,140.29
+Heavy traffic,358,W -> E -> C -> B -> A -> F -> D -> W,33.994,140.34
+Heavy traffic,359,W -> F -> C -> B -> A -> E -> D -> W,34.067,140.4
+Heavy traffic,360,W -> C -> A -> B -> E -> D -> F -> W,34.561,140.45
+Heavy traffic,361,W -> D -> F -> C -> B -> E -> A -> W,35.421,140.6
+Heavy traffic,362,W -> A -> D -> F -> C -> B -> E -> W,35.421,140.62
+Heavy traffic,363,W -> E -> F -> D -> B -> C -> A -> W,34.516,140.7
+Heavy traffic,364,W -> F -> D -> E -> B -> C -> A -> W,34.313,140.72
+Heavy traffic,365,W -> D -> F -> C -> B -> A -> E -> W,35.667,140.74
+Heavy traffic,366,W -> E -> D -> A -> F -> C -> B -> W,34.913,140.79
+Heavy traffic,367,W -> F -> D -> A -> E -> C -> B -> W,34.986,140.86
+Heavy traffic,368,W -> D -> A -> F -> E -> C -> B -> W,35.229,140.86
+Heavy traffic,369,W -> E -> D -> B -> F -> C -> A -> W,34.971,140.95
+Heavy traffic,370,W -> B -> C -> E -> A -> D -> F -> W,35.419,140.99
+Heavy traffic,371,W -> D -> B -> F -> E -> C -> A -> W,35.287,141.02
+Heavy traffic,372,W -> A -> F -> B -> D -> E -> C -> W,34.123,141.13
+Heavy traffic,373,W -> D -> B -> F -> C -> E -> A -> W,35.844,141.18
+Heavy traffic,374,W -> B -> C -> A -> D -> E -> F -> W,35.812,141.19
+Heavy traffic,375,W -> C -> F -> A -> E -> D -> B -> W,35.13,141.2
+Heavy traffic,376,W -> C -> D -> A -> E -> F -> B -> W,34.433,141.28
+Heavy traffic,377,W -> F -> E -> C -> B -> A -> D -> W,34.383,141.32
+Heavy traffic,378,W -> B -> F -> C -> D -> A -> E -> W,34.463,141.35
+Heavy traffic,379,W -> E -> C -> F -> A -> D -> B -> W,35.476,141.35
+Heavy traffic,380,W -> A -> D -> F -> E -> B -> C -> W,35.391,141.41
+Heavy traffic,381,W -> B -> E -> F -> A -> C -> D -> W,33.193,141.54
+Heavy traffic,382,W -> C -> E -> B -> A -> D -> F -> W,35.434,141.54
+Heavy traffic,383,W -> A -> E -> D -> F -> B -> C -> W,34.548,141.55
+Heavy traffic,384,W -> D -> F -> E -> A -> B -> C -> W,35.637,141.55
+Heavy traffic,385,W -> C -> A -> F -> E -> D -> B -> W,34.884,141.57
+Heavy traffic,386,W -> C -> B -> A -> D -> F -> E -> W,35.637,141.57
+Heavy traffic,387,W -> E -> C -> A -> F -> D -> B -> W,34.914,141.65
+Heavy traffic,388,W -> C -> F -> A -> B -> D -> E -> W,35.094,141.65
+Heavy traffic,389,W -> F -> C -> A -> E -> D -> B -> W,34.987,141.7
+Heavy traffic,390,W -> B -> D -> F -> A -> E -> C -> W,34.883,141.77
+Heavy traffic,391,W -> C -> B -> F -> E -> D -> A -> W,34.94,141.77
+Heavy traffic,392,W -> E -> C -> B -> F -> D -> A -> W,34.97,141.85
+Heavy traffic,393,W -> D -> E -> A -> F -> C -> B -> W,35.787,141.86
+Heavy traffic,394,W -> E -> F -> B -> A -> C -> D -> W,33.496,141.9
+Heavy traffic,395,W -> C -> B -> F -> D -> E -> A -> W,35.498,141.93
+Heavy traffic,396,W -> F -> B -> A -> D -> E -> C -> W,35.348,141.94
+Heavy traffic,397,W -> E -> F -> C -> B -> D -> A -> W,34.907,141.99
+Heavy traffic,398,W -> F -> C -> E -> B -> D -> A -> W,34.704,142.0
+Heavy traffic,399,W -> D -> E -> C -> A -> B -> F -> W,35.33,142.04
+Heavy traffic,400,W -> C -> A -> B -> D -> E -> F -> W,34.921,142.05
+Heavy traffic,401,W -> D -> F -> A -> B -> E -> C -> W,34.852,142.06
+Heavy traffic,402,W -> A -> D -> B -> F -> C -> E -> W,35.844,142.07
+Heavy traffic,403,W -> F -> C -> A -> B -> D -> E -> W,34.951,142.15
+Heavy traffic,404,W -> D -> A -> B -> E -> C -> F -> W,35.545,142.16
+Heavy traffic,405,W -> A -> F -> D -> E -> B -> C -> W,34.258,142.17
+Heavy traffic,406,W -> A -> E -> F -> D -> B -> C -> W,34.534,142.21
+Heavy traffic,407,W -> F -> E -> D -> B -> A -> C -> W,34.02,142.22
+Heavy traffic,408,W -> E -> C -> F -> A -> B -> D -> W,34.584,142.22
+Heavy traffic,409,W -> F -> E -> D -> A -> B -> C -> W,34.019,142.23
+Heavy traffic,410,W -> B -> D -> F -> A -> C -> E -> W,35.374,142.28
+Heavy traffic,411,W -> F -> D -> A -> B -> E -> C -> W,35.001,142.3
+Heavy traffic,412,W -> F -> D -> E -> A -> B -> C -> W,34.577,142.37
+Heavy traffic,413,W -> D -> E -> F -> A -> B -> C -> W,34.82,142.37
+Heavy traffic,414,W -> D -> F -> E -> B -> C -> A -> W,35.373,142.43
+Heavy traffic,415,W -> D -> B -> A -> E -> F -> C -> W,36.078,142.47
+Heavy traffic,416,W -> B -> F -> E -> A -> D -> C -> W,34.406,142.5
+Heavy traffic,417,W -> A -> D -> F -> B -> E -> C -> W,35.846,142.57
+Heavy traffic,418,W -> C -> E -> A -> F -> D -> B -> W,35.441,142.59
+Heavy traffic,419,W -> A -> E -> B -> D -> F -> C -> W,35.467,142.63
+Heavy traffic,420,W -> F -> E -> C -> A -> D -> B -> W,35.303,142.64
+Heavy traffic,421,W -> D -> F -> B -> A -> E -> C -> W,36.092,142.69
+Heavy traffic,422,W -> B -> D -> A -> E -> C -> F -> W,35.576,142.75
+Heavy traffic,423,W -> E -> A -> B -> D -> F -> C -> W,35.713,142.77
+Heavy traffic,424,W -> C -> E -> D -> A -> B -> F -> W,34.983,142.78
+Heavy traffic,425,W -> B -> C -> A -> F -> D -> E -> W,35.423,142.78
+Heavy traffic,426,W -> F -> C -> E -> A -> D -> B -> W,35.86,142.79
+Heavy traffic,427,W -> E -> B -> D -> F -> C -> A -> W,35.449,142.8
+Heavy traffic,428,W -> B -> D -> A -> F -> E -> C -> W,35.275,142.89
+Heavy traffic,429,W -> A -> D -> E -> F -> B -> C -> W,35.814,142.89
+Heavy traffic,430,W -> A -> C -> B -> F -> D -> E -> W,35.48,142.98
+Heavy traffic,431,W -> B -> D -> E -> A -> F -> C -> W,35.833,143.03
+Heavy traffic,432,W -> A -> D -> B -> E -> F -> C -> W,35.832,143.22
+Heavy traffic,433,W -> D -> E -> B -> A -> F -> C -> W,35.802,143.3
+Heavy traffic,434,W -> A -> E -> D -> B -> F -> C -> W,34.989,143.33
+Heavy traffic,435,W -> A -> E -> C -> B -> F -> D -> W,34.988,143.35
+Heavy traffic,436,W -> B -> C -> F -> A -> D -> E -> W,35.985,143.36
+Heavy traffic,437,W -> D -> B -> E -> F -> C -> A -> W,35.814,143.37
+Heavy traffic,438,W -> A -> D -> B -> F -> E -> C -> W,35.305,143.42
+Heavy traffic,439,W -> B -> D -> A -> C -> E -> F -> W,35.839,143.42
+Heavy traffic,440,W -> F -> E -> C -> A -> B -> D -> W,34.411,143.51
+Heavy traffic,441,W -> C -> E -> F -> A -> D -> B -> W,35.757,143.53
+Heavy traffic,442,W -> F -> E -> D -> A -> C -> B -> W,34.938,143.58
+Heavy traffic,443,W -> D -> F -> B -> E -> C -> A -> W,35.828,143.59
+Heavy traffic,444,W -> E -> A -> D -> F -> C -> B -> W,36.604,143.61
+Heavy traffic,445,W -> F -> C -> E -> A -> B -> D -> W,34.968,143.66
+Heavy traffic,446,W -> F -> D -> E -> A -> C -> B -> W,35.496,143.72
+Heavy traffic,447,W -> D -> E -> F -> A -> C -> B -> W,35.739,143.72
+Heavy traffic,448,W -> E -> C -> F -> B -> D -> A -> W,35.56,143.74
+Heavy traffic,449,W -> C -> A -> B -> D -> F -> E -> W,35.665,143.74
+Heavy traffic,450,W -> C -> F -> D -> B -> E -> A -> W,35.714,143.74
+Heavy traffic,451,W -> B -> C -> F -> A -> E -> D -> W,35.129,143.78
+Heavy traffic,452,W -> C -> F -> B -> D -> E -> A -> W,36.088,143.82
+Heavy traffic,453,W -> C -> F -> D -> B -> A -> E -> W,35.96,143.88
+Heavy traffic,454,W -> D -> E -> F -> B -> C -> A -> W,35.796,143.91
+Heavy traffic,455,W -> E -> B -> C -> F -> D -> A -> W,35.695,143.92
+Heavy traffic,456,W -> C -> B -> E -> F -> D -> A -> W,35.467,144.09
+Heavy traffic,457,W -> B -> D -> A -> F -> C -> E -> W,35.814,144.09
+Heavy traffic,458,W -> B -> E -> D -> F -> A -> C -> W,35.425,144.13
+Heavy traffic,459,W -> B -> C -> A -> F -> E -> D -> W,34.883,144.14
+Heavy traffic,460,W -> D -> B -> A -> C -> F -> E -> W,36.258,144.15
+Heavy traffic,461,W -> D -> A -> B -> C -> F -> E -> W,36.257,144.16
+Heavy traffic,462,W -> B -> E -> C -> A -> D -> F -> W,35.844,144.31
+Heavy traffic,463,W -> A -> F -> C -> E -> B -> D -> W,34.649,144.34
+Heavy traffic,464,W -> A -> C -> B -> F -> E -> D -> W,34.94,144.34
+Heavy traffic,465,W -> A -> E -> F -> C -> B -> D -> W,34.925,144.38
+Heavy traffic,466,W -> C -> E -> F -> A -> B -> D -> W,34.865,144.4
+Heavy traffic,467,W -> E -> D -> F -> B -> A -> C -> W,35.728,144.48
+Heavy traffic,468,W -> B -> F -> A -> D -> E -> C -> W,36.212,144.72
+Heavy traffic,469,W -> B -> F -> E -> A -> C -> D -> W,34.433,144.73
+Heavy traffic,470,W -> B -> D -> E -> A -> C -> F -> W,36.086,144.75
+Heavy traffic,471,W -> A -> C -> F -> D -> B -> E -> W,35.696,144.81
+Heavy traffic,472,W -> D -> E -> C -> A -> F -> B -> W,36.194,144.86
+Heavy traffic,473,W -> B -> D -> E -> F -> A -> C -> W,35.785,144.88
+Heavy traffic,474,W -> D -> E -> B -> A -> C -> F -> W,36.055,145.02
+Heavy traffic,475,W -> B -> E -> D -> A -> C -> F -> W,36.118,145.09
+Heavy traffic,476,W -> E -> F -> D -> B -> A -> C -> W,35.714,145.14
+Heavy traffic,477,W -> E -> F -> D -> A -> B -> C -> W,35.713,145.15
+Heavy traffic,478,W -> B -> C -> E -> A -> F -> D -> W,35.44,145.16
+Heavy traffic,479,W -> F -> D -> E -> B -> A -> C -> W,35.511,145.16
+Heavy traffic,480,W -> C -> F -> A -> B -> E -> D -> W,35.144,145.2
+Heavy traffic,481,W -> F -> B -> A -> C -> E -> D -> W,34.983,145.4
+Heavy traffic,482,W -> E -> D -> A -> B -> F -> C -> W,36.168,145.4
+Heavy traffic,483,W -> D -> F -> A -> C -> E -> B -> W,36.28,145.4
+Heavy traffic,484,W -> D -> F -> E -> A -> C -> B -> W,36.556,145.45
+Heavy traffic,485,W -> B -> C -> A -> D -> F -> E -> W,36.556,145.45
+Heavy traffic,486,W -> D -> A -> B -> F -> E -> C -> W,36.484,145.47
+Heavy traffic,487,W -> C -> E -> D -> A -> F -> B -> W,35.847,145.6
+Heavy traffic,488,W -> F -> C -> A -> B -> E -> D -> W,35.001,145.7
+Heavy traffic,489,W -> C -> E -> B -> A -> F -> D -> W,35.455,145.71
+Heavy traffic,490,W -> D -> F -> B -> A -> C -> E -> W,36.583,145.75
+Heavy traffic,491,W -> A -> C -> F -> B -> D -> E -> W,36.07,145.76
+Heavy traffic,492,W -> C -> B -> A -> E -> F -> D -> W,35.731,145.78
+Heavy traffic,493,W -> B -> D -> F -> C -> A -> E -> W,36.632,145.79
+Heavy traffic,494,W -> C -> F -> B -> E -> D -> A -> W,36.12,145.85
+Heavy traffic,495,W -> C -> E -> F -> B -> D -> A -> W,35.841,145.92
+Heavy traffic,496,W -> B -> E -> D -> A -> F -> C -> W,35.865,145.94
+Heavy traffic,497,W -> E -> B -> A -> D -> F -> C -> W,36.619,145.94
+Heavy traffic,498,W -> D -> F -> C -> A -> B -> E -> W,36.601,146.07
+Heavy traffic,499,W -> B -> C -> E -> F -> A -> D -> W,35.756,146.1
+Heavy traffic,500,W -> A -> E -> C -> F -> B -> D -> W,35.578,146.13
+Heavy traffic,501,W -> A -> E -> B -> C -> F -> D -> W,35.713,146.31
+Heavy traffic,502,W -> D -> A -> F -> C -> E -> B -> W,36.72,146.33
+Heavy traffic,503,W -> A -> D -> E -> B -> F -> C -> W,36.796,146.34
+Heavy traffic,504,W -> D -> A -> E -> F -> C -> B -> W,36.996,146.38
+Heavy traffic,505,W -> C -> A -> E -> D -> F -> B -> W,36.665,146.44
+Heavy traffic,506,W -> E -> A -> B -> C -> F -> D -> W,35.959,146.45
+Heavy traffic,507,W -> D -> E -> A -> B -> F -> C -> W,37.042,146.47
+Heavy traffic,508,W -> B -> D -> F -> E -> A -> C -> W,36.602,146.61
+Heavy traffic,509,W -> D -> A -> B -> F -> C -> E -> W,37.023,146.67
+Heavy traffic,510,W -> A -> C -> B -> E -> F -> D -> W,35.467,146.69
+Heavy traffic,511,W -> E -> F -> C -> B -> A -> D -> W,36.077,146.78
+Heavy traffic,512,W -> F -> C -> E -> B -> A -> D -> W,35.874,146.79
+Heavy traffic,513,W -> C -> F -> E -> B -> D -> A -> W,36.057,146.86
+Heavy traffic,514,W -> D -> F -> E -> B -> A -> C -> W,36.571,146.87
+Heavy traffic,515,W -> E -> A -> C -> F -> D -> B -> W,36.879,146.92
+Heavy traffic,516,W -> C -> A -> F -> D -> E -> B -> W,36.375,147.04
+Heavy traffic,517,W -> C -> A -> E -> F -> D -> B -> W,36.651,147.08
+Heavy traffic,518,W -> C -> F -> B -> A -> D -> E -> W,37.24,147.09
+Heavy traffic,519,W -> C -> E -> B -> F -> D -> A -> W,36.431,147.22
+Heavy traffic,520,W -> C -> A -> B -> F -> D -> E -> W,36.678,147.37
+Heavy traffic,521,W -> D -> E -> B -> F -> C -> A -> W,36.778,147.37
+Heavy traffic,522,W -> E -> C -> A -> D -> F -> B -> W,37.011,147.48
+Heavy traffic,523,W -> C -> F -> B -> A -> E -> D -> W,36.384,147.51
+Heavy traffic,524,W -> B -> D -> A -> C -> F -> E -> W,37.222,147.53
+Heavy traffic,525,W -> C -> F -> A -> D -> E -> B -> W,36.937,147.63
+Heavy traffic,526,W -> C -> F -> E -> A -> D -> B -> W,37.213,147.65
+Heavy traffic,527,W -> B -> C -> F -> D -> A -> E -> W,36.878,147.79
+Heavy traffic,528,W -> D -> A -> B -> E -> F -> C -> W,37.011,147.82
+Heavy traffic,529,W -> B -> E -> A -> D -> F -> C -> W,37.556,147.87
+Heavy traffic,530,W -> E -> F -> C -> A -> D -> B -> W,36.997,148.1
+Heavy traffic,531,W -> F -> C -> A -> D -> E -> B -> W,36.794,148.13
+Heavy traffic,532,W -> D -> A -> E -> C -> F -> B -> W,37.649,148.15
+Heavy traffic,533,W -> B -> F -> A -> C -> E -> D -> W,35.847,148.18
+Heavy traffic,534,W -> B -> E -> C -> F -> A -> D -> W,36.427,148.18
+Heavy traffic,535,W -> F -> D -> A -> C -> E -> B -> W,36.429,148.19
+Heavy traffic,536,W -> B -> F -> D -> A -> E -> C -> W,37.105,148.26
+Heavy traffic,537,W -> D -> E -> F -> B -> A -> C -> W,36.994,148.35
+Heavy traffic,538,W -> B -> D -> A -> E -> F -> C -> W,37.042,148.41
+Heavy traffic,539,W -> C -> E -> A -> D -> F -> B -> W,37.538,148.42
+Heavy traffic,540,W -> B -> E -> C -> A -> F -> D -> W,35.865,148.48
+Heavy traffic,541,W -> A -> C -> E -> F -> B -> D -> W,35.841,148.51
+Heavy traffic,542,W -> C -> F -> E -> A -> B -> D -> W,36.321,148.52
+Heavy traffic,543,W -> E -> C -> F -> B -> A -> D -> W,36.73,148.53
+Heavy traffic,544,W -> C -> A -> B -> F -> E -> D -> W,36.138,148.73
+Heavy traffic,545,W -> B -> F -> D -> A -> C -> E -> W,37.596,148.76
+Heavy traffic,546,W -> E -> C -> A -> B -> F -> D -> W,36.168,148.81
+Heavy traffic,547,W -> D -> F -> C -> A -> E -> B -> W,37.538,148.9
+Heavy traffic,548,W -> E -> F -> C -> A -> B -> D -> W,36.105,148.97
+Heavy traffic,549,W -> E -> F -> D -> A -> C -> B -> W,36.632,149.05
+Heavy traffic,550,W -> C -> F -> E -> B -> A -> D -> W,37.227,149.09
+Heavy traffic,551,W -> D -> C -> B -> E -> A -> F -> W,38.462,149.09
+Heavy traffic,552,W -> B -> F -> C -> A -> E -> D -> W,37.105,149.12
+Heavy traffic,553,W -> F -> A -> D -> C -> B -> E -> W,38.462,149.12
+Heavy traffic,554,W -> C -> F -> D -> A -> B -> E -> W,36.893,149.23
+Heavy traffic,555,W -> E -> B -> A -> C -> F -> D -> W,36.893,149.25
+Heavy traffic,556,W -> A -> C -> F -> B -> E -> D -> W,36.12,149.31
+Heavy traffic,557,W -> A -> C -> F -> E -> B -> D -> W,36.057,149.44
+Heavy traffic,558,W -> B -> C -> A -> E -> F -> D -> W,36.65,149.66
+Heavy traffic,559,W -> C -> A -> D -> F -> E -> B -> W,37.508,149.72
+Heavy traffic,560,W -> C -> E -> A -> B -> F -> D -> W,36.695,149.75
+Heavy traffic,561,W -> E -> D -> A -> C -> F -> B -> W,37.285,149.94
+Heavy traffic,562,W -> B -> F -> E -> C -> A -> D -> W,37.421,150.06
+Heavy traffic,563,W -> B -> F -> C -> E -> A -> D -> W,37.978,150.22
+Heavy traffic,564,W -> C -> D -> B -> E -> A -> F -> W,38.508,150.22
+Heavy traffic,565,W -> B -> C -> F -> E -> A -> D -> W,37.212,150.24
+Heavy traffic,566,W -> B -> F -> D -> E -> A -> C -> W,37.615,150.28
+Heavy traffic,567,W -> A -> C -> E -> B -> F -> D -> W,36.431,150.68
+Heavy traffic,568,W -> C -> E -> F -> B -> A -> D -> W,37.011,150.71
+Heavy traffic,569,W -> B -> F -> E -> D -> A -> C -> W,37.057,150.98
+Heavy traffic,570,W -> D -> E -> A -> C -> F -> B -> W,38.159,151.01
+Heavy traffic,571,W -> C -> A -> B -> E -> F -> D -> W,36.665,151.08
+Heavy traffic,572,W -> F -> A -> E -> B -> D -> C -> W,38.508,151.12
+Heavy traffic,573,W -> F -> A -> E -> B -> C -> D -> W,38.507,151.13
+Heavy traffic,574,W -> C -> A -> D -> E -> F -> B -> W,37.931,151.19
+Heavy traffic,575,W -> B -> E -> A -> C -> F -> D -> W,37.83,151.2
+Heavy traffic,576,W -> B -> F -> C -> A -> D -> E -> W,37.961,151.26
+Heavy traffic,577,W -> E -> B -> D -> C -> A -> F -> W,38.49,151.27
+Heavy traffic,578,W -> E -> B -> C -> D -> A -> F -> W,38.489,151.28
+Heavy traffic,579,W -> F -> A -> C -> D -> B -> E -> W,38.49,151.32
+Heavy traffic,580,W -> D -> A -> C -> E -> F -> B -> W,37.912,151.39
+Heavy traffic,581,W -> C -> F -> D -> A -> E -> B -> W,37.83,152.06
+Heavy traffic,582,W -> E -> D -> B -> C -> A -> F -> W,40.18,152.2
+Heavy traffic,583,W -> D -> C -> B -> F -> A -> E -> W,39.629,152.21
+Heavy traffic,584,W -> E -> A -> D -> C -> B -> F -> W,39.702,152.26
+Heavy traffic,585,W -> D -> A -> C -> F -> E -> B -> W,38.128,152.33
+Heavy traffic,586,W -> B -> E -> F -> C -> A -> D -> W,37.948,152.38
+Heavy traffic,587,W -> D -> B -> C -> E -> A -> F -> W,41.053,152.43
+Heavy traffic,588,W -> B -> E -> F -> D -> A -> C -> W,37.584,153.31
+Heavy traffic,589,W -> C -> D -> B -> F -> A -> E -> W,39.675,153.34
+Heavy traffic,590,W -> F -> A -> D -> B -> C -> E -> W,41.053,153.34
+Heavy traffic,591,W -> E -> A -> F -> B -> D -> C -> W,39.675,153.38
+Heavy traffic,592,W -> E -> A -> F -> B -> C -> D -> W,39.674,153.39
+Heavy traffic,593,W -> E -> B -> F -> A -> D -> C -> W,40.581,153.94
+Heavy traffic,594,W -> F -> B -> E -> A -> D -> C -> W,40.654,154.0
+Heavy traffic,595,W -> E -> C -> B -> D -> A -> F -> W,40.571,154.37
+Heavy traffic,596,W -> C -> B -> D -> E -> A -> F -> W,41.099,154.45
+Heavy traffic,597,W -> E -> A -> C -> D -> B -> F -> W,39.73,154.46
+Heavy traffic,598,W -> F -> B -> D -> C -> A -> E -> W,39.73,154.48
+Heavy traffic,599,W -> F -> B -> C -> D -> A -> E -> W,39.729,154.49
+Heavy traffic,600,W -> F -> A -> E -> D -> B -> C -> W,40.198,154.61
+Heavy traffic,601,W -> F -> A -> C -> B -> D -> E -> W,41.081,155.52
+Heavy traffic,602,W -> F -> A -> D -> B -> E -> C -> W,41.496,155.62
+Heavy traffic,603,W -> D -> B -> E -> C -> A -> F -> W,41.478,155.75
+Heavy traffic,604,W -> F -> A -> E -> C -> B -> D -> W,40.589,155.9
+Heavy traffic,605,W -> C -> B -> D -> F -> A -> E -> W,41.843,156.12
+Heavy traffic,606,W -> C -> D -> A -> E -> B -> F -> W,40.681,156.17
+Heavy traffic,607,W -> C -> B -> E -> D -> A -> F -> W,41.131,156.47
+Heavy traffic,608,W -> D -> B -> C -> F -> A -> E -> W,42.436,156.51
+Heavy traffic,609,W -> E -> A -> C -> B -> D -> F -> W,41.898,157.22
+Heavy traffic,610,W -> E -> A -> D -> B -> C -> F -> W,42.509,157.44
+Heavy traffic,611,W -> D -> C -> A -> F -> B -> E -> W,40.563,157.55
+Heavy traffic,612,W -> D -> C -> A -> E -> B -> F -> W,40.636,157.56
+Heavy traffic,613,W -> F -> D -> B -> C -> A -> E -> W,41.947,157.74
+Heavy traffic,614,W -> D -> B -> C -> A -> F -> E -> W,42.19,157.75
+Heavy traffic,615,W -> D -> B -> C -> A -> E -> F -> W,42.263,157.78
+Heavy traffic,616,W -> D -> B -> F -> A -> E -> C -> W,42.663,157.83
+Heavy traffic,617,W -> D -> E -> B -> C -> A -> F -> W,41.987,158.62
+Heavy traffic,618,W -> C -> D -> A -> F -> B -> E -> W,40.608,158.71
+Heavy traffic,619,W -> E -> B -> F -> A -> C -> D -> W,40.608,158.72
+Heavy traffic,620,W -> F -> B -> E -> A -> C -> D -> W,40.681,158.78
+Heavy traffic,621,W -> D -> A -> E -> C -> B -> F -> W,42.717,158.95
+Heavy traffic,622,W -> F -> A -> C -> B -> E -> D -> W,41.131,159.08
+Heavy traffic,623,W -> E -> A -> F -> D -> B -> C -> W,41.892,159.2
+Heavy traffic,624,W -> C -> B -> E -> A -> D -> F -> W,42.822,159.29
+Heavy traffic,625,W -> C -> A -> E -> D -> B -> F -> W,42.372,159.65
+Heavy traffic,626,W -> C -> E -> B -> D -> A -> F -> W,42.032,159.76
+Heavy traffic,627,W -> C -> B -> D -> A -> F -> E -> W,42.235,159.77
+Heavy traffic,628,W -> C -> B -> D -> A -> E -> F -> W,42.308,159.8
+Heavy traffic,629,W -> F -> C -> B -> D -> A -> E -> W,42.338,159.9
+Heavy traffic,630,W -> F -> A -> D -> E -> B -> C -> W,42.005,160.17
+Heavy traffic,631,W -> D -> B -> E -> A -> F -> C -> W,43.19,160.19
+Heavy traffic,632,W -> D -> F -> A -> C -> B -> E -> W,42.731,160.31
+Heavy traffic,633,W -> E -> B -> C -> A -> D -> F -> W,42.804,160.34
+Heavy traffic,634,W -> E -> A -> F -> C -> B -> D -> W,42.283,160.49
+Heavy traffic,635,W -> E -> C -> A -> D -> B -> F -> W,42.718,160.69
+Heavy traffic,636,W -> C -> B -> F -> A -> D -> E -> W,43.172,160.71
+Heavy traffic,637,W -> E -> D -> A -> C -> B -> F -> W,42.353,160.74
+Heavy traffic,638,W -> D -> B -> F -> A -> C -> E -> W,43.154,160.89
+Heavy traffic,639,W -> D -> A -> F -> B -> C -> E -> W,43.153,160.92
+Heavy traffic,640,W -> F -> B -> D -> A -> E -> C -> W,42.763,160.98
+Heavy traffic,641,W -> E -> F -> A -> D -> B -> C -> W,42.208,161.03
+Heavy traffic,642,W -> F -> E -> A -> D -> B -> C -> W,42.281,161.08
+Heavy traffic,643,W -> C -> B -> F -> A -> E -> D -> W,42.316,161.14
+Heavy traffic,644,W -> D -> A -> F -> C -> B -> E -> W,43.171,161.24
+Heavy traffic,645,W -> C -> A -> E -> B -> D -> F -> W,42.85,161.47
+Heavy traffic,646,W -> C -> E -> A -> D -> B -> F -> W,43.245,161.63
+Heavy traffic,647,W -> D -> F -> A -> E -> B -> C -> W,42.749,161.81
+Heavy traffic,648,W -> D -> E -> A -> C -> B -> F -> W,43.227,161.81
+Heavy traffic,649,W -> F -> B -> C -> A -> D -> E -> W,43.227,161.82
+Heavy traffic,650,W -> D -> A -> E -> B -> C -> F -> W,43.442,161.89
+Heavy traffic,651,W -> D -> B -> E -> A -> C -> F -> W,43.443,161.9
+Heavy traffic,652,W -> C -> A -> F -> D -> B -> E -> W,42.826,161.95
+Heavy traffic,653,W -> E -> C -> B -> F -> A -> D -> W,42.662,162.16
+Heavy traffic,654,W -> E -> D -> B -> F -> A -> C -> W,42.299,162.18
+Heavy traffic,655,W -> E -> D -> A -> F -> B -> C -> W,42.298,162.21
+Heavy traffic,656,W -> F -> B -> C -> A -> E -> D -> W,42.371,162.25
+Heavy traffic,657,W -> F -> A -> C -> E -> B -> D -> W,42.032,162.36
+Heavy traffic,658,W -> C -> F -> A -> D -> B -> E -> W,43.388,162.54
+Heavy traffic,659,W -> C -> A -> F -> B -> D -> E -> W,43.2,162.91
+Heavy traffic,660,W -> C -> A -> D -> B -> E -> F -> W,43.215,162.94
+Heavy traffic,661,W -> F -> C -> A -> D -> B -> E -> W,43.245,163.04
+Heavy traffic,662,W -> F -> D -> A -> C -> B -> E -> W,42.88,163.1
+Heavy traffic,663,W -> D -> A -> C -> B -> E -> F -> W,43.196,163.14
+Heavy traffic,664,W -> D -> A -> F -> B -> E -> C -> W,43.596,163.2
+Heavy traffic,665,W -> E -> F -> A -> C -> B -> D -> W,42.235,163.22
+Heavy traffic,666,W -> E -> B -> D -> A -> F -> C -> W,43.217,163.25
+Heavy traffic,667,W -> F -> E -> A -> C -> B -> D -> W,42.308,163.27
+Heavy traffic,668,W -> D -> E -> A -> F -> B -> C -> W,43.172,163.28
+Heavy traffic,669,W -> F -> B -> C -> E -> A -> D -> W,43.244,163.35
+Heavy traffic,670,W -> C -> B -> E -> A -> F -> D -> W,42.843,163.47
+Heavy traffic,671,W -> D -> F -> B -> C -> A -> E -> W,43.971,163.48
+Heavy traffic,672,W -> C -> A -> F -> B -> E -> D -> W,43.25,163.91
+Heavy traffic,673,W -> E -> B -> D -> F -> A -> C -> W,42.777,164.03
+Heavy traffic,674,W -> F -> B -> D -> A -> C -> E -> W,43.254,164.04
+Heavy traffic,675,W -> E -> B -> C -> F -> A -> D -> W,43.387,164.23
+Heavy traffic,676,W -> E -> A -> D -> B -> F -> C -> W,44.43,164.24
+Heavy traffic,677,W -> E -> C -> A -> F -> B -> D -> W,42.69,164.36
+Heavy traffic,678,W -> D -> B -> F -> C -> A -> E -> W,44.412,164.39
+Heavy traffic,679,W -> C -> B -> E -> F -> A -> D -> W,43.159,164.4
+Heavy traffic,680,W -> E -> B -> C -> A -> F -> D -> W,42.825,164.52
+Heavy traffic,681,W -> F -> C -> B -> E -> A -> D -> W,43.262,164.55
+Heavy traffic,682,W -> F -> D -> A -> E -> B -> C -> W,42.898,164.6
+Heavy traffic,683,W -> D -> A -> F -> E -> B -> C -> W,43.141,164.6
+Heavy traffic,684,W -> D -> B -> E -> F -> A -> C -> W,43.142,164.6
+Heavy traffic,685,W -> F -> D -> B -> E -> A -> C -> W,42.899,164.61
+Heavy traffic,686,W -> E -> B -> D -> A -> C -> F -> W,43.47,164.96
+Heavy traffic,687,W -> E -> A -> D -> F -> B -> C -> W,43.989,165.03
+Heavy traffic,688,W -> C -> B -> F -> D -> A -> E -> W,44.065,165.14
+Heavy traffic,689,W -> D -> A -> E -> F -> B -> C -> W,44.381,165.23
+Heavy traffic,690,W -> C -> E -> A -> F -> B -> D -> W,43.217,165.3
+Heavy traffic,691,W -> F -> B -> D -> E -> A -> C -> W,43.273,165.56
+Heavy traffic,692,W -> F -> E -> B -> D -> A -> C -> W,43.242,166.03
+Heavy traffic,693,W -> D -> E -> B -> F -> A -> C -> W,44.106,166.03
+Heavy traffic,694,W -> C -> A -> D -> E -> B -> F -> W,44.179,166.08
+Heavy traffic,695,W -> C -> A -> D -> B -> F -> E -> W,44.382,166.08
+Heavy traffic,696,W -> C -> F -> A -> E -> B -> D -> W,43.433,166.23
+Heavy traffic,697,W -> D -> A -> C -> E -> B -> F -> W,44.16,166.28
+Heavy traffic,698,W -> D -> A -> C -> B -> F -> E -> W,44.363,166.28
+Heavy traffic,699,W -> F -> E -> B -> C -> A -> D -> W,43.214,166.39
+Heavy traffic,700,W -> C -> A -> F -> E -> B -> D -> W,43.187,166.6
+Heavy traffic,701,W -> F -> B -> E -> C -> A -> D -> W,43.669,166.66
+Heavy traffic,702,W -> F -> C -> A -> E -> B -> D -> W,43.29,166.73
+Heavy traffic,703,W -> C -> F -> B -> D -> A -> E -> W,44.655,167.03
+Heavy traffic,704,W -> C -> E -> B -> F -> A -> D -> W,44.123,167.53
+Heavy traffic,705,W -> F -> B -> E -> D -> A -> C -> W,43.305,167.58
+Heavy traffic,706,W -> C -> B -> F -> E -> A -> D -> W,44.399,167.61
+Heavy traffic,707,W -> E -> A -> C -> B -> F -> D -> W,44.065,167.7
+Heavy traffic,708,W -> D -> B -> F -> E -> A -> C -> W,44.382,167.78
+Heavy traffic,709,W -> C -> A -> D -> F -> B -> E -> W,44.923,167.78
+Heavy traffic,710,W -> D -> F -> B -> E -> A -> C -> W,44.923,167.78
+Heavy traffic,711,W -> D -> A -> E -> B -> F -> C -> W,45.363,168.69
+Heavy traffic,712,W -> E -> F -> B -> D -> A -> C -> W,44.409,169.16
+Heavy traffic,713,W -> C -> A -> E -> B -> F -> D -> W,45.017,169.4
+Heavy traffic,714,W -> E -> F -> B -> C -> A -> D -> W,44.381,169.52
+Heavy traffic,715,W -> E -> A -> C -> F -> B -> D -> W,44.655,169.63
+Heavy traffic,716,W -> C -> A -> E -> F -> B -> D -> W,44.427,169.79
+Heavy traffic,717,W -> D -> A -> C -> F -> B -> E -> W,45.543,170.39
+Heavy traffic,718,W -> E -> B -> F -> D -> A -> C -> W,44.999,170.48
+Heavy traffic,719,W -> C -> F -> B -> E -> A -> D -> W,45.579,171.69
+Heavy traffic,720,W -> E -> B -> F -> C -> A -> D -> W,45.363,172.13

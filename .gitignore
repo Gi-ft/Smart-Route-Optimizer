@@ -1,15 +1,38 @@
-.venv/
+# Python bytecode and test/type-checker caches
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
-# Local application and tool caches
-cache/
-.streamlit/secrets.toml
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
 
-# Local environment and generated logs
+# Local credentials and environment files
 .env
 .env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Runtime and temporary files
+cache/
 *.log
+*.tmp
+*.temp
+*.bak
+~$*
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Legacy duplicate scenario export (the versioned six-customer output is kept)
+/data/processed/scenario_route_comparison.csv

@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DISTANCE_FILE = (
     BASE_DIR / "data" / "processed" /
-    "distance_matrix_km.csv"
+    "distance_matrix_6_customers_km.csv"
 )
 
 OUTPUT_FILE = (
     BASE_DIR / "data" / "processed" /
-    "integrated_delivery_results.csv"
+    "integrated_delivery_results_6_customers.csv"
 )
 
 

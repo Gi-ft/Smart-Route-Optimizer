@@ -11,6 +11,7 @@ from pathlib import Path
 import math
 import inspect
 
+import networkx as nx
 import pandas as pd
 import osmnx as ox
 
@@ -23,7 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 RAW_DATA_DIR = BASE_DIR / "data" / "raw"
 RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-LOCATION_FILE = RAW_DATA_DIR / "delivery_locations.csv"
+LOCATION_FILE = RAW_DATA_DIR / "delivery_locations_6_customers.csv"
+GRAPH_FILE = RAW_DATA_DIR / "mwihoko_githurai_road_network_6_customers.graphml"
+SNAPPED_FILE = RAW_DATA_DIR / "snapped_delivery_locations_6_customers.csv"
+SNAP_WARNING_DISTANCE_M = 100
 
 # --------------------------------------------------
 # 2. CONFIGURATION
@@ -109,22 +113,18 @@ def save_road_network(G):
 
     print("\nSaving road network files...")
 
-    graph_file = (
-        RAW_DATA_DIR / "mwihoko_githurai_road_network.graphml"
-    )
-
-    ox.save_graphml(G, filepath=graph_file)
+    ox.save_graphml(G, filepath=GRAPH_FILE)
 
     # Convert graph into GeoDataFrames
     nodes, edges = ox.graph_to_gdfs(G)
 
     nodes.drop(columns="geometry").to_csv(
-        RAW_DATA_DIR / "road_nodes.csv",
+        RAW_DATA_DIR / "road_nodes_6_customers.csv",
         index=True
     )
 
     edges.drop(columns="geometry").reset_index().to_csv(
-        RAW_DATA_DIR / "road_edges.csv",
+        RAW_DATA_DIR / "road_edges_6_customers.csv",
         index=False
     )
 
@@ -193,11 +193,8 @@ def snap_locations_to_roads(G, locations):
 
     locations["snap_distance_m"] = snap_distances
 
-    output_file = (
-        RAW_DATA_DIR / "snapped_delivery_locations.csv"
-    )
-
-    locations.to_csv(output_file, index=False)
+    locations["snap_warning"] = locations["snap_distance_m"] > SNAP_WARNING_DISTANCE_M
+    locations.to_csv(SNAPPED_FILE, index=False)
 
     print("\nLOCATION MAPPING RESULTS")
     print("-" * 60)
@@ -208,14 +205,39 @@ def snap_locations_to_roads(G, locations):
                 "location_id",
                 "location_name",
                 "nearest_road_node",
-                "snap_distance_m"
+                "snap_distance_m",
+                "snap_warning"
             ]
         ].to_string(index=False)
     )
 
-    print(f"\nSaved to: {output_file}")
+    print(f"\nSaved to: {SNAPPED_FILE}")
 
     return locations
+
+
+def validate_location_connectivity(G, snapped_locations):
+    """Confirm every ordered pair is connected in the directed road graph."""
+    node_by_id = dict(zip(
+        snapped_locations["location_id"],
+        snapped_locations["nearest_road_node"].astype(int),
+    ))
+    failures = []
+    for origin, origin_node in node_by_id.items():
+        for destination, destination_node in node_by_id.items():
+            if origin == destination:
+                continue
+            try:
+                nx.shortest_path_length(
+                    G, origin_node, destination_node, weight="length"
+                )
+            except (nx.NetworkXNoPath, nx.NodeNotFound):
+                failures.append(f"{origin}->{destination}")
+    if failures:
+        raise RuntimeError(
+            "Disconnected delivery pairs in road graph: " + ", ".join(failures)
+        )
+    print("All 42 directional delivery paths are connected.")
 
 
 # --------------------------------------------------
@@ -231,12 +253,12 @@ def main():
 
     locations = pd.read_csv(LOCATION_FILE)
 
-    if len(locations) != 4:
+    if len(locations) != 7:
         raise ValueError(
-            "Expected one warehouse and three customers."
+            "Expected one warehouse and six customers."
         )
 
-    if locations["location_id"].nunique() != 4:
+    if locations["location_id"].nunique() != 7:
         raise ValueError("Location IDs must be unique.")
 
     print("DELIVERY LOCATIONS")
@@ -246,6 +268,8 @@ def main():
         calculate_bounding_box(locations)
     )
 
+    # Always extract a fresh graph for the expanded extent. The legacy graph
+    # remains untouched and is not used as the six-customer network.
     G = download_road_network(
         north, south, east, west
     )
@@ -255,6 +279,7 @@ def main():
     snapped_locations = snap_locations_to_roads(
         G, locations
     )
+    validate_location_connectivity(G, snapped_locations)
 
     print("\n" + "=" * 50)
     print("STAGE 5 COMPLETED SUCCESSFULLY")

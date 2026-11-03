@@ -9,18 +9,15 @@ from itertools import permutations
 
 import pandas as pd
 
-from time_route_optimizer import optimize_by_time
-
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DISTANCE_FILE = (
-    BASE_DIR / "data" / "processed" / "distance_matrix_km.csv"
+    BASE_DIR / "data" / "processed" / "distance_matrix_6_customers_km.csv"
 )
 
 OUTPUT_FILE = (
     BASE_DIR / "data" / "processed" /
-    "route_optimization_results.csv"
+    "route_optimization_results_6_customers.csv"
 )
 
 
@@ -33,7 +30,11 @@ def optimize_routes():
     )
 
     warehouse = "W"
-    customers = ["A", "B", "C"]
+    if warehouse not in distance_matrix.index:
+        raise ValueError("Distance matrix does not contain the warehouse W.")
+    customers = [location_id for location_id in distance_matrix.index if location_id != warehouse]
+    if len(customers) != 6:
+        raise ValueError(f"Expected six customers in the matrix; found {len(customers)}.")
 
     # Generate all possible delivery sequences
     delivery_sequences = list(permutations(customers))
@@ -85,6 +86,14 @@ def optimize_routes():
         range(1, len(results_df) + 1)
     )
 
+    if len(results_df) != 720:
+        raise RuntimeError(f"Expected 720 complete routes; found {len(results_df)}.")
+    if not results_df["route"].map(
+        lambda route: route[0] == warehouse and route[-1] == warehouse
+        and len(route) == 8 and set(route[1:-1]) == set(customers)
+    ).all():
+        raise RuntimeError("A generated route does not visit all customers and return to W.")
+
     # Save results
     results_df.to_csv(
         OUTPUT_FILE,
@@ -98,13 +107,13 @@ if __name__ == "__main__":
 
     results = optimize_routes()
 
-    print("\nDELIVERY ROUTE OPTIMIZATION RESULTS")
+    print("\nTOP FIVE DISTANCE-OPTIMAL DELIVERY ROUTES")
     print("-" * 55)
 
     print(
         results[
             ["rank", "route_string", "total_distance_km"]
-        ].to_string(index=False)
+        ].head(5).to_string(index=False)
     )
 
     if not results.empty:
@@ -125,15 +134,3 @@ if __name__ == "__main__":
     print(OUTPUT_FILE)
 
     print(f"\nResults saved to: {OUTPUT_FILE}")
-
-    # Test another configuration
-    print("\nCAR AT NOON")
-
-    results = optimize_by_time(
-        vehicle_type="car",
-        start_hour=12,
-        start_day=0
-    )
-
-    print(results[0]["route_string"])
-    print(results[0]["total_eta_min"])

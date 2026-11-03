@@ -1,0 +1,8 @@
+location_id,role,location_name,latitude,longitude,nearest_road_node,snap_distance_m,snap_warning
+W,Warehouse,Mwihoko Shopping Centre,-1.2019324,36.9622615,6316097057,34.45952831987143,False
+A,Customer,Mwihoko 46 Shopping Centre,-1.2006509,36.9664823,6316496381,14.24236506250898,False
+B,Customer,Savory Supermarket,-1.2161198,36.9718889,6325074758,34.65181933388822,False
+C,Customer,Stanmatt Supermarket Githurai 45,-1.2056025,36.9187064,4611962799,30.886727992294922,False
+D,Customer,Naivas Githurai 44,-1.19875267519385,36.9005119783075,13954735099,110.21593123743514,True
+E,Customer,Cleanshelf Kahawa Wendani,-1.197502015958163,36.92697890999875,6376026935,22.30736999164049,False
+F,Customer,Quickmart Kahawa Sukari,-1.18919379482623,36.93237357931856,6249532232,31.66524438288247,False

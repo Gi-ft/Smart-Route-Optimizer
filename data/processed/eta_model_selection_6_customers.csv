@@ -1,0 +1,4 @@
+Model,Unseen_Route_Holdout_MAE,Route_CV_Mean_Fold_MAE,Unseen_Route_Holdout_Rank,Route_CV_Rank,Mean_Generalization_Rank
+Linear Regression,1.2803048037293672,1.2205951157560044,1.0,1.0,1.0
+Random Forest,1.4095727065408121,1.2403942068853615,2.0,2.0,2.0
+Gradient Boosting,2.964563821332742,2.996975438558593,3.0,3.0,3.0

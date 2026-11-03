@@ -7,6 +7,7 @@ using route, vehicle, and departure-time information.
 """
 
 from pathlib import Path
+from functools import lru_cache
 
 import joblib
 import networkx as nx
@@ -17,10 +18,10 @@ import pandas as pd
 # Project paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MODEL_PATH = BASE_DIR / "models" / "eta_model.joblib"
-DISTANCE_PATH = BASE_DIR / "data" / "processed" / "pairwise_distances.csv"
-LOCATION_PATH = BASE_DIR / "data" / "raw" / "snapped_delivery_locations.csv"
-GRAPH_PATH = BASE_DIR / "data" / "raw" / "mwihoko_githurai_road_network.graphml"
+MODEL_PATH = BASE_DIR / "models" / "eta_model_6_customers.joblib"
+DISTANCE_PATH = BASE_DIR / "data" / "processed" / "pairwise_distances_6_customers.csv"
+LOCATION_PATH = BASE_DIR / "data" / "raw" / "snapped_delivery_locations_6_customers.csv"
+GRAPH_PATH = BASE_DIR / "data" / "raw" / "mwihoko_githurai_road_network_6_customers.graphml"
 
 
 # Assumed average speeds in km/h
@@ -40,6 +41,7 @@ locations = pd.read_csv(LOCATION_PATH)
 G = ox.load_graphml(filepath=GRAPH_PATH)
 
 
+@lru_cache(maxsize=50000)
 def predict_eta(origin, destination, vehicle_type,
                 departure_hour, day_of_week):
 

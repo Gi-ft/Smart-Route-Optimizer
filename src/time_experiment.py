@@ -17,7 +17,11 @@ from eta_prediction import predict_eta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEPOT = "W"
-CUSTOMERS = ["A", "B", "C"]
+LOCATIONS_FILE = BASE_DIR / "data" / "raw" / "snapped_delivery_locations_6_customers.csv"
+CUSTOMERS = [
+    location_id for location_id in pd.read_csv(LOCATIONS_FILE)["location_id"]
+    if location_id != DEPOT
+]
 
 VEHICLE = "motorcycle"
 DEPARTURE_HOURS = [7, 12, 17, 20]
@@ -28,6 +32,7 @@ def evaluate_route(route, start_hour):
 
     current_hour = start_hour
     current_day = START_DAY
+    elapsed_minutes = start_hour * 60
 
     total_eta = 0
     total_distance = 0
@@ -52,12 +57,9 @@ def evaluate_route(route, start_hour):
         total_distance += distance
 
         # Advance time after completing this journey leg
-        total_minutes = current_hour * 60 + eta
-
-        day_offset = int(total_minutes // 1440)
-
-        current_day = (current_day + day_offset) % 7
-        current_hour = int((total_minutes % 1440) // 60)
+        elapsed_minutes += eta
+        current_day = (START_DAY + int(elapsed_minutes // 1440)) % 7
+        current_hour = int((elapsed_minutes % 1440) // 60)
 
     return total_distance, total_eta
 
@@ -111,7 +113,7 @@ def run_experiment():
     # Save complete results
     output_path = (
         BASE_DIR / "data" / "processed"
-        / "route_time_experiment.csv"
+        / "route_time_experiment_6_customers.csv"
     )
 
     results_df.to_csv(output_path, index=False)
@@ -119,7 +121,7 @@ def run_experiment():
     # Save best route for each departure time
     best_path = (
         BASE_DIR / "data" / "processed"
-        / "best_route_by_departure.csv"
+        / "best_route_by_departure_6_customers.csv"
     )
 
     best_by_time.to_csv(best_path, index=False)

@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATA_FILE = (
-    BASE_DIR / "data" / "raw" / "simulated_eta_dataset.csv"
+    BASE_DIR / "data" / "raw" / "simulated_eta_dataset_6_customers.csv"
 )
 
 OUTPUT_DIR = BASE_DIR / "visualizations"

@@ -1,343 +1,460 @@
-"""Application entry point for the smart route optimizer."""
+"""Streamlit dashboard for the Mwihoko six-customer route optimizer."""
 
-import streamlit as st
-import pandas as pd
 from datetime import time
+from html import escape
+from pathlib import Path
+import sys
+
 import folium
 import networkx as nx
 import osmnx as ox
-
+import pandas as pd
+import streamlit as st
+from folium.plugins import PolyLineTextPath
 from streamlit_folium import st_folium
-
-import sys
-from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE_DIR / "src"))
 
-from time_route_optimizer import optimize_by_time
 from route_optimizer import optimize_routes
-# -----------------------------------
-# PAGE CONFIGURATION
-# -----------------------------------
+from scenario_analysis import (
+    SCENARIOS,
+    compare_scenarios,
+    evaluate_route,
+    optimize_by_scenario,
+)
+
+
 st.set_page_config(
     page_title="Smart Route Optimizer",
     page_icon="🚚",
-    layout="wide"
+    layout="wide",
 )
 
-# -----------------------------------
-# DASHBOARD TITLE
-# -----------------------------------
-st.title("🚚 Smart Route Optimizer")
-st.write(
-    "An intelligent delivery planning system "
-    "for route optimization and ETA prediction."
-)
+DAY_NAMES = [
+    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+]
+DAY_INDEX = {day: index for index, day in enumerate(DAY_NAMES)}
+VEHICLES = ["Motorcycle", "Car", "Van"]
+VEHICLE_KEY = {vehicle: vehicle.lower() for vehicle in VEHICLES}
 
-st.divider()
 
-# -----------------------------------
-# SIDEBAR CONTROLS
-# -----------------------------------
-st.sidebar.header("Delivery Configuration")
-
-vehicle_type = st.sidebar.selectbox(
-    "Select Vehicle",
-    ["motorcycle", "car", "van"]
-)
-
-departure_day = st.sidebar.selectbox(
-    "Departure Day",
-    [
-        "Monday", "Tuesday", "Wednesday",
-        "Thursday", "Friday", "Saturday", "Sunday"
-    ]
-)
-
-departure_time = st.sidebar.time_input(
-    "Departure Time",
-    value=time(17, 0)
-)
-
-optimization_mode = st.sidebar.radio(
-    "Optimization Objective",
-    [
-        "Shortest Distance",
-        "Fastest Delivery Time"
-    ]
-)
-
-st.sidebar.divider()
-
-st.sidebar.info(
-    "Select your delivery preferences, "
-    "then run the optimizer to generate a route."
-)
-
-# -----------------------------------
-# DELIVERY LOCATIONS
-# -----------------------------------
-st.subheader("Delivery Network")
-
-col1, col2, col3, col4 = st.columns(4)
-
-col1.metric("Warehouse", "Mwihoko")
-col2.metric("Customer 1", "Mwihoko 46")
-col3.metric("Customer 2", "Savory Supermarket")
-col4.metric("Customer 3", "Stanmatt Githurai 45")
-
-st.divider()
-
-# -----------------------------------
-# INTERACTIVE DELIVERY MAP
-# -----------------------------------
-
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def load_road_network():
-
-    graph_path = (
-        BASE_DIR / "data" / "raw" /
-        "mwihoko_githurai_road_network.graphml"
-    )
-
-    locations_path = (
-        BASE_DIR / "data" / "raw" /
-        "snapped_delivery_locations.csv"
-    )
-
+    """Load the expanded graph and location table once per app process."""
+    graph_path = BASE_DIR / "data/raw/mwihoko_githurai_road_network_6_customers.graphml"
+    locations_path = BASE_DIR / "data/raw/snapped_delivery_locations_6_customers.csv"
     graph = ox.load_graphml(filepath=graph_path)
     locations = pd.read_csv(locations_path)
-
+    if set(locations["location_id"]) != set("WABCDEF"):
+        raise ValueError("The expanded location file must contain W and customers A–F.")
     return graph, locations
 
 
-def create_delivery_map(route):
+@st.cache_data(show_spinner=False)
+def cached_distance_routes():
+    """Cache the 720 distance tours for repeated UI actions."""
+    return optimize_routes()
 
-    graph, locations = load_road_network()
 
-    # Get the road network node for each location
-    location_nodes = {
-        row["location_id"]: int(row["nearest_road_node"])
-        for _, row in locations.iterrows()
-    }
-
-    # Map centre
-    map_center = [-1.207, 36.947]
-
-    delivery_map = folium.Map(
-        location=map_center,
-        zoom_start=14,
-        tiles="OpenStreetMap"
+@st.cache_data(show_spinner="Ranking 720 delivery sequences by estimated time…")
+def cached_time_routes(vehicle, hour, day, scenario):
+    return optimize_by_scenario(
+        vehicle_type=vehicle,
+        start_hour=hour,
+        start_day=day,
+        scenario=scenario,
     )
 
-    # Location labels
-    location_names = {
-        "W": "Warehouse - Mwihoko Shopping Centre",
-        "A": "Customer 1 - Mwihoko 46",
-        "B": "Customer 2 - Savory Supermarket",
-        "C": "Customer 3 - Stanmatt Githurai 45"
+
+@st.cache_data(show_spinner=False)
+def cached_scenario_comparison(vehicle, hour, day):
+    return compare_scenarios(vehicle_type=vehicle, start_hour=hour, start_day=day)
+
+
+def create_delivery_map(route=None):
+    """Render locations and graph-derived road paths for the selected tour."""
+    graph, locations = load_road_network()
+    node_by_id = {
+        row.location_id: int(row.nearest_road_node)
+        for row in locations.itertuples(index=False)
     }
+    row_by_id = {row.location_id: row for row in locations.itertuples(index=False)}
 
-    # Add warehouse and customer markers
-    for location_id in ["W", "A", "B", "C"]:
+    delivery_map = folium.Map(
+        location=[locations["latitude"].mean(), locations["longitude"].mean()],
+        zoom_start=13,
+        tiles="OpenStreetMap",
+        control_scale=True,
+    )
+    bounds = []
 
-        node = location_nodes[location_id]
-
-        latitude = graph.nodes[node]["y"]
-        longitude = graph.nodes[node]["x"]
-
-        if location_id == "W":
-            marker_color = "green"
-        else:
-            marker_color = "blue"
-
-        folium.Marker(
-            location=[latitude, longitude],
-            popup=location_names[location_id],
-            tooltip=f"{location_id}: {location_names[location_id]}",
-            icon=folium.Icon(
-                color=marker_color,
-                icon="home" if location_id == "W" else "user"
+    # Draw actual network paths first so markers remain easy to see.
+    if route:
+        route_color = "#0f766e"
+        for leg_number, (origin, destination) in enumerate(zip(route, route[1:]), start=1):
+            road_nodes = nx.shortest_path(
+                graph,
+                source=node_by_id[origin],
+                target=node_by_id[destination],
+                weight="length",
             )
-        ).add_to(delivery_map)
-
-    # Draw the recommended road route
-    route_colors = [
-        "red", "blue", "purple", "orange"
-    ]
-
-    for i in range(len(route) - 1):
-
-        origin = route[i]
-        destination = route[i + 1]
-
-        origin_node = location_nodes[origin]
-        destination_node = location_nodes[destination]
-
-        road_path = nx.shortest_path(
-            graph,
-            source=origin_node,
-            target=destination_node,
-            weight="length"
-        )
-
-        coordinates = [
-            [
-                graph.nodes[node]["y"],
-                graph.nodes[node]["x"]
+            coordinates = [
+                [graph.nodes[node]["y"], graph.nodes[node]["x"]]
+                for node in road_nodes
             ]
-            for node in road_path
-        ]
+            bounds.extend(coordinates)
+            line = folium.PolyLine(
+                coordinates,
+                color=route_color,
+                weight=5,
+                opacity=0.9,
+                tooltip=f"Leg {leg_number}: {origin} → {destination}",
+            ).add_to(delivery_map)
+            PolyLineTextPath(
+                line,
+                "➤",
+                repeat=True,
+                offset=7,
+                attributes={
+                    "fill": route_color,
+                    "font-weight": "bold",
+                    "font-size": "16",
+                },
+            ).add_to(delivery_map)
 
-        folium.PolyLine(
-            coordinates,
-            color=route_colors[i % len(route_colors)],
-            weight=5,
-            opacity=0.8,
-            tooltip=f"{origin} to {destination}"
+    # Markers stay at the supplied place coordinates; a dashed connector shows
+    # the offset to the graph node used for routing.
+    ordered = route[:-1] if route else ["W", "A", "B", "C", "D", "E", "F"]
+    order_number = {location_id: index for index, location_id in enumerate(ordered)}
+    for location_id in ["W", "A", "B", "C", "D", "E", "F"]:
+        row = row_by_id[location_id]
+        site_point = [float(row.latitude), float(row.longitude)]
+        node = graph.nodes[node_by_id[location_id]]
+        road_point = [float(node["y"]), float(node["x"])]
+        bounds.extend([site_point, road_point])
+
+        snap_distance = float(row.snap_distance_m)
+        if snap_distance > 1:
+            folium.PolyLine(
+                [site_point, road_point],
+                color="#94a3b8",
+                weight=2,
+                opacity=0.75,
+                dash_array="5, 7",
+                tooltip=f"Place coordinate to road node: {snap_distance:.1f} m",
+            ).add_to(delivery_map)
+
+        place_name = escape(str(row.location_name))
+        sequence = order_number.get(location_id)
+        marker_label = "W" if location_id == "W" else str(sequence or "•")
+        marker_color = "#102a43" if location_id == "W" else "#0f766e"
+        popup_html = (
+            f"<b>{place_name}</b><br>"
+            f"{'Warehouse' if location_id == 'W' else f'Delivery stop {sequence}'}<br>"
+            f"Road-node snap: {snap_distance:.1f} m"
+        )
+        folium.Marker(
+            site_point,
+            tooltip=f"{location_id} · {row.location_name}",
+            popup=folium.Popup(popup_html, max_width=260),
+            icon=folium.DivIcon(
+                html=(
+                    f'<div style="background:{marker_color}; color:#fff; '
+                    'border:2px solid white; border-radius:999px; width:30px; '
+                    'height:30px; display:flex; align-items:center; '
+                    'justify-content:center; font-weight:700; '
+                    'box-shadow:0 2px 7px #0f172a66;">'
+                    f"{marker_label}</div>"
+                ),
+                icon_size=(34, 34),
+                icon_anchor=(17, 17),
+            ),
         ).add_to(delivery_map)
 
+    if bounds:
+        delivery_map.fit_bounds(bounds, padding=(24, 24), max_zoom=15)
     return delivery_map
 
 
-# -----------------------------------
-# RUN OPTIMIZER
-# -----------------------------------
-
-# -----------------------------------
-# RUN OPTIMIZER
-# -----------------------------------
-
-
-# -----------------------------------
-# RUN OPTIMIZER
-# -----------------------------------
-
-if st.button("🚀 Optimize Delivery Route", type="primary"):
-
-    day_mapping = {
-        "Monday": 0,
-        "Tuesday": 1,
-        "Wednesday": 2,
-        "Thursday": 3,
-        "Friday": 4,
-        "Saturday": 5,
-        "Sunday": 6
-    }
-
-    selected_day = day_mapping[departure_day]
-    selected_hour = departure_time.hour
-
-    with st.spinner("Optimizing delivery route..."):
-
-        if optimization_mode == "Fastest Delivery Time":
-
-            results = optimize_by_time(
-                vehicle_type=vehicle_type,
-                start_hour=selected_hour,
-                start_day=selected_day
-            )
-
-            best_route = results[0]
-
-            route = best_route["route"]
-            route_string = best_route["route_string"]
-            total_distance = best_route["total_distance_km"]
-            total_eta = best_route["total_eta_min"]
-            leg_details = best_route["leg_details"]
-
+def display_route_sequence(route, names):
+    """Format an ID route as a readable warehouse/customer sequence."""
+    labels = []
+    for index, location_id in enumerate(route):
+        if location_id == "W":
+            labels.append("Warehouse")
         else:
+            labels.append(f"Stop {index} · {names[location_id]}")
+    return " → ".join(labels)
 
-            results = optimize_routes()
-            best_route = results.iloc[0]
 
-            route = best_route["route"]
-            route_string = best_route["route_string"]
-            total_distance = best_route["total_distance_km"]
+def present_legs(leg_details, locations):
+    names = dict(zip(locations["location_id"], locations["location_name"]))
+    legs = pd.DataFrame(leg_details).copy()
+    legs.insert(0, "Sequence", range(1, len(legs) + 1))
+    legs["Origin"] = legs["origin"].map(names)
+    legs["Destination"] = legs["destination"].map(names)
+    legs = legs.rename(
+        columns={
+            "distance_km": "Road distance (km)",
+            "predicted_eta_min": "Predicted ETA (min)",
+            "departure_hour": "Departure hour",
+        }
+    )
+    if "Departure hour" in legs:
+        legs["Departure hour"] = legs["Departure hour"].map(
+            lambda hour: f"{int(hour):02d}:00"
+        )
+    columns = [
+        "Sequence", "Origin", "Destination", "Road distance (km)",
+        "Predicted ETA (min)", "Departure hour",
+    ]
+    return legs[columns].round(
+        {"Road distance (km)": 3, "Predicted ETA (min)": 2}
+    )
 
-            from time_route_optimizer import calculate_route_eta
 
-            _, total_eta, leg_details = calculate_route_eta(
-                route=route,
-                vehicle_type=vehicle_type,
-                start_hour=selected_hour,
-                start_day=selected_day
-            )
+# The compact native layout and branded theme keep the page responsive while
+# using Streamlit's normal widgets, containers, and tables.
+st.markdown(
+    "<div style='font-size:.78rem; letter-spacing:.13em; text-transform:uppercase; "
+    "color:#0f766e; font-weight:700;'>Mwihoko · Githurai · Delivery planning</div>",
+    unsafe_allow_html=True,
+)
+st.title("Smart Route Optimizer")
+st.subheader("Intelligent Delivery Routing and ETA Prediction System")
+st.write(
+    "Optimizing delivery sequences using road-network distances and "
+    "machine-learning-based travel-time estimates."
+)
+st.divider()
 
-        # Save results so they survive Streamlit reruns
+
+with st.sidebar:
+    st.header("Route configuration", anchor=False)
+    with st.form("route_configuration", border=True):
+        vehicle_label = st.selectbox("Vehicle type", VEHICLES, index=0)
+        departure_day = st.selectbox("Day of the week", DAY_NAMES, index=0)
+        departure_time = st.time_input("Departure time", value=time(17, 0), step=900)
+        optimization_mode = st.segmented_control(
+            "Optimization objective",
+            ["Shortest Distance", "Fastest Delivery Time"],
+            default="Shortest Distance",
+            selection_mode="single",
+        )
+        st.caption("ETA sensitivity assumption")
+        traffic_scenario = st.selectbox(
+            "Traffic scenario",
+            list(SCENARIOS),
+            index=1,
+            label_visibility="collapsed",
+            help="Scenario sensitivity applied to simulated delay. This is not a live traffic feed.",
+        )
+        submitted = st.form_submit_button(
+            "Optimize delivery route",
+            type="primary",
+            width="stretch",
+            icon=":material/route:",
+        )
+    st.caption("One warehouse · Six delivery customers · Seven days supported")
+
+
+graph, locations = load_road_network()
+name_by_id = dict(zip(locations["location_id"], locations["location_name"]))
+
+if submitted:
+    vehicle = VEHICLE_KEY[vehicle_label]
+    selected_hour = departure_time.hour
+    selected_day = DAY_INDEX[departure_day]
+
+    with st.spinner("Calculating the recommended delivery sequence…"):
+        distance_routes = cached_distance_routes()
+        distance_best = distance_routes.iloc[0]
+        distance_evaluation = evaluate_route(
+            route=distance_best["route"],
+            vehicle_type=vehicle,
+            start_hour=selected_hour,
+            start_day=selected_day,
+            scenario=traffic_scenario,
+        )
+        distance_eta = distance_evaluation[1]
+        fastest_result = cached_time_routes(
+            vehicle, selected_hour, selected_day, traffic_scenario
+        )[0]
+        # Persist complete results for both objectives. The selector only
+        # chooses the primary route to display; it does not skip either run.
+        distance_result = {
+            "route": list(distance_best["route"]),
+            "route_string": distance_best["route_string"],
+            "total_distance_km": float(distance_best["total_distance_km"]),
+            "total_eta_min": float(distance_eta),
+            "leg_details": distance_evaluation[2],
+        }
+        time_result = {
+            "route": list(fastest_result["route"]),
+            "route_string": fastest_result["route_string"],
+            "total_distance_km": float(fastest_result["total_distance_km"]),
+            "total_eta_min": float(fastest_result["total_eta_min"]),
+            "leg_details": fastest_result["leg_details"],
+        }
+        primary_key = (
+            "time" if optimization_mode == "Fastest Delivery Time" else "distance"
+        )
+        primary_result = time_result if primary_key == "time" else distance_result
         st.session_state["optimization_result"] = {
-            "route": route,
-            "route_string": route_string,
-            "total_distance": total_distance,
-            "total_eta": total_eta,
-            "vehicle_type": vehicle_type,
-            "leg_details": leg_details
+            "primary_key": primary_key,
+            "primary_result": primary_result,
+            "distance_result": distance_result,
+            "time_result": time_result,
+            # Keep these aliases for existing display/session-state consumers.
+            "route": primary_result["route"],
+            "route_string": primary_result["route_string"],
+            "total_distance": primary_result["total_distance_km"],
+            "total_eta": primary_result["total_eta_min"],
+            "vehicle_type": vehicle_label,
+            "departure_day": departure_day,
+            "departure_time": departure_time.strftime("%H:%M"),
+            "optimization_mode": optimization_mode,
+            "scenario": traffic_scenario,
+            "leg_details": primary_result["leg_details"],
         }
 
 
-# -----------------------------------
-# DISPLAY SAVED RESULTS
-# -----------------------------------
-
-if "optimization_result" in st.session_state:
-
-    result = st.session_state["optimization_result"]
-
-    st.success("Route optimization completed!")
-
-    st.subheader("Recommended Delivery Route")
-    st.write(f"**{result['route_string']}**")
-
-    col1, col2, col3 = st.columns(3)
-
-    col1.metric(
-        "Total Distance",
-        f"{result['total_distance']:.3f} km"
+result = st.session_state.get("optimization_result")
+if result:
+    st.caption(
+        f"Recommended objective: {result['optimization_mode']} · "
+        f"{result['vehicle_type']} · {result['departure_day']} "
+        f"at {result['departure_time']} · {result['scenario']}"
     )
+    metrics = st.columns(4, border=True)
+    metrics[0].metric("Total route distance", f"{result['total_distance']:.2f} km")
+    metrics[1].metric("Predicted delivery time", f"{result['total_eta']:.1f} min")
+    metrics[2].metric("Customer stops", "6")
+    metrics[3].metric("Selected vehicle", result["vehicle_type"])
 
-    col2.metric(
-        "Predicted Delivery Time",
-        f"{result['total_eta']:.2f} min"
-    )
-
-    col3.metric(
-        "Selected Vehicle",
-        result["vehicle_type"].title()
-    )
-
-    # -----------------------------------
-    # JOURNEY BREAKDOWN
-    # -----------------------------------
-
-    st.subheader("Journey Breakdown")
-
-    leg_df = pd.DataFrame(result["leg_details"])
-
-    st.dataframe(
-        leg_df,
-        use_container_width=True,
-        hide_index=True
-    )
-
-    # -----------------------------------
-    # INTERACTIVE DELIVERY MAP
-    # -----------------------------------
-
-    st.divider()
-    st.subheader("🗺️ Recommended Delivery Route")
-
-    try:
-
-        delivery_map = create_delivery_map(result["route"])
-
-        st_folium(
-            delivery_map,
-            height=550,
-            use_container_width=True,
-            key="delivery_route_map"
+    st.subheader("Recommended delivery sequence")
+    st.markdown(
+        " → ".join(
+            f"**{label}**"
+            for label in [
+                "Warehouse · Mwihoko Shopping Centre"
+                if location_id == "W"
+                else f"Stop {index} · {name_by_id[location_id]}"
+                for index, location_id in enumerate(result["route"])
+            ]
         )
+    )
+else:
+    st.info(
+        "Choose the vehicle, departure time, day, and objective in the sidebar, "
+        "then optimize to see route-specific estimates.",
+        title="Ready to plan a delivery run",
+    )
 
-    except Exception as e:
 
-        st.error(f"Map could not be displayed: {e}")
+st.subheader("Delivery route map")
+st.caption(
+    "Markers show the supplied place coordinates; dashed connectors show the "
+    "distance to their snapped road nodes. Route lines follow the driving graph."
+)
+try:
+    delivery_map = create_delivery_map(result["route"] if result else None)
+    st_folium(
+        delivery_map,
+        height=610,
+        use_container_width=True,
+        key="delivery_route_map",
+        returned_objects=[],
+    )
+except Exception as error:
+    st.error(f"Map could not be displayed: {error}", icon=":material/map:")
+
+
+if result:
+    st.subheader("Delivery leg breakdown")
+    st.dataframe(
+        present_legs(result["leg_details"], locations),
+        hide_index=True,
+        width="stretch",
+        alt="Road distance and predicted ETA for all seven delivery legs, including the return to the warehouse.",
+        column_config={
+            "Sequence": st.column_config.NumberColumn(format="%d"),
+            "Road distance (km)": st.column_config.NumberColumn(format="%.3f km"),
+            "Predicted ETA (min)": st.column_config.NumberColumn(format="%.2f min"),
+        },
+    )
+
+    st.subheader("Compare optimization objectives")
+    st.caption(
+        "Both routes use the same vehicle, departure time, day, warehouse, "
+        "customers, and ETA sensitivity assumption."
+    )
+    if result["distance_result"]["route"] == result["time_result"]["route"]:
+        st.info(
+            "Both objectives selected the same delivery sequence for these settings; "
+            "their distance and time scores are still evaluated independently."
+        )
+    comparison_columns = st.columns(2)
+    objective_cards = [
+        ("distance", "Shortest Distance", result["distance_result"]),
+        ("time", "Fastest Delivery Time", result["time_result"]),
+    ]
+    for column, (objective_key, title, objective_result) in zip(
+        comparison_columns, objective_cards
+    ):
+        with column.container(border=True):
+            st.markdown(f"#### {title}")
+            if objective_key == result["primary_key"]:
+                st.success("Primary recommendation", icon=":material/check_circle:")
+            else:
+                st.caption("Alternative route")
+            st.markdown(
+                display_route_sequence(objective_result["route"], name_by_id)
+            )
+            distance_metric, eta_metric = st.columns(2)
+            distance_metric.metric(
+                "Total distance", f"{objective_result['total_distance_km']:.3f} km"
+            )
+            eta_metric.metric(
+                "Predicted delivery time", f"{objective_result['total_eta_min']:.2f} min"
+            )
+
+
+with st.expander("About the model and data", icon=":material/info:"):
+    st.markdown(
+        """
+        - Road distances use paths from the OpenStreetMap driving network.
+        - Dijkstra's algorithm ranks road distance for each origin–destination leg.
+        - The ETA model predicts each leg using route and departure features; elapsed predicted travel time advances the departure hour for the next leg.
+        - ETA training durations are **simulated**, not observed trips. Traffic sensitivity options are assumptions, not live traffic measurements.
+        - Actual delivery times may differ because of traffic, service time, road conditions, access restrictions, or errors in mapped locations.
+        """
+    )
+    naivas = locations.loc[locations["location_id"] == "D"].iloc[0]
+    st.warning(
+        f"Naivas Githurai 44 retains its supplied coordinates. Its nearest road node is "
+        f"{naivas['snap_distance_m']:.1f} m away, so the location remains flagged for entrance verification.",
+        title="Location accuracy note",
+    )
+
+
+with st.expander("Traffic sensitivity across delivery orders"):
+    st.caption(
+        "Ranks all 720 customer orders under three assumed delay factors. "
+        "These are model sensitivity cases, not measured local traffic."
+    )
+    if st.button("Compare all 720 routes across traffic scenarios", icon=":material/compare_arrows:"):
+        st.session_state["show_scenario_comparison"] = True
+    if st.session_state.get("show_scenario_comparison", False):
+        compare_vehicle = VEHICLE_KEY[vehicle_label]
+        with st.spinner("Ranking scenario comparisons…"):
+            scenario_df = cached_scenario_comparison(
+                compare_vehicle, departure_time.hour, DAY_INDEX[departure_day]
+            )
+        st.dataframe(
+            scenario_df,
+            hide_index=True,
+            width="stretch",
+            alt="All route orders ranked across the traffic sensitivity scenarios.",
+        )

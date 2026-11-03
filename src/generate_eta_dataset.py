@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 RAW_DIR = BASE_DIR / "data" / "raw"
 PROCESSED_DIR = BASE_DIR / "data" / "processed"
 
-GRAPH_FILE = RAW_DIR / "mwihoko_githurai_road_network.graphml"
-LOCATIONS_FILE = RAW_DIR / "snapped_delivery_locations.csv"
+GRAPH_FILE = RAW_DIR / "mwihoko_githurai_road_network_6_customers.graphml"
+LOCATIONS_FILE = RAW_DIR / "snapped_delivery_locations_6_customers.csv"
 
-DISTANCE_FILE = PROCESSED_DIR / "distance_matrix_km.csv"
+DISTANCE_FILE = PROCESSED_DIR / "distance_matrix_6_customers_km.csv"
 
-OUTPUT_FILE = RAW_DIR / "simulated_eta_dataset.csv"
+OUTPUT_FILE = RAW_DIR / "simulated_eta_dataset_6_customers.csv"
 
 
 # --------------------------------------------------
@@ -235,9 +235,10 @@ for journey in journeys:
                         "departure_hour": hour,
                         "day_of_week": day,
                         "vehicle_type": vehicle,
+                        "replicate_id": repetition + 1,
                         "estimated_free_flow_min": free_flow_min,
                         "delivery_duration_min": round(
-                            simulated_duration, 2
+                            simulated_duration, 8
                         )
                     })
 
@@ -247,6 +248,27 @@ for journey in journeys:
 # --------------------------------------------------
 
 eta_data = pd.DataFrame(records)
+
+expected_records = 42 * 7 * 24 * REPETITIONS * len(VEHICLE_SPEEDS)
+expected_pairs = {
+    (origin, destination)
+    for origin in location_ids
+    for destination in location_ids
+    if origin != destination
+}
+actual_pairs = set(zip(eta_data["origin_zone"], eta_data["destination_zone"]))
+if len(eta_data) != expected_records:
+    raise RuntimeError(f"Expected {expected_records} records; got {len(eta_data)}.")
+if actual_pairs != expected_pairs:
+    raise RuntimeError("The ETA dataset does not contain all 42 directional pairs.")
+if eta_data.isna().any().any():
+    raise RuntimeError("The ETA dataset contains missing values.")
+if eta_data.duplicated().any():
+    raise RuntimeError("The ETA dataset contains duplicate records.")
+if set(eta_data["vehicle_type"].unique()) != set(VEHICLE_SPEEDS):
+    raise RuntimeError("The ETA dataset is missing a vehicle class.")
+if set(eta_data["departure_hour"].unique()) != set(DEPARTURE_HOURS):
+    raise RuntimeError("The ETA dataset is missing a departure hour.")
 
 # Round numerical columns for readability.
 eta_data["route_distance_km"] = (

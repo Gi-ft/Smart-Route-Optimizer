@@ -52,7 +52,7 @@ from sklearn.metrics import (
 ROOT = Path(__file__).resolve().parents[1]
 
 DATA_PATH = (
-    ROOT / "data" / "raw" / "simulated_eta_dataset.csv"
+    ROOT / "data" / "raw" / "simulated_eta_dataset_6_customers.csv"
 )
 
 PROCESSED_DIR = ROOT / "data" / "processed"
@@ -161,15 +161,17 @@ def create_models():
         "Linear Regression": LinearRegression(),
 
         "Random Forest": RandomForestRegressor(
-            n_estimators=200,
+            n_estimators=20,
+            max_depth=14,
+            min_samples_leaf=3,
             random_state=RANDOM_STATE,
-            n_jobs=-1
+            n_jobs=1
         ),
 
         "Gradient Boosting": GradientBoostingRegressor(
-            n_estimators=100,
+            n_estimators=25,
             learning_rate=0.05,
-            max_depth=3,
+            max_depth=2,
             random_state=RANDOM_STATE
         )
     }
@@ -262,7 +264,7 @@ print("\nSCENARIO-BASED MODEL COMPARISON")
 print(model_results_df.to_string(index=False))
 
 model_results_df.to_csv(
-    PROCESSED_DIR / "eta_model_comparison.csv",
+    PROCESSED_DIR / "eta_model_comparison_6_customers.csv",
     index=False
 )
 
@@ -335,7 +337,7 @@ print(
 )
 
 experiment_df.to_csv(
-    PROCESSED_DIR / "eta_feature_comparison.csv",
+    PROCESSED_DIR / "eta_feature_comparison_6_customers.csv",
     index=False
 )
 
@@ -433,7 +435,7 @@ print("\nUNSEEN-ROUTE HOLDOUT RESULTS")
 print(route_holdout_df.to_string(index=False))
 
 route_holdout_df.to_csv(
-    PROCESSED_DIR / "eta_unseen_route_comparison.csv",
+    PROCESSED_DIR / "eta_unseen_route_comparison_6_customers.csv",
     index=False
 )
 
@@ -546,7 +548,7 @@ print("-" * 55)
 print(cv_results_df.to_string(index=False))
 
 cv_results_df.to_csv(
-    PROCESSED_DIR / "eta_route_cross_validation.csv",
+    PROCESSED_DIR / "eta_route_cross_validation_6_customers.csv",
     index=False
 )
 
@@ -555,10 +557,36 @@ cv_results_df.to_csv(
 # 11. Select and save the final ETA model
 # --------------------------------------------------
 
-# Select the model with the lowest overall MAE
-# from route-level cross-validation.
+# Balance generalization evidence from the unseen-route holdout and
+# route-grouped cross-validation. R-squared is reported but not used to
+# select the model. Mean ranks limit the effect of different split sizes.
+holdout_ranks = route_holdout_df.set_index("Model")["MAE"].rank(method="average")
+cv_ranks = cv_results_df.set_index("Model")["Mean_Fold_MAE"].rank(method="average")
+selection_df = pd.DataFrame({
+    "Model": cv_results_df["Model"],
+    "Unseen_Route_Holdout_MAE": cv_results_df["Model"].map(
+        route_holdout_df.set_index("Model")["MAE"]
+    ),
+    "Route_CV_Mean_Fold_MAE": cv_results_df["Model"].map(
+        cv_results_df.set_index("Model")["Mean_Fold_MAE"]
+    ),
+    "Unseen_Route_Holdout_Rank": cv_results_df["Model"].map(holdout_ranks),
+    "Route_CV_Rank": cv_results_df["Model"].map(cv_ranks),
+})
+selection_df["Mean_Generalization_Rank"] = selection_df[
+    ["Unseen_Route_Holdout_Rank", "Route_CV_Rank"]
+].mean(axis=1)
+selection_df = selection_df.sort_values(
+    ["Mean_Generalization_Rank", "Unseen_Route_Holdout_MAE", "Route_CV_Mean_Fold_MAE"]
+).reset_index(drop=True)
+selection_df.to_csv(
+    PROCESSED_DIR / "eta_model_selection_6_customers.csv", index=False
+)
 
-best_model_name = cv_results_df.iloc[0]["Model"]
+best_model_name = selection_df.iloc[0]["Model"]
+selected_cv = cv_results_df.loc[
+    cv_results_df["Model"] == best_model_name
+].iloc[0]
 
 print("\nFINAL MODEL SELECTION")
 print("-" * 55)
@@ -578,29 +606,35 @@ final_pipeline = Pipeline(steps=[
 # Fit the selected model using the complete dataset.
 final_pipeline.fit(X, y)
 
-model_path = MODEL_DIR / "eta_model.joblib"
+model_path = MODEL_DIR / "eta_model_6_customers.joblib"
 
 joblib.dump(final_pipeline, model_path)
 
 # Save the model selection information.
 selection_summary = {
     "selected_model": best_model_name,
-    "selection_metric": "Overall route-level cross-validation MAE",
+    "selection_metric": "Mean rank across unseen-route holdout MAE and route-grouped CV fold MAE",
+    "unseen_route_holdout_mae": float(
+        selection_df.iloc[0]["Unseen_Route_Holdout_MAE"]
+    ),
+    "route_cv_mean_fold_mae": float(
+        selection_df.iloc[0]["Route_CV_Mean_Fold_MAE"]
+    ),
     "cross_validation_mae": float(
-        cv_results_df.iloc[0]["Overall_MAE"]
+        selected_cv["Overall_MAE"]
     ),
     "cross_validation_rmse": float(
-        cv_results_df.iloc[0]["Overall_RMSE"]
+        selected_cv["Overall_RMSE"]
     ),
     "cross_validation_r2": float(
-        cv_results_df.iloc[0]["Overall_R2"]
+        selected_cv["Overall_R2"]
     ),
     "training_records": len(X),
     "dataset_type": "Simulated"
 }
 
 pd.DataFrame([selection_summary]).to_csv(
-    PROCESSED_DIR / "eta_final_model_selection.csv",
+    PROCESSED_DIR / "eta_final_model_selection_6_customers.csv",
     index=False
 )
 

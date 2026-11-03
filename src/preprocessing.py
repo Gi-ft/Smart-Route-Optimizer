@@ -12,7 +12,7 @@ DATA_FILE = (
     BASE_DIR
     / "data"
     / "raw"
-    / "simulated_eta_dataset.csv"
+    / "simulated_eta_dataset_6_customers.csv"
 )
 
 df = pd.read_csv(DATA_FILE)
