@@ -1,6 +1,9 @@
 import sys
 import unittest
+import io
 from pathlib import Path
+from urllib.error import HTTPError
+from unittest.mock import patch
 
 import pandas as pd
 
@@ -48,6 +51,66 @@ def sample_result():
 
 
 class RouteIntelligenceTests(unittest.TestCase):
+  def test_openrouter_configuration_uses_secrets_and_environment(self):
+    from route_intelligence import OPENROUTER_API_BASE
+
+    config = llm_configuration(
+        {"OPENROUTER_API_KEY": "test-key", "OPENROUTER_MODEL": "provider/model-x"},
+        environ={},
+    )
+    self.assertEqual(config["api_base"], "https://openrouter.ai/api/v1")
+    self.assertEqual(config["api_base"], OPENROUTER_API_BASE)
+    self.assertEqual(config["model"], "provider/model-x")
+    self.assertTrue(config["available"])
+    env_config = llm_configuration({}, {"OPENROUTER_API_KEY": "env-key", "OPENROUTER_MODEL": "openai/gpt-test"})
+    self.assertEqual(env_config["model"], "openai/gpt-test")
+    self.assertEqual(llm_configuration({}, {})["model"], "openrouter/auto")
+
+  def test_openrouter_success_uses_configured_model_and_timeout(self):
+    import route_intelligence
+
+    response = io.BytesIO(b'{"choices":[{"message":{"content":"Grounded explanation"}}]}')
+    configuration = llm_configuration(
+        {"OPENROUTER_API_KEY": "test-key", "OPENROUTER_MODEL": "provider/model-x"}, {}
+    )
+    with patch.object(route_intelligence, "urlopen", return_value=response) as mocked:
+        answer = llm_answer("Why this route?", {"ready": True}, "approved facts", configuration, timeout=7)
+    self.assertEqual(answer, "Grounded explanation")
+    request, = mocked.call_args.args
+    self.assertEqual(request.full_url, "https://openrouter.ai/api/v1/chat/completions")
+    self.assertEqual(request.get_header("Authorization"), "Bearer test-key")
+    self.assertEqual(mocked.call_args.kwargs["timeout"], 7)
+
+  def test_openrouter_provider_errors_and_timeouts_return_python_fallback(self):
+    import route_intelligence
+
+    context = build_context(sample_result(), LOCATIONS)
+    configuration = {"api_key": "test-key", "api_base": "https://openrouter.ai/api/v1", "model": "provider/model-x"}
+    failure_cases = [
+        HTTPError("https://openrouter.ai/api/v1/chat/completions", 429, "rate limited", None, io.BytesIO(b'{"error":"rate limited"}')),
+        TimeoutError("private timeout details"),
+    ]
+    for failure in failure_cases:
+        with patch.object(route_intelligence, "urlopen", side_effect=failure):
+            answer = assistant_answer("Compare routes", context, "LLM explanations", configuration)
+        self.assertIn("Shortest-distance route", answer)
+        self.assertNotIn("private timeout details", answer)
+    provider_error = io.BytesIO(b'{"error":{"message":"private provider detail"}}')
+    with patch.object(route_intelligence, "urlopen", return_value=provider_error):
+        answer = assistant_answer("Compare routes", context, "LLM explanations", configuration)
+    self.assertIn("Shortest-distance route", answer)
+    self.assertNotIn("private provider detail", answer)
+
+  def test_missing_openrouter_key_skips_request_and_uses_python(self):
+    import route_intelligence
+
+    context = build_context(sample_result(), LOCATIONS)
+    configuration = llm_configuration({}, {})
+    with patch.object(route_intelligence, "urlopen") as mocked:
+        answer = assistant_answer("Compare routes", context, "LLM explanations", configuration)
+    mocked.assert_not_called()
+    self.assertIn("Shortest-distance route", answer)
+
   def test_context_with_and_without_optimization(self):
     absent = build_context(None, LOCATIONS)
     self.assertFalse(absent["ready"])

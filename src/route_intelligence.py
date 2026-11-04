@@ -17,6 +17,7 @@ from urllib.request import Request, urlopen
 DAY_NAMES = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 VEHICLES = {"motorcycle", "car", "van"}
 UNAVAILABLE = {"", "-", "n/a", "na", "none", "null", "nan", "unavailable"}
+OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
 
 
 def numeric(value):
@@ -339,23 +340,28 @@ def evaluate_scenario(parameters, baseline, optimize_distance, optimize_time, ev
 
 
 def llm_configuration(secrets=None, environ=None):
-    """Read optional OpenAI-compatible endpoint configuration safely."""
+    """Read optional OpenRouter credentials/model without exposing secrets."""
     environ = os.environ if environ is None else environ
     secrets = secrets or {}
-    def setting(secret_key, env_key, default=None):
+    def read_setting(name):
         try:
-            value = secrets.get(secret_key)
+            value = secrets.get(name)
         except Exception:
             value = None
-        return value or environ.get(env_key) or default
-    key = setting("route_assistant_api_key", "ROUTE_ASSISTANT_API_KEY")
-    base = setting("route_assistant_api_base", "ROUTE_ASSISTANT_API_BASE", "https://api.openai.com/v1").rstrip("/")
-    model = setting("route_assistant_model", "ROUTE_ASSISTANT_MODEL", "gpt-4o-mini")
-    return {"api_key": key, "api_base": base, "model": model, "available": bool(key)}
+        return value or environ.get(name)
+
+    api_key = read_setting("OPENROUTER_API_KEY")
+    model = read_setting("OPENROUTER_MODEL") or "openrouter/auto"
+    return {
+        "api_key": api_key,
+        "api_base": OPENROUTER_API_BASE,
+        "model": model,
+        "available": bool(api_key),
+    }
 
 
 def llm_answer(question, context, python_analysis, configuration, timeout=15):
-    """Ask a configured OpenAI-compatible chat endpoint to explain approved facts."""
+    """Ask OpenRouter to explain Python-approved facts; fail closed to Python."""
     if not configuration.get("api_key"):
         return None
     payload = {
@@ -375,6 +381,8 @@ def llm_answer(question, context, python_analysis, configuration, timeout=15):
     try:
         with urlopen(request, timeout=timeout) as response:
             data = json.loads(response.read().decode("utf-8"))
+        if data.get("error"):
+            return None
         answer = data["choices"][0]["message"]["content"]
         return answer if isinstance(answer, str) and answer.strip() else None
     except (URLError, TimeoutError, OSError, ValueError, KeyError, IndexError, TypeError):

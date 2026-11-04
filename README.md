@@ -166,7 +166,7 @@ real-world ETA or traffic prediction accuracy.**
 - Route Intelligence Assistant with Python-grounded route comparisons,
   delivery bottlenecks, recommendations, limitations, and isolated what-if
   vehicle/departure scenarios.
-- Optional OpenAI-compatible conversational explanations; deterministic Python
+- Optional OpenRouter conversational explanations; deterministic Python
   analysis remains available without an API key.
 - Model and data transparency notes in the application.
 
@@ -179,31 +179,33 @@ optimizers for the requested vehicle, departure hour, and weekday. Scenario
 results stay separate from the current dashboard until **Apply scenario to
 dashboard** is selected.
 
-For optional conversational explanations, configure an API key and (optionally)
-an OpenAI-compatible provider endpoint and model. In local development, set
-environment variables:
+For optional conversational explanations through OpenRouter, set the API key
+and model. In local development, use environment variables:
 
 ```powershell
-$env:ROUTE_ASSISTANT_API_KEY = "your-provider-key"
-$env:ROUTE_ASSISTANT_API_BASE = "https://api.openai.com/v1"
-$env:ROUTE_ASSISTANT_MODEL = "gpt-4o-mini"
+$env:OPENROUTER_API_KEY = "your-openrouter-api-key"
+$env:OPENROUTER_MODEL = "openrouter/auto"
 ```
 
 On Streamlit Cloud, add these values under **App settings → Secrets**:
 
 ```toml
-route_assistant_api_key = "your-provider-key"
-route_assistant_api_base = "https://api.openai.com/v1"
-route_assistant_model = "gpt-4o-mini"
+OPENROUTER_API_KEY = "your-openrouter-api-key"
+OPENROUTER_MODEL = "openrouter/auto"
 ```
 
-Only the API key is required; the endpoint and model have OpenAI-compatible
-defaults. For another compatible provider, set its API base URL and model.
-The provider receives the user's question and the current route context plus
-the approved Python analysis. If configuration is missing or the provider
-request fails, the app uses Python analysis instead. Credentials are read from
+`OPENROUTER_MODEL` is optional and defaults to `openrouter/auto`; set it to any
+model slug available to your OpenRouter account to select a specific model.
+The API base is fixed at `https://openrouter.ai/api/v1`. The provider receives
+the user's question, current dashboard context, and approved Python analysis;
+route calculations remain in the existing Python optimizers. If the key is
+missing or a request times out, is rate limited, fails, or returns a provider
+error, the assistant falls back to Python analysis. Credentials are read from
 Streamlit secrets or environment variables and must never be committed to the
-repository. No LLM package is required.
+repository. A safe placeholder template is in
+`.streamlit/secrets.toml.example`; copy it to the ignored
+`.streamlit/secrets.toml` for local use. No additional Python dependency is
+required.
 
 ## Technologies
 
