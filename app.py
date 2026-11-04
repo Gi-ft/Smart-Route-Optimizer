@@ -25,7 +25,7 @@ from scenario_analysis import (
 )
 from graph_utils import normalize_edge_lengths
 from route_intelligence import (
-    assistant_answer,
+    assistant_answer_with_source,
     append_chat_message,
     build_context,
     evaluate_scenario,
@@ -490,12 +490,6 @@ if result:
 
 
 st.divider()
-st.markdown(
-    "<div style='font-size:.78rem; letter-spacing:.13em; text-transform:uppercase; "
-    "color:#0f766e; font-weight:700;'>Decision support</div>",
-    unsafe_allow_html=True,
-)
-st.header("ROUTE INTELLIGENCE ASSISTANT", anchor=False)
 assistant_context = build_context(
     result,
     locations,
@@ -508,23 +502,10 @@ assistant_context = build_context(
 st.session_state["route_assistant_context"] = assistant_context
 llm_config = llm_configuration(st.secrets)
 mode_options = ["Python analysis"] + (["LLM explanations (with Python fallback)"] if llm_config["available"] else [])
-active_mode = st.selectbox(
-    "Response mode",
-    mode_options,
-    key="assistant_response_mode",
-    help="Python analysis always works. LLM mode is available only when an API key is configured; route calculations remain Python-based.",
-)
-if assistant_context["ready"]:
-    st.caption(
-        f"Using current results · {assistant_context['vehicle']} · "
-        f"{assistant_context['departure_day']} at {assistant_context['departure_time']} · "
-        f"{assistant_context['objective']}"
-    )
-    if assistant_context["warnings"]:
-        for warning in assistant_context["warnings"]:
-            st.caption(f"Data note: {warning}")
-else:
-    st.info(assistant_context["message"], icon=":material/route:")
+active_mode = st.session_state.get("assistant_response_mode", mode_options[0])
+if active_mode not in mode_options:
+    active_mode = mode_options[0]
+    st.session_state["assistant_response_mode"] = active_mode
 
 if "route_assistant_messages" not in st.session_state:
     st.session_state["route_assistant_messages"] = []
@@ -532,42 +513,210 @@ if "route_assistant_scenario_result" not in st.session_state:
     st.session_state["route_assistant_scenario_result"] = None
 if "route_assistant_scenario_parameters" not in st.session_state:
     st.session_state["route_assistant_scenario_parameters"] = None
+if "route_assistant_runtime" not in st.session_state:
+    st.session_state["route_assistant_runtime"] = None
+if "route_assistant_processing" not in st.session_state:
+    st.session_state["route_assistant_processing"] = False
 
-with st.container(border=True):
-    if not st.session_state["route_assistant_messages"]:
-        st.caption("Ask about route choices, delivery bottlenecks, or a what-if scenario.")
-    for message in st.session_state["route_assistant_messages"]:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+runtime = st.session_state.get("route_assistant_runtime") or {}
+if not llm_config["available"] or active_mode == "Python analysis":
+    status_label, status_kind = "Python analysis", "python"
+elif runtime.get("requested_mode") == active_mode and runtime.get("source") == "openrouter":
+    status_label, status_kind = "OpenRouter AI · Active", "ai"
+elif runtime.get("requested_mode") == active_mode and runtime.get("source") == "scenario":
+    status_label, status_kind = "Python scenario analysis", "python"
+elif runtime.get("requested_mode") == active_mode and runtime.get("source") == "scope_guard":
+    status_label, status_kind = "Route assistant", "python"
+elif runtime.get("requested_mode") == active_mode and runtime.get("source") == "python":
+    status_label, status_kind = "Python fallback · OpenRouter unavailable", "fallback"
+else:
+    status_label, status_kind = "OpenRouter · Ready", "ready"
 
+with st.container(key="route_intelligence_copilot"):
+    st.markdown(
+        """
+        <style>
+        .st-key-route_intelligence_copilot {
+            background: linear-gradient(180deg, #f8fbfd 0%, #ffffff 150px);
+            border: 1px solid #d9e4ec;
+            border-radius: 22px;
+            padding: 1.25rem 1.4rem 1.1rem;
+            box-shadow: 0 12px 30px rgba(16, 42, 67, .07);
+        }
+        .st-key-route_intelligence_copilot .ric-heading {
+            display:flex; align-items:center; gap:.85rem; color:#102a43;
+            font-size:1.32rem; font-weight:750; letter-spacing:-.02em;
+            line-height:1.2; margin:.15rem 0 .25rem;
+        }
+        .st-key-route_intelligence_copilot .ric-spark {
+            display:grid; place-items:center; width:40px; height:40px; flex:none;
+            border-radius:13px; background:#e2f6f6; color:#087f8c;
+            font-size:1.35rem; border:1px solid #c5eceb;
+        }
+        .st-key-route_intelligence_copilot .ric-subtitle {
+            margin-left:3.35rem; color:#587087; font-size:.9rem;
+        }
+        .st-key-route_intelligence_copilot .ric-status {
+            display:inline-flex; align-items:center; gap:.45rem;
+            padding:.38rem .7rem; border-radius:999px; font-size:.77rem;
+            font-weight:650; border:1px solid #d5e2ea; color:#36536b;
+            background:#fff; white-space:nowrap;
+        }
+        .st-key-route_intelligence_copilot .ric-status-dot {
+            width:7px;height:7px;border-radius:50%;background:#0f766e;
+        }
+        .st-key-route_intelligence_copilot .ric-status-fallback .ric-status-dot {background:#b7791f;}
+        .st-key-route_intelligence_copilot [data-testid="stChatMessage"] {
+            border:1px solid #e0e8ee; background:#fff; border-radius:17px;
+            padding:.85rem 1rem; margin:.6rem 0; box-shadow:0 3px 10px rgba(16,42,67,.035);
+            max-width:94%;
+        }
+        .st-key-route_intelligence_copilot [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
+            background:#e8f6f7; border-color:#cce9e9; margin-left:auto;
+        }
+        .st-key-route_intelligence_copilot [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) {
+            margin-right:auto;
+        }
+        .st-key-route_intelligence_copilot [data-testid="stChatMessage"] p {line-height:1.62;}
+        .st-key-route_intelligence_copilot [data-testid="stChatMessage"] table {display:block;overflow-x:auto;}
+        .st-key-route_intelligence_copilot .ric-welcome {
+            padding:1.15rem 1.2rem; margin:.5rem 0 .9rem; background:#fff;
+            border:1px solid #e0e8ee; border-radius:16px; color:#486176;
+        }
+        .st-key-route_intelligence_copilot .ric-section-label {
+            color:#60788d; font-size:.75rem; font-weight:700;
+            letter-spacing:.08em; text-transform:uppercase; margin:.85rem 0 .35rem;
+        }
+        .st-key-route_intelligence_copilot .ric-scenario {
+            background:#f1f8fa; border:1px solid #cfe7eb; border-radius:17px;
+            padding:1rem 1.1rem; margin:.8rem 0;
+        }
+        .st-key-route_intelligence_copilot .st-key-ric_scenario_results {
+            background:#f1f8fa; border-color:#cfe7eb; border-radius:17px;
+        }
+        @media (max-width: 700px) {
+            .st-key-route_intelligence_copilot {padding:.9rem;border-radius:16px;}
+            .st-key-route_intelligence_copilot [data-testid="stChatMessage"] {max-width:100%;}
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    head, controls = st.columns([3.6, 2.4], vertical_alignment="center")
+    with head:
+        st.markdown(
+            '<div class="ric-heading"><span class="ric-spark">✦</span>'
+            '<span>ROUTE INTELLIGENCE COPILOT</span></div>'
+            '<div class="ric-subtitle">Intelligent delivery route analysis and decision support</div>',
+            unsafe_allow_html=True,
+        )
+    with controls:
+        status_class = "ric-status-fallback" if status_kind == "fallback" else ""
+        st.markdown(
+            f'<div style="text-align:right"><span class="ric-status {status_class}">'
+            f'<span class="ric-status-dot"></span>{status_label}</span></div>',
+            unsafe_allow_html=True,
+        )
+        clear_col, mode_col = st.columns([1, 2.2], vertical_alignment="center")
+        if clear_col.button("Clear chat", key="clear_route_assistant", width="stretch", help="Clear this conversation and scenario results"):
+            st.session_state["route_assistant_messages"] = []
+            st.session_state["route_assistant_scenario_result"] = None
+            st.session_state["route_assistant_scenario_parameters"] = None
+            st.session_state["route_assistant_runtime"] = None
+            st.session_state["route_assistant_pending_prompt"] = None
+            st.rerun()
+        with mode_col:
+            st.selectbox(
+                "Response mode", mode_options, key="assistant_response_mode",
+                help="OpenRouter runs only after you send a message. Python analysis remains available as fallback.",
+                label_visibility="collapsed",
+            )
+
+    if assistant_context["ready"]:
+        st.caption(
+            f"Current context  ·  {assistant_context['vehicle']}  ·  "
+            f"{assistant_context['departure_day']} {assistant_context['departure_time']}  ·  "
+            f"{assistant_context['objective']}"
+        )
+        for warning in assistant_context["warnings"]:
+            st.caption(f"Data note: {warning}")
+    else:
+        st.info(assistant_context["message"], icon=":material/route:")
+
+    messages = st.session_state["route_assistant_messages"]
+    if not messages:
+        st.markdown(
+            '<div class="ric-welcome"><strong>Plan with route intelligence</strong><br>'
+            'Ask why a route was chosen, compare objectives, inspect delivery bottlenecks, '
+            'or evaluate a what-if scenario. Answers use your current optimization results.</div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        for message in messages:
+            avatar = "🧑" if message["role"] == "user" else "✦"
+            with st.chat_message(message["role"], avatar=avatar):
+                st.markdown(message["content"])
+
+    st.markdown('<div class="ric-section-label">Suggested questions</div>', unsafe_allow_html=True)
     suggested_questions = [
         "Why was this route selected?",
-        "Which delivery leg takes the longest?",
-        "Compare the two optimization methods.",
-        "What if I use a van?",
-        "What if I depart at 8 AM?",
-        "What are the major delivery bottlenecks?",
+        "Compare shortest distance vs fastest time.",
+        "Identify the slowest delivery leg.",
+        "Explain the ETA prediction.",
+        "What happens if I use a van?",
+        "Recommend operational improvements.",
     ]
     prompt_columns = st.columns(3)
     for index, suggested in enumerate(suggested_questions):
-        if prompt_columns[index % 3].button(suggested, key=f"assistant_suggestion_{index}", width="stretch"):
+        if prompt_columns[index % 3].button(
+            suggested, key=f"assistant_suggestion_{index}", width="stretch",
+            disabled=st.session_state["route_assistant_processing"],
+        ):
             st.session_state["route_assistant_pending_prompt"] = suggested
 
-    typed_question = st.chat_input("Ask about these route results…", key="route_assistant_chat_input")
-    pending_prompt = st.session_state.pop("route_assistant_pending_prompt", None)
+    with st.form(
+        "route_assistant_message_form",
+        clear_on_submit=True,
+        enter_to_submit=True,
+        border=False,
+    ):
+        input_col, send_col = st.columns([6, 1.15], vertical_alignment="bottom")
+        with input_col:
+            typed_text = st.text_area(
+                "Message the copilot", key="route_assistant_message_text",
+                placeholder="Ask about this route or describe a what-if scenario…",
+                height=94, label_visibility="collapsed",
+            )
+        with send_col:
+            send_message = st.form_submit_button(
+                "Thinking…" if st.session_state["route_assistant_processing"] else "Send",
+                type="primary", icon=":material/arrow_upward:", width="stretch",
+                disabled=st.session_state["route_assistant_processing"],
+            )
+
+    typed_question = typed_text.strip() if send_message and typed_text.strip() else None
+    pending_prompt = st.session_state.get("route_assistant_pending_prompt")
     user_question = typed_question or pending_prompt
     if user_question:
+        if typed_question and pending_prompt:
+            st.session_state["route_assistant_pending_prompt"] = None
+        elif pending_prompt:
+            st.session_state.pop("route_assistant_pending_prompt", None)
+        st.session_state["route_assistant_processing"] = True
         append_chat_message(st.session_state, "user", user_question)
         response = None
+        response_source = "python"
         scenario_words = ("what if", "how would", "if i depart", "if i use", "prioritize distance", "prioritise distance", "prioritize time", "prioritise time", "instead of")
         if assistant_context["ready"] and any(term in user_question.lower() for term in scenario_words):
+            response_source = "scenario"
             try:
                 parameters = parse_scenario_question(user_question, {
                     **assistant_context,
                     "primary_key": result.get("primary_key", "distance"),
                 })
                 st.session_state["route_assistant_scenario_parameters"] = parameters
-                with st.spinner("Recalculating both route objectives for this scenario…"):
+                with st.spinner("Copilot is calculating both route objectives…"):
                     scenario_result = evaluate_scenario(
                         parameters,
                         result,
@@ -578,80 +727,76 @@ with st.container(border=True):
                 st.session_state["route_assistant_scenario_result"] = scenario_result
                 active_key = "distance_result" if parameters["objective"] == "distance" else "time_result"
                 scenario_primary = scenario_result[active_key]
-                base_key = active_key
                 delta_distance = scenario_primary.get("delta_distance_km")
                 delta_eta = scenario_primary.get("delta_eta_min")
                 response = (
-                    f"Scenario calculated with {parameters['vehicle']} departing "
+                    f"Scenario calculated for {parameters['vehicle']} departing "
                     f"{parameters['departure_day']} at {parameters['departure_hour']:02d}:00. "
-                    f"The {parameters['objective']}-priority route is {scenario_primary['route_string']}, "
+                    f"The {parameters['objective']}-priority sequence is {scenario_primary['route_string']}: "
                     f"{scenario_primary['total_distance_km']:.2f} km and "
                     f"{scenario_primary['total_eta_min']:.2f} model-predicted min. "
-                    + (f"Compared with the current {base_key.removesuffix('_result')} result, this is "
-                       f"{delta_distance:+.2f} km and {delta_eta:+.2f} predicted min. "
+                    + (f"Change from the current result: {delta_distance:+.2f} km and {delta_eta:+.2f} predicted min. "
                        if delta_distance is not None and delta_eta is not None else "A complete baseline delta is unavailable. ")
-                    + "Both objectives are shown below; the displayed dashboard route is unchanged until you apply the scenario."
+                    + "Both objectives are shown below. The dashboard changes only if you apply this scenario."
                 )
             except ValueError as error:
                 response = str(error)
             except Exception:
                 response = "I couldn't calculate that scenario. Check the vehicle, weekday, and departure time, then try again. The current optimization remains unchanged."
         if response is None:
-            response = assistant_answer(
+            response, response_source = assistant_answer_with_source(
                 user_question,
                 assistant_context,
                 active_mode,
                 llm_config,
                 conversation_history=st.session_state["route_assistant_messages"][:-1],
             )
-        append_chat_message(st.session_state, "assistant", response)
-        with st.chat_message("assistant"):
-            st.markdown(response)
-
-    clear_col, _ = st.columns([1, 4])
-    if clear_col.button("Clear conversation", key="clear_route_assistant"):
-        st.session_state["route_assistant_messages"] = []
-        st.session_state["route_assistant_scenario_result"] = None
-        st.session_state["route_assistant_scenario_parameters"] = None
-        st.rerun()
-
-scenario_result = st.session_state.get("route_assistant_scenario_result")
-if scenario_result:
-    st.markdown("#### What-if scenario results")
-    parameters = scenario_result["parameters"]
-    st.caption(
-        f"{parameters['vehicle']} · {parameters['departure_day']} at "
-        f"{parameters['departure_hour']:02d}:00 · both objectives evaluated"
-    )
-    scenario_cards = st.columns(2)
-    for col, (title, key) in zip(scenario_cards, (("Shortest Distance", "distance_result"), ("Fastest Delivery Time", "time_result"))):
-        scenario_route = scenario_result[key]
-        with col.container(border=True):
-            st.markdown(f"**{title}**")
-            st.caption(scenario_route["route_string"])
-            st.metric("Road distance", f"{scenario_route['total_distance_km']:.2f} km", delta=f"{scenario_route['delta_distance_km']:+.2f} km" if scenario_route["delta_distance_km"] is not None else None)
-            st.metric("Predicted delivery duration", f"{scenario_route['total_eta_min']:.2f} min", delta=f"{scenario_route['delta_eta_min']:+.2f} min" if scenario_route["delta_eta_min"] is not None else None, delta_color="inverse")
-    apply_col, _ = st.columns([1, 4])
-    if apply_col.button("Apply scenario to dashboard", type="primary", key="apply_route_scenario"):
-        primary_key = parameters["objective"]
-        primary_result = scenario_result[f"{primary_key}_result"]
-        st.session_state["optimization_result"] = {
-            "primary_key": primary_key,
-            "primary_result": primary_result,
-            "distance_result": scenario_result["distance_result"],
-            "time_result": scenario_result["time_result"],
-            "route": primary_result["route"],
-            "route_string": primary_result["route_string"],
-            "total_distance": primary_result["total_distance_km"],
-            "total_eta": primary_result["total_eta_min"],
-            "vehicle_type": parameters["vehicle"],
-            "departure_day": parameters["departure_day"],
-            "departure_time": f"{parameters['departure_hour']:02d}:00",
-            "optimization_mode": "Shortest Distance" if primary_key == "distance" else "Fastest Delivery Time",
-            "scenario": parameters["scenario"],
-            "leg_details": primary_result["leg_details"],
+        st.session_state["route_assistant_runtime"] = {
+            "requested_mode": active_mode,
+            "source": response_source,
         }
-        st.rerun()
+        append_chat_message(st.session_state, "assistant", response)
+        st.session_state["route_assistant_processing"] = False
+
+    scenario_result = st.session_state.get("route_assistant_scenario_result")
+    if scenario_result:
+        parameters = scenario_result["parameters"]
+        with st.container(key="ric_scenario_results", border=True):
+            st.markdown("#### What-if scenario results")
+            st.caption(
+                f"{parameters['vehicle']} · {parameters['departure_day']} at "
+                f"{parameters['departure_hour']:02d}:00 · "
+                f"{'Shortest Distance' if parameters['objective'] == 'distance' else 'Fastest Delivery Time'} priority"
+            )
+            scenario_cards = st.columns(2)
+            for col, (title, key) in zip(scenario_cards, (("Shortest Distance", "distance_result"), ("Fastest Delivery Time", "time_result"))):
+                scenario_route = scenario_result[key]
+                with col.container(border=True):
+                    st.markdown(f"**{title}**")
+                    st.caption(f"Sequence: {scenario_route['route_string']}")
+                    st.metric("Total distance", f"{scenario_route['total_distance_km']:.2f} km", delta=f"{scenario_route['delta_distance_km']:+.2f} km" if scenario_route["delta_distance_km"] is not None else None)
+                    st.metric("Predicted duration", f"{scenario_route['total_eta_min']:.2f} min", delta=f"{scenario_route['delta_eta_min']:+.2f} min" if scenario_route["delta_eta_min"] is not None else None, delta_color="inverse")
+            apply_col, _ = st.columns([1.6, 4])
+            if apply_col.button("Apply scenario to dashboard", type="primary", key="apply_route_scenario", icon=":material/check:"):
+                primary_key = parameters["objective"]
+                primary_result = scenario_result[f"{primary_key}_result"]
+                st.session_state["optimization_result"] = {
+                    "primary_key": primary_key,
+                    "primary_result": primary_result,
+                    "distance_result": scenario_result["distance_result"],
+                    "time_result": scenario_result["time_result"],
+                    "route": primary_result["route"],
+                    "route_string": primary_result["route_string"],
+                    "total_distance": primary_result["total_distance_km"],
+                    "total_eta": primary_result["total_eta_min"],
+                    "vehicle_type": parameters["vehicle"],
+                    "departure_day": parameters["departure_day"],
+                    "departure_time": f"{parameters['departure_hour']:02d}:00",
+                    "optimization_mode": "Shortest Distance" if primary_key == "distance" else "Fastest Delivery Time",
+                    "scenario": parameters["scenario"],
+                    "leg_details": primary_result["leg_details"],
+                }
+                st.rerun()
 
 
 with st.expander("About the model and data", icon=":material/info:"):

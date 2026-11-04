@@ -11,6 +11,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from route_intelligence import (  # noqa: E402
     assistant_answer,
+    assistant_answer_with_source,
     append_chat_message,
     bottleneck_analysis,
     build_context,
@@ -20,6 +21,7 @@ from route_intelligence import (  # noqa: E402
     llm_configuration,
     parse_scenario_question,
     python_answer,
+    OUT_OF_SCOPE_RESPONSE,
 )
 
 
@@ -245,3 +247,58 @@ class RouteIntelligenceTests(unittest.TestCase):
     append_chat_message(state, "assistant", "Python analysis response")
     self.assertEqual(len(state["route_assistant_messages"]), 2)
     self.assertEqual(repr(state["optimization_result"]), original)
+
+  def test_response_source_matches_openrouter_or_python_fallback(self):
+    import route_intelligence
+
+    context = build_context(sample_result(), LOCATIONS)
+    configuration = {"api_key": "test-key", "api_base": "https://openrouter.ai/api/v1", "model": "test"}
+    response = io.BytesIO(b'{"choices":[{"message":{"content":"**Grounded** response"}}]}')
+    with patch.object(route_intelligence, "urlopen", return_value=response):
+        answer, source = assistant_answer_with_source("Explain ETA prediction", context, "LLM", configuration)
+    self.assertEqual(source, "openrouter")
+    self.assertIn("**Grounded**", answer)
+    with patch.object(route_intelligence, "urlopen", side_effect=TimeoutError):
+        answer, source = assistant_answer_with_source("Explain ETA prediction", context, "LLM", configuration)
+    self.assertEqual(source, "python")
+    self.assertTrue(answer)
+
+  def test_suggested_prompt_queue_is_consumed_once(self):
+    state = {"route_assistant_pending_prompt": "Compare shortest distance vs fastest time"}
+    submitted = state.pop("route_assistant_pending_prompt", None)
+    self.assertIsNotNone(submitted)
+    self.assertIsNone(state.pop("route_assistant_pending_prompt", None))
+
+  def test_out_of_scope_handling_in_python_and_openrouter_modes(self):
+    import route_intelligence
+
+    context = build_context(sample_result(), LOCATIONS)
+    config = {"api_key": "test-key", "api_base": "https://openrouter.ai/api/v1", "model": "test"}
+    unrelated_questions = [
+        "Who will win the football match this weekend?",
+        "Write a birthday message for my sister.",
+    ]
+    for question in unrelated_questions:
+        for mode in ("Python analysis", "LLM explanations"):
+            with self.subTest(question=question, mode=mode):
+                with patch.object(route_intelligence, "urlopen") as mocked:
+                    answer, source = assistant_answer_with_source(question, context, mode, config)
+                self.assertEqual(answer, OUT_OF_SCOPE_RESPONSE)
+                self.assertEqual(source, "scope_guard")
+                mocked.assert_not_called()
+
+  def test_greetings_and_legitimate_route_questions_are_not_blocked(self):
+    context = build_context(sample_result(), LOCATIONS)
+    cases = [
+        ("Hello", "Current"),
+        ("Which route has the shortest distance?", "shortest distance"),
+        ("What is the predicted ETA?", "model-predicted"),
+        ("Compare the motorcycle and van delivery scenarios", "Shortest-distance route:"),
+        ("What can you help me with?", "Current"),
+    ]
+    for question, expected in cases:
+        with self.subTest(question=question):
+            answer, source = assistant_answer_with_source(question, context, "Python analysis")
+            self.assertEqual(source, "python")
+            self.assertNotEqual(answer, OUT_OF_SCOPE_RESPONSE)
+            self.assertIn(expected.lower(), answer.lower())

@@ -18,6 +18,27 @@ DAY_NAMES = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
 VEHICLES = {"motorcycle", "car", "van"}
 UNAVAILABLE = {"", "-", "n/a", "na", "none", "null", "nan", "unavailable"}
 OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
+OUT_OF_SCOPE_RESPONSE = (
+    "I'm your Smart Route Optimizer assistant. I specialize in delivery routes, "
+    "ETA predictions, route comparisons and delivery planning. I can't help with "
+    "that unrelated topic, but I can help you analyze your delivery routes or "
+    "explore a different delivery scenario."
+)
+GREETING_WORDS = {"hello", "hi", "hey", "good morning", "good afternoon", "good evening", "greetings"}
+DOMAIN_TERMS = {
+    "route", "routing", "delivery", "deliveries", "optimizer", "optimization", "optimisation",
+    "shortest", "fastest", "distance", "eta", "arrival", "travel time", "journey", "leg", "legs",
+    "time vs distance", "time versus distance", "fastest vs shortest", "fastest versus shortest",
+    "vehicle", "motorcycle", "motorbike", "car", "van", "warehouse", "customer", "customers",
+    "bottleneck", "traffic", "departure", "stop", "stops", "sequence", "scenario", "km", "minutes",
+    "recommendation", "recommend", "operational improvement", "operational recommendation",
+    "route intelligence", "smart route optimizer",
+}
+CAPABILITY_TERMS = {
+    "what can you", "what do you", "how can you", "how do you", "your features", "your capabilities",
+    "what are your limitations", "what are your functions", "what does this system", "what does the app",
+    "what does the assistant", "explain this system", "explain the app", "about this system",
+}
 ETA_FEATURES = (
     "origin_zone",
     "destination_zone",
@@ -39,6 +60,26 @@ def numeric(value):
     except (TypeError, ValueError):
         return None
     return result if math.isfinite(result) else None
+
+
+def is_greeting(question):
+    """Allow simple greetings through to normal assistant handling."""
+    normalized = re.sub(r"[^a-z\s]", " ", question.lower()).strip()
+    return normalized in GREETING_WORDS or normalized.split()[:2] in (
+        ["hi", "there"], ["hello", "there"], ["hey", "there"],
+    )
+
+
+def is_out_of_scope(question):
+    """Conservatively flag clearly unrelated requests, allowing domain/capability questions."""
+    text = question.lower().strip()
+    if not text or is_greeting(text):
+        return False
+    if any(phrase in text for phrase in CAPABILITY_TERMS):
+        return False
+    if any(term in text for term in DOMAIN_TERMS):
+        return False
+    return True
 
 
 def _rows(locations):
@@ -499,9 +540,11 @@ def llm_answer(question, context, python_analysis, configuration, timeout=15,
         return None
 
 
-def assistant_answer(question, context, mode="Python analysis", configuration=None,
-                     conversation_history=None):
-    """Return an LLM explanation when available, otherwise grounded Python text."""
+def assistant_answer_with_source(question, context, mode="Python analysis",
+                                 configuration=None, conversation_history=None):
+    """Return a grounded answer and the engine that actually produced it."""
+    if is_out_of_scope(question):
+        return OUT_OF_SCOPE_RESPONSE, "scope_guard"
     analysis = python_answer(question, context)
     if mode.startswith("LLM"):
         explanation = llm_answer(
@@ -509,8 +552,17 @@ def assistant_answer(question, context, mode="Python analysis", configuration=No
             conversation_history=conversation_history,
         )
         if explanation:
-            return explanation
-    return analysis
+            return explanation, "openrouter"
+    return analysis, "python"
+
+
+def assistant_answer(question, context, mode="Python analysis", configuration=None,
+                     conversation_history=None):
+    """Return an LLM explanation when available, otherwise grounded Python text."""
+    answer, _source = assistant_answer_with_source(
+        question, context, mode, configuration, conversation_history
+    )
+    return answer
 
 
 def append_chat_message(session_state, role, content):
