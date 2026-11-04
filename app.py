@@ -2,6 +2,7 @@
 
 from datetime import time
 from html import escape
+import math
 from pathlib import Path
 import sys
 
@@ -48,9 +49,44 @@ def load_road_network():
     # geospatial stack that is only needed when regenerating the study graph.
     graph = nx.read_graphml(graph_path, node_type=int)
     graph.graph["invalid_edge_length_count"] = normalize_edge_lengths(graph)
+    # GraphML may encode absent coordinates as the literal "-". Reject
+    # malformed road geometry before a selected route reaches Folium.
+    invalid_coordinate_nodes = []
+    for node_id, attributes in graph.nodes(data=True):
+        try:
+            latitude = float(attributes["y"])
+            longitude = float(attributes["x"])
+            if not (math.isfinite(latitude) and math.isfinite(longitude)):
+                raise ValueError
+            if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
+                raise ValueError
+            attributes["y"] = latitude
+            attributes["x"] = longitude
+        except (KeyError, TypeError, ValueError):
+            invalid_coordinate_nodes.append(node_id)
+    if invalid_coordinate_nodes:
+        raise ValueError(
+            "Road network contains missing or invalid coordinates for "
+            f"{len(invalid_coordinate_nodes)} node(s); regenerate the saved graph."
+        )
+
     locations = pd.read_csv(locations_path)
     if set(locations["location_id"]) != set("WABCDEF"):
         raise ValueError("The expanded location file must contain W and customers A–F.")
+    for coordinate in ("latitude", "longitude"):
+        locations[coordinate] = pd.to_numeric(locations[coordinate], errors="coerce")
+    valid_locations = (
+        locations["latitude"].map(math.isfinite)
+        & locations["longitude"].map(math.isfinite)
+        & locations["latitude"].between(-90, 90)
+        & locations["longitude"].between(-180, 180)
+    )
+    if not valid_locations.all():
+        bad_ids = locations.loc[~valid_locations, "location_id"].tolist()
+        raise ValueError(
+            "Delivery locations have missing or invalid coordinates for: "
+            f"{', '.join(bad_ids)}. Correct the location data before mapping."
+        )
     return graph, locations
 
 
@@ -143,8 +179,15 @@ def create_delivery_map(route=None):
         road_point = [float(node["y"]), float(node["x"])]
         bounds.extend([site_point, road_point])
 
-        snap_distance = float(row.snap_distance_m)
-        if snap_distance > 1:
+        # Snap distance is optional display metadata. An unavailable value
+        # should suppress its connector/label, not be sent to Folium as a float.
+        try:
+            snap_distance = float(row.snap_distance_m)
+            if not math.isfinite(snap_distance) or snap_distance < 0:
+                snap_distance = None
+        except (TypeError, ValueError):
+            snap_distance = None
+        if snap_distance is not None and snap_distance > 1:
             folium.PolyLine(
                 [site_point, road_point],
                 color="#94a3b8",
@@ -158,10 +201,15 @@ def create_delivery_map(route=None):
         sequence = order_number.get(location_id)
         marker_label = "W" if location_id == "W" else str(sequence or "•")
         marker_color = "#102a43" if location_id == "W" else "#0f766e"
+        snap_description = (
+            f"Road-node snap: {snap_distance:.1f} m"
+            if snap_distance is not None
+            else "Road-node snap distance unavailable"
+        )
         popup_html = (
             f"<b>{place_name}</b><br>"
             f"{'Warehouse' if location_id == 'W' else f'Delivery stop {sequence}'}<br>"
-            f"Road-node snap: {snap_distance:.1f} m"
+            f"{snap_description}"
         )
         folium.Marker(
             site_point,
