@@ -163,7 +163,47 @@ real-world ETA or traffic prediction accuracy.**
   including the return to the warehouse.
 - Session-state results that remain visible after map interactions and
   Streamlit reruns.
+- Route Intelligence Assistant with Python-grounded route comparisons,
+  delivery bottlenecks, recommendations, limitations, and isolated what-if
+  vehicle/departure scenarios.
+- Optional OpenAI-compatible conversational explanations; deterministic Python
+  analysis remains available without an API key.
 - Model and data transparency notes in the application.
+
+### Route Intelligence Assistant configuration
+
+The assistant's Python analysis mode works without extra packages, credentials,
+or external services. It answers from the current optimization results held in
+the Streamlit session. What-if questions re-run the existing distance and ETA
+optimizers for the requested vehicle, departure hour, and weekday. Scenario
+results stay separate from the current dashboard until **Apply scenario to
+dashboard** is selected.
+
+For optional conversational explanations, configure an API key and (optionally)
+an OpenAI-compatible provider endpoint and model. In local development, set
+environment variables:
+
+```powershell
+$env:ROUTE_ASSISTANT_API_KEY = "your-provider-key"
+$env:ROUTE_ASSISTANT_API_BASE = "https://api.openai.com/v1"
+$env:ROUTE_ASSISTANT_MODEL = "gpt-4o-mini"
+```
+
+On Streamlit Cloud, add these values under **App settings → Secrets**:
+
+```toml
+route_assistant_api_key = "your-provider-key"
+route_assistant_api_base = "https://api.openai.com/v1"
+route_assistant_model = "gpt-4o-mini"
+```
+
+Only the API key is required; the endpoint and model have OpenAI-compatible
+defaults. For another compatible provider, set its API base URL and model.
+The provider receives the user's question and the current route context plus
+the approved Python analysis. If configuration is missing or the provider
+request fails, the app uses Python analysis instead. Credentials are read from
+Streamlit secrets or environment variables and must never be committed to the
+repository. No LLM package is required.
 
 ## Technologies
 

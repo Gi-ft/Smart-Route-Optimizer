@@ -24,6 +24,14 @@ from scenario_analysis import (
     optimize_by_scenario,
 )
 from graph_utils import normalize_edge_lengths
+from route_intelligence import (
+    assistant_answer,
+    append_chat_message,
+    build_context,
+    evaluate_scenario,
+    llm_configuration,
+    parse_scenario_question,
+)
 
 
 st.set_page_config(
@@ -476,6 +484,166 @@ if result:
             eta_metric.metric(
                 "Predicted delivery time", f"{objective_result['total_eta_min']:.2f} min"
             )
+
+
+st.divider()
+st.markdown(
+    "<div style='font-size:.78rem; letter-spacing:.13em; text-transform:uppercase; "
+    "color:#0f766e; font-weight:700;'>Decision support</div>",
+    unsafe_allow_html=True,
+)
+st.header("ROUTE INTELLIGENCE ASSISTANT", anchor=False)
+assistant_context = build_context(
+    result,
+    locations,
+    vehicle=result.get("vehicle_type") if result else vehicle_label,
+    departure_day=result.get("departure_day") if result else departure_day,
+    departure_time=result.get("departure_time") if result else departure_time.strftime("%H:%M"),
+    objective=result.get("optimization_mode") if result else optimization_mode,
+    scenario=result.get("scenario") if result else traffic_scenario,
+)
+st.session_state["route_assistant_context"] = assistant_context
+llm_config = llm_configuration(st.secrets)
+mode_options = ["Python analysis"] + (["LLM explanations (with Python fallback)"] if llm_config["available"] else [])
+active_mode = st.selectbox(
+    "Response mode",
+    mode_options,
+    key="assistant_response_mode",
+    help="Python analysis always works. LLM mode is available only when an API key is configured; route calculations remain Python-based.",
+)
+if assistant_context["ready"]:
+    st.caption(
+        f"Using current results · {assistant_context['vehicle']} · "
+        f"{assistant_context['departure_day']} at {assistant_context['departure_time']} · "
+        f"{assistant_context['objective']}"
+    )
+    if assistant_context["warnings"]:
+        for warning in assistant_context["warnings"]:
+            st.caption(f"Data note: {warning}")
+else:
+    st.info(assistant_context["message"], icon=":material/route:")
+
+if "route_assistant_messages" not in st.session_state:
+    st.session_state["route_assistant_messages"] = []
+if "route_assistant_scenario_result" not in st.session_state:
+    st.session_state["route_assistant_scenario_result"] = None
+if "route_assistant_scenario_parameters" not in st.session_state:
+    st.session_state["route_assistant_scenario_parameters"] = None
+
+with st.container(border=True):
+    if not st.session_state["route_assistant_messages"]:
+        st.caption("Ask about route choices, delivery bottlenecks, or a what-if scenario.")
+    for message in st.session_state["route_assistant_messages"]:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    suggested_questions = [
+        "Why was this route selected?",
+        "Which delivery leg takes the longest?",
+        "Compare the two optimization methods.",
+        "What if I use a van?",
+        "What if I depart at 8 AM?",
+        "What are the major delivery bottlenecks?",
+    ]
+    prompt_columns = st.columns(3)
+    for index, suggested in enumerate(suggested_questions):
+        if prompt_columns[index % 3].button(suggested, key=f"assistant_suggestion_{index}", width="stretch"):
+            st.session_state["route_assistant_pending_prompt"] = suggested
+
+    typed_question = st.chat_input("Ask about these route results…", key="route_assistant_chat_input")
+    user_question = typed_question or st.session_state.pop("route_assistant_pending_prompt", None)
+    if user_question:
+        append_chat_message(st.session_state, "user", user_question)
+        response = None
+        scenario_words = ("what if", "how would", "if i depart", "if i use", "prioritize distance", "prioritise distance", "prioritize time", "prioritise time", "instead of")
+        if assistant_context["ready"] and any(term in user_question.lower() for term in scenario_words):
+            try:
+                parameters = parse_scenario_question(user_question, {
+                    **assistant_context,
+                    "primary_key": result.get("primary_key", "distance"),
+                })
+                st.session_state["route_assistant_scenario_parameters"] = parameters
+                with st.spinner("Recalculating both route objectives for this scenario…"):
+                    scenario_result = evaluate_scenario(
+                        parameters,
+                        result,
+                        optimize_distance=cached_distance_routes,
+                        optimize_time=cached_time_routes,
+                        evaluate_distance=evaluate_route,
+                    )
+                st.session_state["route_assistant_scenario_result"] = scenario_result
+                active_key = "distance_result" if parameters["objective"] == "distance" else "time_result"
+                scenario_primary = scenario_result[active_key]
+                base_key = active_key
+                delta_distance = scenario_primary.get("delta_distance_km")
+                delta_eta = scenario_primary.get("delta_eta_min")
+                response = (
+                    f"Scenario calculated with {parameters['vehicle']} departing "
+                    f"{parameters['departure_day']} at {parameters['departure_hour']:02d}:00. "
+                    f"The {parameters['objective']}-priority route is {scenario_primary['route_string']}, "
+                    f"{scenario_primary['total_distance_km']:.2f} km and "
+                    f"{scenario_primary['total_eta_min']:.2f} model-predicted min. "
+                    + (f"Compared with the current {base_key.removesuffix('_result')} result, this is "
+                       f"{delta_distance:+.2f} km and {delta_eta:+.2f} predicted min. "
+                       if delta_distance is not None and delta_eta is not None else "A complete baseline delta is unavailable. ")
+                    + "Both objectives are shown below; the displayed dashboard route is unchanged until you apply the scenario."
+                )
+            except ValueError as error:
+                response = str(error)
+            except Exception:
+                response = "I couldn't calculate that scenario. Check the vehicle, weekday, and departure time, then try again. The current optimization remains unchanged."
+        if response is None:
+            response = assistant_answer(
+                user_question, assistant_context, active_mode, llm_config
+            )
+        append_chat_message(st.session_state, "assistant", response)
+        with st.chat_message("assistant"):
+            st.markdown(response)
+
+    clear_col, _ = st.columns([1, 4])
+    if clear_col.button("Clear conversation", key="clear_route_assistant"):
+        st.session_state["route_assistant_messages"] = []
+        st.session_state["route_assistant_scenario_result"] = None
+        st.session_state["route_assistant_scenario_parameters"] = None
+        st.rerun()
+
+scenario_result = st.session_state.get("route_assistant_scenario_result")
+if scenario_result:
+    st.markdown("#### What-if scenario results")
+    parameters = scenario_result["parameters"]
+    st.caption(
+        f"{parameters['vehicle']} · {parameters['departure_day']} at "
+        f"{parameters['departure_hour']:02d}:00 · both objectives evaluated"
+    )
+    scenario_cards = st.columns(2)
+    for col, (title, key) in zip(scenario_cards, (("Shortest Distance", "distance_result"), ("Fastest Delivery Time", "time_result"))):
+        scenario_route = scenario_result[key]
+        with col.container(border=True):
+            st.markdown(f"**{title}**")
+            st.caption(scenario_route["route_string"])
+            st.metric("Road distance", f"{scenario_route['total_distance_km']:.2f} km", delta=f"{scenario_route['delta_distance_km']:+.2f} km" if scenario_route["delta_distance_km"] is not None else None)
+            st.metric("Predicted delivery duration", f"{scenario_route['total_eta_min']:.2f} min", delta=f"{scenario_route['delta_eta_min']:+.2f} min" if scenario_route["delta_eta_min"] is not None else None, delta_color="inverse")
+    apply_col, _ = st.columns([1, 4])
+    if apply_col.button("Apply scenario to dashboard", type="primary", key="apply_route_scenario"):
+        primary_key = parameters["objective"]
+        primary_result = scenario_result[f"{primary_key}_result"]
+        st.session_state["optimization_result"] = {
+            "primary_key": primary_key,
+            "primary_result": primary_result,
+            "distance_result": scenario_result["distance_result"],
+            "time_result": scenario_result["time_result"],
+            "route": primary_result["route"],
+            "route_string": primary_result["route_string"],
+            "total_distance": primary_result["total_distance_km"],
+            "total_eta": primary_result["total_eta_min"],
+            "vehicle_type": parameters["vehicle"],
+            "departure_day": parameters["departure_day"],
+            "departure_time": f"{parameters['departure_hour']:02d}:00",
+            "optimization_mode": "Shortest Distance" if primary_key == "distance" else "Fastest Delivery Time",
+            "scenario": parameters["scenario"],
+            "leg_details": primary_result["leg_details"],
+        }
+        st.rerun()
 
 
 with st.expander("About the model and data", icon=":material/info:"):
