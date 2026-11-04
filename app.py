@@ -654,7 +654,7 @@ with st.container(key="route_intelligence_copilot"):
         )
     else:
         for message in messages:
-            avatar = "🧑" if message["role"] == "user" else "✦"
+            avatar = "👤" if message["role"] == "user" else "🤖"
             with st.chat_message(message["role"], avatar=avatar):
                 st.markdown(message["content"])
 
@@ -757,6 +757,10 @@ with st.container(key="route_intelligence_copilot"):
         }
         append_chat_message(st.session_state, "assistant", response)
         st.session_state["route_assistant_processing"] = False
+        with st.chat_message("user", avatar="👤"):
+            st.markdown(user_question)
+        with st.chat_message("assistant", avatar="🤖"):
+            st.markdown(response)
 
     scenario_result = st.session_state.get("route_assistant_scenario_result")
     if scenario_result:
