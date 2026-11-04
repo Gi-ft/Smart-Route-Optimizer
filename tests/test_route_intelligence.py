@@ -31,7 +31,7 @@ LOCATIONS = [
 
 def route(route_ids, distance, eta, legs):
     return {"route": route_ids, "route_string": " → ".join(route_ids), "total_distance_km": distance,
-            "total_eta_min": eta, "leg_details": legs}
+            "total_eta_min": eta, "leg_details": legs, "routes_evaluated": 1}
 
 
 def sample_result():
@@ -74,13 +74,23 @@ class RouteIntelligenceTests(unittest.TestCase):
     configuration = llm_configuration(
         {"OPENROUTER_API_KEY": "test-key", "OPENROUTER_MODEL": "provider/model-x"}, {}
     )
+    context = build_context(sample_result(), LOCATIONS)
     with patch.object(route_intelligence, "urlopen", return_value=response) as mocked:
-        answer = llm_answer("Why this route?", {"ready": True}, "approved facts", configuration, timeout=7)
+        answer = llm_answer(
+            "Why this route?", context, "approved facts", configuration,
+            timeout=7, conversation_history=[{"role": "user", "content": "Earlier question"}],
+        )
     self.assertEqual(answer, "Grounded explanation")
     request, = mocked.call_args.args
     self.assertEqual(request.full_url, "https://openrouter.ai/api/v1/chat/completions")
     self.assertEqual(request.get_header("Authorization"), "Bearer test-key")
-    self.assertEqual(json.loads(request.data)["model"], "provider/model-x")
+    request_payload = json.loads(request.data)
+    self.assertEqual(request_payload["model"], "provider/model-x")
+    self.assertEqual(request_payload["messages"][1], {"role": "user", "content": "Earlier question"})
+    latest_request = json.loads(request_payload["messages"][-1]["content"])
+    self.assertIn("shortest_distance", latest_request["context"])
+    self.assertIn("fastest_time", latest_request["context"])
+    self.assertIn("optimizer_methodology", latest_request["context"])
     self.assertEqual(mocked.call_args.kwargs["timeout"], 7)
 
   def test_openrouter_provider_errors_and_timeouts_return_python_fallback(self):
@@ -121,6 +131,22 @@ class RouteIntelligenceTests(unittest.TestCase):
     self.assertTrue(context["ready"])
     self.assertEqual(context["shortest_distance"]["route"], ["W", "A", "W"])
     self.assertTrue(context["shortest_distance"]["legs"][0]["predicted_arrival"])
+    methodology = context["optimizer_methodology"]
+    self.assertEqual(methodology["possible_customer_permutations"], 1)
+    self.assertEqual(methodology["shortest_distance"]["routes_evaluated"], 1)
+    self.assertTrue(methodology["shortest_distance"]["all_permutations_evaluated"])
+    self.assertIn("estimated_free_flow_min", methodology["eta_prediction"]["features"])
+
+  def test_technical_same_route_question_explains_both_objectives(self):
+    context = build_context(sample_result(), LOCATIONS)
+    answer = python_answer(
+        "Why did the shortest-distance and fastest-time optimizers select the same route?",
+        context,
+    )
+    self.assertIn("same sequence", answer)
+    self.assertIn("different scores", answer)
+    self.assertIn("1 distance-route results and 1 time-route results", answer)
+    self.assertIn("departure_hour", answer)
 
 
   def test_route_comparison_and_bottlenecks_handle_missing_eta(self):

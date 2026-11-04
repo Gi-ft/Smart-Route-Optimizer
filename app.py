@@ -343,9 +343,10 @@ if submitted:
             scenario=traffic_scenario,
         )
         distance_eta = distance_evaluation[1]
-        fastest_result = cached_time_routes(
+        fastest_routes = cached_time_routes(
             vehicle, selected_hour, selected_day, traffic_scenario
-        )[0]
+        )
+        fastest_result = fastest_routes[0]
         # Persist complete results for both objectives. The selector only
         # chooses the primary route to display; it does not skip either run.
         distance_result = {
@@ -354,6 +355,7 @@ if submitted:
             "total_distance_km": float(distance_best["total_distance_km"]),
             "total_eta_min": float(distance_eta),
             "leg_details": distance_evaluation[2],
+            "routes_evaluated": len(distance_routes),
         }
         time_result = {
             "route": list(fastest_result["route"]),
@@ -361,6 +363,7 @@ if submitted:
             "total_distance_km": float(fastest_result["total_distance_km"]),
             "total_eta_min": float(fastest_result["total_eta_min"]),
             "leg_details": fastest_result["leg_details"],
+            "routes_evaluated": len(fastest_routes),
         }
         primary_key = (
             "time" if optimization_mode == "Fastest Delivery Time" else "distance"
@@ -551,7 +554,8 @@ with st.container(border=True):
             st.session_state["route_assistant_pending_prompt"] = suggested
 
     typed_question = st.chat_input("Ask about these route results…", key="route_assistant_chat_input")
-    user_question = typed_question or st.session_state.pop("route_assistant_pending_prompt", None)
+    pending_prompt = st.session_state.pop("route_assistant_pending_prompt", None)
+    user_question = typed_question or pending_prompt
     if user_question:
         append_chat_message(st.session_state, "user", user_question)
         response = None
@@ -594,7 +598,11 @@ with st.container(border=True):
                 response = "I couldn't calculate that scenario. Check the vehicle, weekday, and departure time, then try again. The current optimization remains unchanged."
         if response is None:
             response = assistant_answer(
-                user_question, assistant_context, active_mode, llm_config
+                user_question,
+                assistant_context,
+                active_mode,
+                llm_config,
+                conversation_history=st.session_state["route_assistant_messages"][:-1],
             )
         append_chat_message(st.session_state, "assistant", response)
         with st.chat_message("assistant"):

@@ -18,6 +18,16 @@ DAY_NAMES = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
 VEHICLES = {"motorcycle", "car", "van"}
 UNAVAILABLE = {"", "-", "n/a", "na", "none", "null", "nan", "unavailable"}
 OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
+ETA_FEATURES = (
+    "origin_zone",
+    "destination_zone",
+    "route_distance_km",
+    "road_edge_count",
+    "departure_hour",
+    "day_of_week",
+    "vehicle_type",
+    "estimated_free_flow_min",
+)
 
 
 def numeric(value):
@@ -108,6 +118,14 @@ def build_context(optimization_result, locations, vehicle=None, departure_day=No
     distance = _route_record(optimization_result.get("distance_result"), location_by_id, start_hour, day_index)
     fastest = _route_record(optimization_result.get("time_result"), location_by_id, start_hour, day_index)
     primary = _route_record(optimization_result.get("primary_result") or optimization_result, location_by_id, start_hour, day_index)
+    customer_count = max(0, len(location_rows) - 1)
+    expected_permutations = math.factorial(customer_count)
+    distance_count = numeric((optimization_result.get("distance_result") or {}).get("routes_evaluated"))
+    time_count = numeric((optimization_result.get("time_result") or {}).get("routes_evaluated"))
+    routes_match = bool(
+        distance and fastest and distance["route"] and fastest["route"]
+        and distance["route"] == fastest["route"]
+    )
     warnings = []
     if len(location_rows) != 7:
         warnings.append(f"Expected seven mapped locations; found {len(location_rows)}.")
@@ -129,6 +147,34 @@ def build_context(optimization_result, locations, vehicle=None, departure_day=No
         "objective": objective or optimization_result.get("optimization_mode"),
         "primary_key": optimization_result.get("primary_key", "distance"),
         "traffic_scenario": scenario or optimization_result.get("scenario"),
+        "optimizer_methodology": {
+            "customer_count": customer_count,
+            "possible_customer_permutations": expected_permutations,
+            "shortest_distance": {
+                "function": "route_optimizer.optimize_routes",
+                "objective": "Minimize the sum of directed shortest-road distances for a closed warehouse-to-customers-to-warehouse route.",
+                "routes_evaluated": int(distance_count) if distance_count is not None else None,
+                "all_permutations_evaluated": distance_count == expected_permutations if distance_count is not None else None,
+                "ranking_inputs": ["precomputed directed pairwise road-distance matrix"],
+                "ranking_uses_vehicle_or_departure_time": False,
+            },
+            "fastest_time": {
+                "function": "scenario_analysis.optimize_by_scenario",
+                "objective": "Minimize cumulative predicted ETA over closed warehouse-to-customers-to-warehouse routes.",
+                "routes_evaluated": int(time_count) if time_count is not None else None,
+                "all_permutations_evaluated": time_count == expected_permutations if time_count is not None else None,
+                "ranking_inputs": ["selected vehicle", "departure hour", "weekday", "traffic sensitivity scenario", "per-leg ETA predictions"],
+                "departure_advancement": "After each leg, add its predicted ETA to elapsed minutes and derive the next departure hour and weekday from that updated time.",
+                "road_path_note": "Each delivery leg uses its shortest-distance road path; the time optimizer ranks visit orders, not alternate time-weighted paths.",
+            },
+            "same_route_sequence": routes_match,
+            "eta_prediction": {
+                "features": list(ETA_FEATURES),
+                "target": "predicted delivery driving duration in minutes",
+                "duration_data": "The ETA model was trained using simulated durations, not observed trips or live traffic.",
+                "scenario_adjustment": "The selected traffic sensitivity scales the model-predicted excess above free-flow duration.",
+            },
+        },
         "locations": location_summary,
         "primary": primary,
         "shortest_distance": distance,
@@ -214,6 +260,52 @@ def python_answer(question, context):
                 f"{comparison['fastest_time']['distance_km']:.2f} km and {comparison['fastest_time']['eta_min']:.2f} predicted min. "
                 f"The fastest-time route uses {d:+.2f} km and changes predicted duration by {t:+.2f} min versus shortest distance. "
                 "Choose based on whether distance or predicted delivery time is the priority.")
+    technical_terms = ("optimizer", "optimization", "algorithm", "permutation", "feature", "departure hour", "departure time", "advance")
+    asks_technical = any(term in text for term in technical_terms)
+    asks_same_route = "same route" in text or "same sequence" in text or "identical route" in text
+    if asks_same_route or asks_technical:
+        methods = context.get("optimizer_methodology") or {}
+        distance_method = methods.get("shortest_distance", {})
+        time_method = methods.get("fastest_time", {})
+        route_match = methods.get("same_route_sequence")
+        if asks_same_route and route_match is True:
+            finding = (
+                f"Both optimizers returned the same sequence: {context['shortest_distance']['route_string']}. "
+                "They still optimize different scores. The distance optimizer minimizes the sum of directed road distances; "
+                "the time optimizer minimizes cumulative model-predicted leg duration."
+            )
+            distance_score = context["shortest_distance"].get("total_distance_km")
+            time_score = context["fastest_time"].get("total_eta_min")
+            if distance_score is not None and time_score is not None:
+                finding += f" This sequence scores {distance_score:.2f} km and {time_score:.2f} model-predicted minutes in the separately evaluated objectives."
+        elif asks_same_route and route_match is False:
+            finding = "The current shortest-distance and fastest-time optimizers returned different customer sequences."
+        else:
+            finding = "The shortest-distance and fastest-time optimizers rank routes using different objective values."
+        expected = methods.get("possible_customer_permutations")
+        distance_count = distance_method.get("routes_evaluated")
+        time_count = time_method.get("routes_evaluated")
+        count_text = (
+            f" This run returned {distance_count} distance-route results and {time_count} time-route results "
+            f"out of {expected} possible customer permutations."
+            if distance_count is not None and time_count is not None and expected is not None
+            else f" There are {expected} possible customer permutations, but this session does not retain the actual evaluated counts."
+            if expected is not None
+            else ""
+        )
+        if distance_method.get("all_permutations_evaluated") is True and time_method.get("all_permutations_evaluated") is True:
+            count_text += " Both optimizers completed all possible customer permutations."
+        configuration = (
+            f" Current inputs: {context.get('vehicle')}, {context.get('departure_day')} at "
+            f"{context.get('departure_time')}, scenario {context.get('traffic_scenario')}."
+        )
+        eta = methods.get("eta_prediction", {})
+        eta_text = (
+            " ETA features are " + ", ".join(eta.get("features", [])) + "."
+            " For each candidate route, the time optimizer adds each predicted leg duration to elapsed time "
+            "and uses the resulting hour and weekday for the next leg."
+        )
+        return finding + count_text + configuration + eta_text
     if "recommend" in text or "should i" in text or "what should" in text:
         if any(word in text for word in ("fast", "speed", "time")):
             selected = context.get("fastest_time") or {}
@@ -325,11 +417,12 @@ def evaluate_scenario(parameters, baseline, optimize_distance, optimize_time, ev
         route=distance_best["route"], vehicle_type=vehicle, start_hour=hour,
         start_day=day_index, scenario=base_scenario,
     )
-    fastest = optimize_time(vehicle, hour, day_index, base_scenario)[0]
+    fastest_ranked = optimize_time(vehicle, hour, day_index, base_scenario)
+    fastest = fastest_ranked[0]
     results = {
         "parameters": {"vehicle": vehicle.title(), "departure_hour": hour, "departure_day": day, "objective": objective, "scenario": base_scenario},
-        "distance_result": {"route": list(distance_best["route"]), "route_string": distance_best["route_string"], "total_distance_km": numeric(distance_best["total_distance_km"]), "total_eta_min": numeric(distance_eta), "leg_details": distance_legs},
-        "time_result": {"route": list(fastest["route"]), "route_string": fastest["route_string"], "total_distance_km": numeric(fastest["total_distance_km"]), "total_eta_min": numeric(fastest["total_eta_min"]), "leg_details": fastest["leg_details"]},
+        "distance_result": {"route": list(distance_best["route"]), "route_string": distance_best["route_string"], "total_distance_km": numeric(distance_best["total_distance_km"]), "total_eta_min": numeric(distance_eta), "leg_details": distance_legs, "routes_evaluated": len(distance_ranked)},
+        "time_result": {"route": list(fastest["route"]), "route_string": fastest["route_string"], "total_distance_km": numeric(fastest["total_distance_km"]), "total_eta_min": numeric(fastest["total_eta_min"]), "leg_details": fastest["leg_details"], "routes_evaluated": len(fastest_ranked)},
     }
     for key in ("distance_result", "time_result"):
         base = baseline.get(key) or {}
@@ -360,7 +453,8 @@ def llm_configuration(secrets=None, environ=None):
     }
 
 
-def llm_answer(question, context, python_analysis, configuration, timeout=15):
+def llm_answer(question, context, python_analysis, configuration, timeout=15,
+               conversation_history=None):
     """Ask OpenRouter to explain Python-approved facts; fail closed to Python."""
     if not configuration.get("api_key"):
         return None
@@ -368,7 +462,23 @@ def llm_answer(question, context, python_analysis, configuration, timeout=15):
         "model": configuration["model"],
         "temperature": 0.2,
         "messages": [
-            {"role": "system", "content": "You are a route intelligence assistant. Explain only the provided structured application context and Python analysis. Do not calculate, infer missing values, invent traffic conditions, or claim simulated ETA is live traffic. If a value is null, say it is unavailable. Scenario outcomes must be supplied by Python."},
+            {"role": "system", "content": (
+                "You are a technical route-intelligence assistant. Answer the user's specific question directly, "
+                "including questions about why optimization results match or differ. Use optimizer_methodology, "
+                "the structured route results, and approved_python_analysis to explain objective definitions, "
+                "candidate counts, ETA inputs, and departure-time progression. Do not merely repeat the selected-route summary. "
+                "Do not invent implementation details or calculate routes, distances, ETAs, or counts yourself. "
+                "Treat structured context and Python analysis as authoritative; conversation history is only for resolving references. "
+                "If counts or values are null, state that they are unavailable. Simulated ETA is not live traffic. "
+                "Scenario outcomes must be supplied by Python."
+            )},
+            *[
+                {"role": message["role"], "content": message["content"]}
+                for message in (conversation_history or [])[-8:]
+                if isinstance(message, dict)
+                and message.get("role") in {"user", "assistant"}
+                and isinstance(message.get("content"), str)
+            ],
             {"role": "user", "content": json.dumps({"question": question, "context": context, "approved_python_analysis": python_analysis}, ensure_ascii=False)},
         ],
     }
@@ -389,11 +499,15 @@ def llm_answer(question, context, python_analysis, configuration, timeout=15):
         return None
 
 
-def assistant_answer(question, context, mode="Python analysis", configuration=None):
+def assistant_answer(question, context, mode="Python analysis", configuration=None,
+                     conversation_history=None):
     """Return an LLM explanation when available, otherwise grounded Python text."""
     analysis = python_answer(question, context)
     if mode.startswith("LLM"):
-        explanation = llm_answer(question, context, analysis, configuration or {})
+        explanation = llm_answer(
+            question, context, analysis, configuration or {},
+            conversation_history=conversation_history,
+        )
         if explanation:
             return explanation
     return analysis
