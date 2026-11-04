@@ -1,6 +1,7 @@
 import sys
 import unittest
 import io
+import json
 from pathlib import Path
 from urllib.error import HTTPError
 from unittest.mock import patch
@@ -64,7 +65,7 @@ class RouteIntelligenceTests(unittest.TestCase):
     self.assertTrue(config["available"])
     env_config = llm_configuration({}, {"OPENROUTER_API_KEY": "env-key", "OPENROUTER_MODEL": "openai/gpt-test"})
     self.assertEqual(env_config["model"], "openai/gpt-test")
-    self.assertEqual(llm_configuration({}, {})["model"], "openrouter/auto")
+    self.assertEqual(llm_configuration({}, {})["model"], "google/gemma-4-31b-it")
 
   def test_openrouter_success_uses_configured_model_and_timeout(self):
     import route_intelligence
@@ -79,6 +80,7 @@ class RouteIntelligenceTests(unittest.TestCase):
     request, = mocked.call_args.args
     self.assertEqual(request.full_url, "https://openrouter.ai/api/v1/chat/completions")
     self.assertEqual(request.get_header("Authorization"), "Bearer test-key")
+    self.assertEqual(json.loads(request.data)["model"], "provider/model-x")
     self.assertEqual(mocked.call_args.kwargs["timeout"], 7)
 
   def test_openrouter_provider_errors_and_timeouts_return_python_fallback(self):

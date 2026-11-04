@@ -184,18 +184,20 @@ and model. In local development, use environment variables:
 
 ```powershell
 $env:OPENROUTER_API_KEY = "your-openrouter-api-key"
-$env:OPENROUTER_MODEL = "openrouter/auto"
+$env:OPENROUTER_MODEL = "google/gemma-4-31b-it"
 ```
 
 On Streamlit Cloud, add these values under **App settings → Secrets**:
 
 ```toml
 OPENROUTER_API_KEY = "your-openrouter-api-key"
-OPENROUTER_MODEL = "openrouter/auto"
+OPENROUTER_MODEL = "google/gemma-4-31b-it"
 ```
 
-`OPENROUTER_MODEL` is optional and defaults to `openrouter/auto`; set it to any
-model slug available to your OpenRouter account to select a specific model.
+`OPENROUTER_MODEL` is optional and defaults to `google/gemma-4-31b-it`; set it
+to another specific model slug available to your OpenRouter account to select
+a different model. The app does not automatically switch to another or paid
+model if Gemma is unavailable; it falls back to Python analysis.
 The API base is fixed at `https://openrouter.ai/api/v1`. The provider receives
 the user's question, current dashboard context, and approved Python analysis;
 route calculations remain in the existing Python optimizers. If the key is

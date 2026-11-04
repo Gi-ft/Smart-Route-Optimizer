@@ -351,7 +351,7 @@ def llm_configuration(secrets=None, environ=None):
         return value or environ.get(name)
 
     api_key = read_setting("OPENROUTER_API_KEY")
-    model = read_setting("OPENROUTER_MODEL") or "openrouter/auto"
+    model = read_setting("OPENROUTER_MODEL") or "google/gemma-4-31b-it"
     return {
         "api_key": api_key,
         "api_base": OPENROUTER_API_BASE,
