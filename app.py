@@ -22,6 +22,7 @@ from scenario_analysis import (
     evaluate_route,
     optimize_by_scenario,
 )
+from graph_utils import normalize_edge_lengths
 
 
 st.set_page_config(
@@ -46,8 +47,7 @@ def load_road_network():
     # NetworkX reads the saved GraphML directly. OSMnx imports a large
     # geospatial stack that is only needed when regenerating the study graph.
     graph = nx.read_graphml(graph_path, node_type=int)
-    for _, _, attributes in graph.edges(data=True):
-        attributes["length"] = float(attributes["length"])
+    graph.graph["invalid_edge_length_count"] = normalize_edge_lengths(graph)
     locations = pd.read_csv(locations_path)
     if set(locations["location_id"]) != set("WABCDEF"):
         raise ValueError("The expanded location file must contain W and customers A–F.")
@@ -78,6 +78,12 @@ def cached_scenario_comparison(vehicle, hour, day):
 def create_delivery_map(route=None):
     """Render locations and graph-derived road paths for the selected tour."""
     graph, locations = load_road_network()
+    invalid_edges = graph.graph.get("invalid_edge_length_count", 0)
+    if invalid_edges:
+        st.warning(
+            f"{invalid_edges} road-network edge(s) with invalid length data were "
+            "skipped. Routes use the remaining valid roads."
+        )
     node_by_id = {
         row.location_id: int(row.nearest_road_node)
         for row in locations.itertuples(index=False)

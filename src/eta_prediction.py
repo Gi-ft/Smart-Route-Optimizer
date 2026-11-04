@@ -12,6 +12,7 @@ from functools import lru_cache
 import joblib
 import networkx as nx
 import pandas as pd
+from graph_utils import normalize_edge_lengths
 
 
 # Project paths
@@ -42,8 +43,7 @@ def load_resources():
     distances = pd.read_csv(DISTANCE_PATH)
     locations = pd.read_csv(LOCATION_PATH)
     graph = nx.read_graphml(GRAPH_PATH, node_type=int)
-    for _, _, attributes in graph.edges(data=True):
-        attributes["length"] = float(attributes["length"])
+    normalize_edge_lengths(graph)
     return model, distances, locations, graph
 
 
