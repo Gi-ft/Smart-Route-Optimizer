@@ -7,7 +7,6 @@ import sys
 
 import folium
 import networkx as nx
-import osmnx as ox
 import pandas as pd
 import streamlit as st
 from folium.plugins import PolyLineTextPath
@@ -44,7 +43,11 @@ def load_road_network():
     """Load the expanded graph and location table once per app process."""
     graph_path = BASE_DIR / "data/raw/mwihoko_githurai_road_network_6_customers.graphml"
     locations_path = BASE_DIR / "data/raw/snapped_delivery_locations_6_customers.csv"
-    graph = ox.load_graphml(filepath=graph_path)
+    # NetworkX reads the saved GraphML directly. OSMnx imports a large
+    # geospatial stack that is only needed when regenerating the study graph.
+    graph = nx.read_graphml(graph_path, node_type=int)
+    for _, _, attributes in graph.edges(data=True):
+        attributes["length"] = float(attributes["length"])
     locations = pd.read_csv(locations_path)
     if set(locations["location_id"]) != set("WABCDEF"):
         raise ValueError("The expanded location file must contain W and customers A–F.")

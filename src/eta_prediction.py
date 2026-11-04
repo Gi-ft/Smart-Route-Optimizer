@@ -11,7 +11,6 @@ from functools import lru_cache
 
 import joblib
 import networkx as nx
-import osmnx as ox
 import pandas as pd
 
 
@@ -32,18 +31,27 @@ VEHICLE_SPEEDS = {
 }
 
 
-# Load resources
-model = joblib.load(MODEL_PATH)
+@lru_cache(maxsize=1)
+def load_resources():
+    """Load model, route data, and road graph on first ETA request.
 
-distances = pd.read_csv(DISTANCE_PATH)
-locations = pd.read_csv(LOCATION_PATH)
-
-G = ox.load_graphml(filepath=GRAPH_PATH)
+    Deferring these files keeps the Streamlit landing page responsive while
+    the deployment process starts and avoids loading the graph until needed.
+    """
+    model = joblib.load(MODEL_PATH)
+    distances = pd.read_csv(DISTANCE_PATH)
+    locations = pd.read_csv(LOCATION_PATH)
+    graph = nx.read_graphml(GRAPH_PATH, node_type=int)
+    for _, _, attributes in graph.edges(data=True):
+        attributes["length"] = float(attributes["length"])
+    return model, distances, locations, graph
 
 
 @lru_cache(maxsize=50000)
 def predict_eta(origin, destination, vehicle_type,
                 departure_hour, day_of_week):
+
+    model, distances, locations, graph = load_resources()
 
     # 1. Validate inputs
     if origin not in locations["location_id"].values:
@@ -94,7 +102,7 @@ def predict_eta(origin, destination, vehicle_type,
 
     # 4. Calculate shortest-path edge count
     shortest_path = nx.shortest_path(
-        G,
+        graph,
         source=origin_node,
         target=destination_node,
         weight="length"
