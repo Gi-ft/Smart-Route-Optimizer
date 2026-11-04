@@ -11,6 +11,7 @@ import networkx as nx
 import pandas as pd
 import streamlit as st
 from folium.plugins import PolyLineTextPath
+from streamlit.errors import StreamlitSecretNotFoundError
 from streamlit_folium import st_folium
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -500,7 +501,13 @@ assistant_context = build_context(
     scenario=result.get("scenario") if result else traffic_scenario,
 )
 st.session_state["route_assistant_context"] = assistant_context
-llm_config = llm_configuration(st.secrets)
+try:
+    app_secrets = st.secrets
+except StreamlitSecretNotFoundError:
+    # Local Python-only runs may not have a secrets.toml file configured.
+    # llm_configuration still checks environment variables in this case.
+    app_secrets = {}
+llm_config = llm_configuration(app_secrets)
 mode_options = ["Python analysis"] + (["LLM explanations (with Python fallback)"] if llm_config["available"] else [])
 active_mode = st.session_state.get("assistant_response_mode", mode_options[0])
 if active_mode not in mode_options:
@@ -645,18 +652,6 @@ with st.container(key="route_intelligence_copilot"):
         st.info(assistant_context["message"], icon=":material/route:")
 
     messages = st.session_state["route_assistant_messages"]
-    if not messages:
-        st.markdown(
-            '<div class="ric-welcome"><strong>Plan with route intelligence</strong><br>'
-            'Ask why a route was chosen, compare objectives, inspect delivery bottlenecks, '
-            'or evaluate a what-if scenario. Answers use your current optimization results.</div>',
-            unsafe_allow_html=True,
-        )
-    else:
-        for message in messages:
-            avatar = "👤" if message["role"] == "user" else "🤖"
-            with st.chat_message(message["role"], avatar=avatar):
-                st.markdown(message["content"])
 
     st.markdown('<div class="ric-section-label">Suggested questions</div>', unsafe_allow_html=True)
     suggested_questions = [
@@ -757,10 +752,20 @@ with st.container(key="route_intelligence_copilot"):
         }
         append_chat_message(st.session_state, "assistant", response)
         st.session_state["route_assistant_processing"] = False
-        with st.chat_message("user", avatar="👤"):
-            st.markdown(user_question)
-        with st.chat_message("assistant", avatar="🤖"):
-            st.markdown(response)
+
+    # Render the stored conversation once after any submitted turn is appended.
+    # This avoids displaying the new exchange both from history and separately.
+    for message in st.session_state["route_assistant_messages"]:
+        avatar = "👤" if message["role"] == "user" else "🤖"
+        with st.chat_message(message["role"], avatar=avatar):
+            st.markdown(message["content"])
+    if not st.session_state["route_assistant_messages"]:
+        st.markdown(
+            '<div class="ric-welcome"><strong>Plan with route intelligence</strong><br>'
+            'Ask why a route was chosen, compare objectives, inspect delivery bottlenecks, '
+            'or evaluate a what-if scenario. Answers use your current optimization results.</div>',
+            unsafe_allow_html=True,
+        )
 
     scenario_result = st.session_state.get("route_assistant_scenario_result")
     if scenario_result:

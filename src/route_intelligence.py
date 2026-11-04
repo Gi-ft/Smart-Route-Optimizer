@@ -7,10 +7,11 @@ be exercised independently of the dashboard.
 from __future__ import annotations
 
 import json
+import logging
 import math
 import os
 import re
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
@@ -18,6 +19,7 @@ DAY_NAMES = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
 VEHICLES = {"motorcycle", "car", "van"}
 UNAVAILABLE = {"", "-", "n/a", "na", "none", "null", "nan", "unavailable"}
 OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
+LOGGER = logging.getLogger(__name__)
 OUT_OF_SCOPE_RESPONSE = (
     "I'm your Smart Route Optimizer assistant. I specialize in delivery routes, "
     "ETA predictions, route comparisons and delivery planning. I can't help with "
@@ -268,11 +270,32 @@ def bottleneck_analysis(context):
 
 def python_answer(question, context):
     """Answer common operational questions deterministically from context."""
+    text = question.lower().strip()
+    if is_greeting(text):
+        return (
+            "Hello! I can help analyze your delivery routes, compare the "
+            "shortest-distance and fastest-time results, explain ETA predictions, "
+            "or evaluate a delivery scenario."
+        )
     if not context.get("ready"):
         return context.get("message", "Run route optimization first.")
-    text = question.lower()
     comparison = compare_routes(context)
     primary = context.get("primary") or {}
+    if any(term in text for term in (
+        "eta", "estimated time of arrival", "arrival time", "prediction model",
+        "predict delivery", "predicted duration", "travel time prediction",
+    )):
+        methodology = context.get("optimizer_methodology", {}).get("eta_prediction", {})
+        features = methodology.get("features") or list(ETA_FEATURES)
+        return (
+            "Estimated Time of Arrival (ETA) is the predicted driving duration for a delivery leg, "
+            "used to estimate when the vehicle reaches the next stop. This project loads a trained "
+            "scikit-learn regression model to predict each leg's duration in minutes. Its eight input "
+            f"features are: {', '.join(features)}. The model receives these values for each origin-to-destination "
+            "leg; its predicted duration is added to the route's cumulative travel time. After each leg, "
+            "the optimizer advances elapsed minutes by that prediction and derives the next leg's departure "
+            "hour and weekday. The training durations are simulated, and predictions do not use live traffic."
+        )
     if any(word in text for word in ("longest", "slowest", "bottleneck", "takes the longest", "takes longest")):
         findings = bottleneck_analysis(context)
         lines = []
@@ -362,6 +385,16 @@ def python_answer(question, context):
         return (f"For this priority, I recommend the {label} route ({selected['route_string']}): "
                 f"{selected['total_distance_km']:.2f} km and {selected['total_eta_min']:.2f} model-predicted min. "
                 f"Evidence: {reason}. ETA values are predictions based on simulated training data.")
+    if any(word in text for word in ("shortest distance", "shortest-distance", "which route", "what route")):
+        route = context.get("shortest_distance") or {}
+        if route.get("route_string"):
+            return (
+                f"The shortest-distance optimizer selected {route['route_string']}: "
+                f"{route['total_distance_km']:.2f} km of road distance. It ranks all evaluated customer "
+                "orders by the sum of their directed shortest-road-distance legs."
+                if route.get("total_distance_km") is not None
+                else f"The shortest-distance route is {route['route_string']}, but its total distance is unavailable."
+            )
     if any(word in text for word in ("why", "selected")):
         key = "shortest_distance" if "short" in text or "distance" in text else "fastest_time" if "fast" in text or "time" in text else "shortest_distance" if context.get("primary_key") == "distance" else "fastest_time"
         route = context.get(key) if key else primary
@@ -382,11 +415,16 @@ def python_answer(question, context):
         return "The route uses mapped road-network distances. ETAs are model predictions trained on simulated durations, not live traffic observations. Service time, capacity, delivery windows, and current road conditions are not represented."
     if any(word in text for word in ("vehicle", "motorcycle", "van", "car")):
         return "Vehicle scenarios are evaluated with the application's ETA model for each supported vehicle. The result is an estimate from simulated training data, not a measured vehicle-performance guarantee. Ask ‘What if I use a van?’ to run a scenario against the current settings."
-    findings = bottleneck_analysis(context)
-    return (f"Current {context.get('objective', 'route')} recommendation: {primary.get('route_string', 'unavailable')}, "
-            f"{primary.get('total_distance_km') if primary.get('total_distance_km') is not None else 'unavailable'} km and "
-            f"{primary.get('total_eta_min') if primary.get('total_eta_min') is not None else 'unavailable'} model-predicted minutes. "
-            f"I found {len(findings['missing_eta_legs'])} unavailable leg ETA value(s). You can ask for a route comparison, a bottleneck, or a what-if scenario.")
+    capability_question = any(term in text for term in CAPABILITY_TERMS)
+    if capability_question:
+        return (
+            "I can explain the selected route, compare distance and time objectives, identify long or slow "
+            "delivery legs, explain ETA predictions and model limitations, and evaluate vehicle or departure-time scenarios."
+        )
+    return (
+        "I couldn't confidently answer that from the current route data. Try asking about the selected route, "
+        "a route comparison, a delivery leg, ETA prediction, or a vehicle/departure scenario."
+    )
 
 
 def parse_scenario_question(question, baseline):
@@ -533,10 +571,24 @@ def llm_answer(question, context, python_analysis, configuration, timeout=15,
         with urlopen(request, timeout=timeout) as response:
             data = json.loads(response.read().decode("utf-8"))
         if data.get("error"):
+            LOGGER.warning("OpenRouter returned a provider error; using Python fallback.")
             return None
         answer = data["choices"][0]["message"]["content"]
-        return answer if isinstance(answer, str) and answer.strip() else None
-    except (URLError, TimeoutError, OSError, ValueError, KeyError, IndexError, TypeError):
+        if isinstance(answer, str) and answer.strip():
+            return answer
+        LOGGER.warning("OpenRouter returned an empty answer; using Python fallback.")
+        return None
+    except HTTPError as error:
+        LOGGER.warning("OpenRouter request failed with HTTP status %s; using Python fallback.", error.code)
+        return None
+    except TimeoutError:
+        LOGGER.warning("OpenRouter request timed out; using Python fallback.")
+        return None
+    except (URLError, OSError):
+        LOGGER.warning("OpenRouter is unavailable; using Python fallback.")
+        return None
+    except (ValueError, KeyError, IndexError, TypeError):
+        LOGGER.warning("OpenRouter returned an invalid response; using Python fallback.")
         return None
 
 

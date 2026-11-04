@@ -290,11 +290,11 @@ class RouteIntelligenceTests(unittest.TestCase):
   def test_greetings_and_legitimate_route_questions_are_not_blocked(self):
     context = build_context(sample_result(), LOCATIONS)
     cases = [
-        ("Hello", "Current"),
-        ("Which route has the shortest distance?", "shortest distance"),
-        ("What is the predicted ETA?", "model-predicted"),
+        ("Hello", "Hello!"),
+        ("Which route has the shortest distance?", "shortest-distance optimizer selected"),
+        ("What is the predicted ETA?", "Estimated Time of Arrival"),
         ("Compare the motorcycle and van delivery scenarios", "Shortest-distance route:"),
-        ("What can you help me with?", "Current"),
+        ("What can you help me with?", "I can explain"),
     ]
     for question, expected in cases:
         with self.subTest(question=question):
@@ -302,3 +302,65 @@ class RouteIntelligenceTests(unittest.TestCase):
             self.assertEqual(source, "python")
             self.assertNotEqual(answer, OUT_OF_SCOPE_RESPONSE)
             self.assertIn(expected.lower(), answer.lower())
+
+  def test_greeting_returns_greeting_instead_of_route_summary(self):
+    answer, source = assistant_answer_with_source(
+        "Hello", build_context(sample_result(), LOCATIONS), "Python analysis"
+    )
+    self.assertEqual(source, "python")
+    self.assertIn("Hello!", answer)
+    self.assertNotIn("Current Shortest Distance recommendation", answer)
+
+  def test_eta_explanation_is_specific_and_complete(self):
+    answer, source = assistant_answer_with_source(
+        "Explain ETA prediction", build_context(sample_result(), LOCATIONS), "Python analysis"
+    )
+    self.assertEqual(source, "python")
+    for expected in (
+        "Estimated Time of Arrival", "scikit-learn", "origin_zone", "destination_zone",
+        "route_distance_km", "road_edge_count", "departure_hour", "day_of_week",
+        "vehicle_type", "estimated_free_flow_min", "advances elapsed minutes",
+        "simulated", "live traffic",
+    ):
+        self.assertIn(expected.lower(), answer.lower())
+    self.assertNotIn("Current Shortest Distance recommendation", answer)
+
+  def test_shortest_distance_question_returns_route_specific_answer(self):
+    answer, source = assistant_answer_with_source(
+        "Which route has the shortest distance?",
+        build_context(sample_result(), LOCATIONS), "Python analysis",
+    )
+    self.assertEqual(source, "python")
+    self.assertIn("shortest-distance optimizer selected W → A → W", answer)
+    self.assertIn("9.00 km", answer)
+
+  def test_comparison_question_compares_both_objectives(self):
+    answer, source = assistant_answer_with_source(
+        "Compare the two optimization methods",
+        build_context(sample_result(), LOCATIONS), "Python analysis",
+    )
+    self.assertEqual(source, "python")
+    self.assertIn("Shortest-distance route:", answer)
+    self.assertIn("Fastest-time route:", answer)
+
+  def test_openrouter_failure_falls_back_to_eta_explanation(self):
+    import route_intelligence
+
+    context = build_context(sample_result(), LOCATIONS)
+    config = {"api_key": "test-key", "api_base": "https://openrouter.ai/api/v1", "model": "test"}
+    with patch.object(route_intelligence, "urlopen", side_effect=TimeoutError):
+        answer, source = assistant_answer_with_source(
+            "Explain ETA prediction", context, "LLM explanations", config
+        )
+    self.assertEqual(source, "python")
+    self.assertIn("Estimated Time of Arrival", answer)
+    self.assertNotIn("Current Shortest Distance recommendation", answer)
+
+  def test_consecutive_questions_produce_distinct_relevant_responses(self):
+    context = build_context(sample_result(), LOCATIONS)
+    first, source_first = assistant_answer_with_source("Hello", context, "Python analysis")
+    second, source_second = assistant_answer_with_source("Explain ETA prediction", context, "Python analysis")
+    self.assertEqual((source_first, source_second), ("python", "python"))
+    self.assertIn("Hello!", first)
+    self.assertIn("Estimated Time of Arrival", second)
+    self.assertNotEqual(first, second)
