@@ -65,7 +65,14 @@ locations = [
         "location_name": "Quickmart Kahawa Sukari",
         "latitude": -1.18919379482623,
         "longitude": 36.93237357931856
-    }
+    },
+    {
+            "location_id": "Z",
+            "role": "Customer",
+            "location_name": "Nairobi CBD",
+            "latitude": -1.2847288497800424,
+            "longitude": 36.82604163680205
+        }
 ]
 
 def save_locations(output_name="delivery_locations_6_customers.csv"):
